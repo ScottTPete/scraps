@@ -1,0 +1,29 @@
+{
+  "name": "scraps",
+  "version": "1.0.0",
+  "description": "devmtn personal project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ScottTPete/scraps.git"
+  },
+  "author": "Scott Peterson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ScottTPete/scraps/issues"
+  },
+  "homepage": "https://github.com/ScottTPete/scraps#readme",
+  "dependencies": {
+    "aws-sdk": "^2.3.7",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "mongoose": "^4.4.14"
+  }
+}
