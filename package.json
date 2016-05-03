@@ -1,7 +1,7 @@
 {
   "name": "scraps",
   "version": "1.0.0",
-  "description": "devmtn personal project",
+  "description": "devmtn personal project.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/ScottTPete/scraps#readme",
   "dependencies": {
-    "aws-sdk": "^2.3.7",
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.0",
     "cors": "^2.7.1",

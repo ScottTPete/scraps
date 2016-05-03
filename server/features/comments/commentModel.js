@@ -2,10 +2,10 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var CommentSchema = new Schema({
-	post: {
+	/*post: {
 		type: Schema.Types.ObjectId,
 		ref: 'Post'
-	},
+	},*/
 	postedBy: {
 		user: {
 			type: Schema.Types.ObjectId,
@@ -18,14 +18,14 @@ var CommentSchema = new Schema({
 			type: String
 		}
 	},
-	commentMessage: {
+	commentMessage: [{
 		type: String,
 		required: true
-	}
+	}]
 
 },
 {
 	timestamps: true,
 });
 
-module.exports = mongoose.model('Comment', CommentSchema);
+module.exports = mongoose.model('Comment', CommentSchema;

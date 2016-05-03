@@ -6,7 +6,6 @@ var UserSchema = new Schema({
 	name: {
 		firstname: {
 			type: String,
-			trim: true,
 			default: ''
 		},
 		lastname: {
@@ -38,18 +37,24 @@ var UserSchema = new Schema({
 	birthday: {
 		type: Date
 	},
-	posts: [{
+	albums: [{
 		type: Schema.Types.ObjectId,
-		ref: 'Post'
+		ref: 'Album'
+	}],
+	photos: [{
+		type: Schema.Types.ObjectId,
+		ref: 'Photo'
 	}],
 	friends: [{
 		type: Schema.Types.ObjectId,
-		ref: 'User'
+		ref: 'User',
+		unique: true
 	}],
-	likes: [{
+	/*likes: [{
 		type: Schema.Types.ObjectId,
-		ref: 'Post'
-	}],
+		ref: 'Likes',
+		unique: true
+	}],*/
 },
 {
 	timestamps: true
@@ -57,7 +62,7 @@ var UserSchema = new Schema({
 
 UserSchema.pre('save', function(next) {
 	var user = this;
-	if(!this.isModified('password')) {
+	if(!user.isModified('password')) {
 		return next()
 	}
 	bcrypt.genSalt(10, function(err, salt) {
