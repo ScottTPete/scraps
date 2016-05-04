@@ -50,6 +50,14 @@ var UserSchema = new Schema({
 		ref: 'User',
 		unique: true
 	}],
+	/*loginAttempts: {
+		type: Number,
+		required: true,
+		default: 0
+	},
+	lockUntil: {
+		type: Number
+	},*/
 	/*likes: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Likes',
@@ -72,6 +80,17 @@ UserSchema.pre('save', function(next) {
 		});
 	});
 });
+
+UserSchema.methods.comparePassword = function(passwordGiven) {
+	var user = this;
+	var validPassword = bcrypt.compareSync(passwordGiven, user.password);
+
+	if(validPassword) {
+		console.log('Passwords matched')
+	} else if(!validPassword) {
+		console.log('Passwords did not match');
+	}
+};
 
 
 module.exports = mongoose.model('User', UserSchema);

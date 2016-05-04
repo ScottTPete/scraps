@@ -6,8 +6,8 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 	<title>Scraps</title>
 	<link rel='stylesheet' href='styles/styles.css'>
-
-	<base href="/">
+	<!--Base tag needed to make url pretty. all relative links will be based on the base-->
+<!--	<base href='/'>-->
 </head>
 
 <body>
@@ -17,14 +17,21 @@
 	<!--ANGULAR-->
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js'></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.js"></script>
+	<script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js'></script>
+	<script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.js'></script>
+	<script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.js'></script>
 
 	<!--ANGULAR MATERIAL-->
+	<script src='http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.js'></script>
 
 	<!--APP-->
 	<script src='js/app.js'></script>
+
+	<!--SERVICES-->
+	<script src='services/authService.js'></script>
+
+	<!--CONTROLLERS-->
+	<script src='features/login/loginCtrl.js'></script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-angular.module('scrapsApp', ['ui.router', 'ng-material'])
+angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 	.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 
 		$stateProvider
@@ -8,16 +8,18 @@ angular.module('scrapsApp', ['ui.router', 'ng-material'])
 			})
 			.state('login', {
 				url: '/login',
-				templateUrl: 'features/login/loginView.html'
+				templateUrl: 'features/login/loginView.html',
+				controller: 'loginCtrl'
 			})
 			.state('profile', {
 				url: '/:username',
-				templateUrl: '',
+			templateUrl: 'features/user/profileView.html',
 			})
 
 		$urlRouterProvider.otherwise('/');
 
 		//Gets rid of the hashtag in the url//
-		$locationProvider.html5Mode(true);
-});
+//		$locationProvider.html5Mode(true);
+
+	});
 
