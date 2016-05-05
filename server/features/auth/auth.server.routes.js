@@ -1,9 +1,9 @@
-module.exports = function (app, passport) {
+var localAuth = require('../../config/passport.local.config');
+
+
+module.exports = function (app) {
 
 	//Auth Endpoints//
-	app.post('/auth/login', passport.authenticate('local', {
-		failureRedirect: '/#/login',
-		successRedirect: '/'
-	}));
+   app.post('/auth/login', localAuth.authenticate);
 
 }

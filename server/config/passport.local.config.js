@@ -1,26 +1,31 @@
-var LocalStrategy = require('passport-local').Strategy,
+var passport = require('passport'),
+	LocalStrategy = require('passport-local').Strategy,
 	User = require('../features/users/userModel');
 
-module.exports = function(passport) {
-
 	//Local Auth Strategy//
-	passport.use(new LocalStrategy(function(username, password, done) {
+	passport.use(new LocalStrategy(function(username, password, cb) {
 
 		User.findOne({username: username}, function(err, user) {
+			console.log(user.name.firstname + ' passport config line 10')
 			if (err) {
 				console.log(err)
-				return done(err);
+				return cb(err);
 			}
 			if (!user) {
-				return done(null, false, { message: 'Incorrect username.'});
+				return cb(null, false);
 			}
-			if (!user.comparePassword(password)) {
-				return done(null, false), { message: 'Incorrect password.'};
-				console.log('wrong password');
-			}
-			return done(null, user);
-		})
+			user.comparePassword(password, function(err, isMatch) {
+				console.log(password + ' passport config line 19')
+				console.log(isMatch + ' passport config line 20')
+				if (err) { return cb(err); }
 
+				// Password did not match
+				if (!isMatch) { return cb(null, false); }
+
+				// Success
+				return cb(null, user);
+			});
+		});
 	}));
 
 	passport.serializeUser(function(user, cb) {
@@ -36,4 +41,11 @@ module.exports = function(passport) {
 		});
 	});
 
-};
+	var authenticate = passport.authenticate('local', {
+		successRedirect: '/',
+		failureRedirect: '/login'
+	});
+
+	console.log(authenticate())
+
+module.exports = authenticate;

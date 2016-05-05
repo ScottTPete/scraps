@@ -67,28 +67,30 @@ UserSchema.pre('save', function(next) {
 		return next()
 	}
 	bcrypt.genSalt(10, function(err, salt) {
+		if(err) return next(err)
 		bcrypt.hash(user.password, salt, function(err, hash) {
+			if(err) return cb(err);
 			user.password = hash;
 			next();
 		});
 	});
 });
 
-UserSchema.statics.comparePassword = function(passwordGiven) {
-	console.log(passwordGiven + ' user model line 86');
+UserSchema.methods.comparePassword = function(attemptedPassword, cb) {
+	console.log(attemptedPassword + ' user model line 86');
 	var user = this;
-	bcrypt.compare(passwordGiven, user.password, function(err, isMatch) {
+	bcrypt.compare(attemptedPassword, user.password, function(err, isMatch) {
 		console.log('line 89 usermodel ' + isMatch);
-		if (err) throw(err);
-		return (null, isMatch);
+		if (err) return cb(err);
+		cb(null, isMatch);
 
 	})
 };
 
-UserSchema.statics.findByUsername = function (username, cb) {
+/*UserSchema.statics.findByUsername = function (username, cb) {
 	var User = this;
 	return User.find({ username: username }, cb);
-};
+};*/
 
 
 module.exports = mongoose.model('User', UserSchema);

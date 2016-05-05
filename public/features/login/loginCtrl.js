@@ -4,7 +4,7 @@ angular.module('scrapsApp')
 
 		//Call authSvc, authenticate user function passing in username and password//
 		$scope.authenticate = function(username, password) {
-			console.log('hit login function')
+			console.log('hit login ctrl')
 			authSvc.authenticateUser(username, password);
 		};
 
