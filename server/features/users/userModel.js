@@ -6,6 +6,7 @@ var UserSchema = new Schema({
 	name: {
 		firstname: {
 			type: String,
+			trim: true,
 			default: ''
 		},
 		lastname: {
@@ -82,15 +83,13 @@ UserSchema.pre('save', function(next) {
 });
 
 UserSchema.methods.comparePassword = function(passwordGiven) {
+	console.log(passwordGiven);
 	var user = this;
-	var validPassword = bcrypt.compareSync(passwordGiven, user.password);
-
-	if(validPassword) {
-		console.log('Passwords matched')
-	} else if(!validPassword) {
-		console.log('Passwords did not match');
-	}
-};
-
+	bcrypt.compare(passwordGiven, user.password, function(err, isMatch) {
+		console.log('line 89 usermodel ' + isMatch);
+		if (err) throw(err);
+		return isMatch;
+	})
+}
 
 module.exports = mongoose.model('User', UserSchema);

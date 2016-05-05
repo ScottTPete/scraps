@@ -6,6 +6,9 @@ var PhotoSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Post'
 	},*/
+	albumId: {
+		type: String,
+	},
 	description: {
 		type: String,
 		default: ''
@@ -23,6 +26,9 @@ var PhotoSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Likes'
 	}],
+	postedBy: {
+
+	}
 },
 {
 	timestamps: true,

@@ -1,12 +1,13 @@
+var LocalStrategy = require('passport-local').Strategy;
+
 module.exports = function (app, passport) {
 
 	//Auth Endpoints//
 	app.post('/auth/login', passport.authenticate('local', {
-		failureRedirect: '/#/login'
-	}),
-			 function (req, res) {
-		console.log(req)
-		res.redirect('/')
+		failureRedirect: '/'
+	}), function(req, res, next) {
+		console.log(req, 'req')
+		res.redirect('/');
 	});
 
 	app.get('/auth/logout', function(req, res){

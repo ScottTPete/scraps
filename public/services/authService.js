@@ -3,7 +3,7 @@ angular.module('scrapsApp')
 
 
 	this.authenticateUser = function(user) {
-		console.log('hit ' + user.username + ' ' + user.password)
+		console.log('hit svc ' + user.username + ' ' + user.password)
 		$http.post('/auth/login', {username: user.username, password: user.password});
 	}
 

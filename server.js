@@ -1,15 +1,12 @@
-var express = require('./server/config/express.config'),
-	passport = require('passport'),
-	app = express();
+var app = require('./server/config/express.config')(),
+	User = require('./server/features/users/userModel'),
+	passport = require('passport');
 
 //Passport Local Auth//
-require('./server/config/passport.local');
-
-//Run Express//
-var app = express();
+require('./server/config/passport.local.config')(passport);
 
 //Mongoose Setup//
-require('./server/config/mongoose.config')
+require('./server/config/mongoose.config')();
 
 //Startup Passport//
 app.use(passport.initialize());
@@ -18,6 +15,7 @@ app.use(passport.session());
 //Routes//
 require('./server/features/auth/auth.server.routes')(app, passport);
 
+//Middlewear//
 var requireAuth = function(req, res, next) {
 	if (!req.isAuthenticated()) {
 		return res.status(403).end();
@@ -36,7 +34,7 @@ app.post('/api/v1/users', function(req, res, next) {
 			res.status(200).json(response);
 		}
 	})
-})
+});
 
 app.get('/api/v1/users', function (req, res, next) {
 	User.find(req.query, function (err, response) {

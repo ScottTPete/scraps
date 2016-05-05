@@ -1,12 +1,15 @@
-var passport = require('passport'),
-	LocalStrategy = require('passport-local').Strategy,
+var LocalStrategy = require('passport-local').Strategy,
 	User = require('../features/users/userModel');
 
 module.exports = function(passport) {
 
 	//Local Auth Strategy//
 	passport.use(new LocalStrategy(function(username, password, cb) {
+		console.log(username)
+		/*try{*/
 		User.findOne({username: username}, function(err, user) {
+			console.log("---",user);
+			console.log(err, 'err');
 			if (err) {
 				return cb(err);
 			}
@@ -19,6 +22,9 @@ module.exports = function(passport) {
 			}
 			return cb(null, user);
 		})
+		/*}catch(error){
+			console.log("Bad things happened")
+			}*/
 	}));
 
 	passport.serializeUser(function(user, cb) {
