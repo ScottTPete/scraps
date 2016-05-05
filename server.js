@@ -24,33 +24,6 @@ var requireAuth = function(req, res, next) {
 	return next();
 };
 
-//User Endpoints//
-app.post('/api/v1/users', function(req, res, next) {
-	User.create(req.body, function (err, response) {
-		if (err) {
-			console.log(err)
-			res.status(500).send(err);
-		} else {
-			console.log('new user')
-			res.status(200).json(response);
-		}
-	})
-});
-
-app.get('/api/v1/users', function (req, res, next) {
-	User.find(req.query, function (err, response) {
-		if (err) {
-			res.status(500).send(err);
-		} else {
-			res.status(200).json(response);
-		}
-	})
-});
-
-/*app.get('/api/profile/username', function(req, res, next) {
-	User.findOne()
-})*/
-
 //Necessary to allow refresh/navigation in html5mode(true)//
 app.all('*', function (req, res, next) {
 	// Just send the index.html for other files to support HTML5Mode
