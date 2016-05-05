@@ -7,7 +7,7 @@ angular.module('scrapsApp')
 	this.authenticateUser = function(username, password) {
 		console.log('hit svc ' + username + ' ' + password)
 		$http.post(baseUrl + '/auth/login', {username: username, password: password});
-	}
+	};
 
 
 })
