@@ -51,14 +51,6 @@ var UserSchema = new Schema({
 		ref: 'User',
 		unique: true
 	}],
-	/*loginAttempts: {
-		type: Number,
-		required: true,
-		default: 0
-	},
-	lockUntil: {
-		type: Number
-	},*/
 	/*likes: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Likes',
@@ -82,7 +74,7 @@ UserSchema.pre('save', function(next) {
 	});
 });
 
-UserSchema.methods.comparePassword = function(passwordGiven) {
+UserSchema.statics.comparePassword = function(passwordGiven) {
 	console.log(passwordGiven + ' user model line 86');
 	var user = this;
 	bcrypt.compare(passwordGiven, user.password, function(err, isMatch) {
@@ -91,6 +83,12 @@ UserSchema.methods.comparePassword = function(passwordGiven) {
 		return (null, isMatch);
 
 	})
-}
+};
+
+UserSchema.statics.findByUsername = function (username, cb) {
+	var User = this;
+	return User.find({ username: username }, cb);
+};
+
 
 module.exports = mongoose.model('User', UserSchema);

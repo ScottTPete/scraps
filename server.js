@@ -1,6 +1,6 @@
-var app = require('./server/config/express.config')(),
+var passport = require('passport'),
 	User = require('./server/features/users/userModel'),
-	passport = require('passport');
+	app = require('./server/config/express.config')();
 
 //Passport Local Auth//
 require('./server/config/passport.local.config')(passport);
@@ -13,7 +13,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Routes//
-require('./server/features/auth/auth.server.routes')(app, passport);
+require('./server/features/auth/auth.server.routes')(app, passport); //auth
+require('./server/features/users/user.routes')(app); //user
 
 //Middlewear//
 var requireAuth = function(req, res, next) {
@@ -21,7 +22,7 @@ var requireAuth = function(req, res, next) {
 		return res.status(403).end();
 	}
 	return next();
-}
+};
 
 //User Endpoints//
 app.post('/api/v1/users', function(req, res, next) {

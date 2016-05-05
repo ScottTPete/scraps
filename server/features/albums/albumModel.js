@@ -13,7 +13,7 @@ var albumSchema = new Schema({
 		required: true,
 		unique: true
 	},
-	// TODO: fix photo property in album schema
+	// TODO: []fix photo property in album schema
 	photos: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Photo'

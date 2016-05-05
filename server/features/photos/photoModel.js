@@ -13,7 +13,7 @@ var PhotoSchema = new Schema({
 		type: String,
 		default: ''
 	},
-	// TODO: fix photo schema
+	// TODO: []fix photo schema
 	image: {
 		type: String,
 		required: true
