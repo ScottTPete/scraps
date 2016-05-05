@@ -21,5 +21,7 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 		//Gets rid of the hashtag in the url//
 //		$locationProvider.html5Mode(true);
 
+	$locationProvider.html5Mode({enabled: true, requireBase: false});
+
 	});
 

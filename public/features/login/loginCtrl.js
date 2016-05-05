@@ -1,11 +1,11 @@
 angular.module('scrapsApp')
-	.controller('loginCtrl', function($scope, authSvc) {
+	.controller('loginCtrl', function($scope, $location, authSvc) {
 
 
 		//Call authSvc, authenticate user function passing in username and password//
-		$scope.authenticate = function(user) {
+		$scope.authenticate = function(username, password) {
 			console.log('hit login function')
-			authSvc.authenticateUser(user);
+			authSvc.authenticateUser(username, password);
 		};
 
 })

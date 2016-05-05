@@ -83,12 +83,13 @@ UserSchema.pre('save', function(next) {
 });
 
 UserSchema.methods.comparePassword = function(passwordGiven) {
-	console.log(passwordGiven);
+	console.log(passwordGiven + ' user model line 86');
 	var user = this;
 	bcrypt.compare(passwordGiven, user.password, function(err, isMatch) {
 		console.log('line 89 usermodel ' + isMatch);
 		if (err) throw(err);
-		return isMatch;
+		return (null, isMatch);
+
 	})
 }
 

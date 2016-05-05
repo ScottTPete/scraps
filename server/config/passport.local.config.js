@@ -5,12 +5,10 @@ module.exports = function(passport) {
 
 	//Local Auth Strategy//
 	passport.use(new LocalStrategy(function(username, password, cb) {
-		console.log(username)
-		/*try{*/
-		User.findOne({username: username}, function(err, user) {
-			console.log("---",user);
-			console.log(err, 'err');
+
+		User.findOne({'username': username}, function(err, user) {
 			if (err) {
+				console.log(err)
 				return cb(err);
 			}
 			if (!user) {
@@ -22,9 +20,7 @@ module.exports = function(passport) {
 			}
 			return cb(null, user);
 		})
-		/*}catch(error){
-			console.log("Bad things happened")
-			}*/
+
 	}));
 
 	passport.serializeUser(function(user, cb) {

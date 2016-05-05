@@ -50,9 +50,12 @@ app.get('/api/v1/users', function (req, res, next) {
 	User.findOne()
 })*/
 
-/*app.get('/*', function(req, res) {
-	res.sendFile(__dirname + '/public/index.html')
-});*/
+//Necessary to allow refresh/navigation in html5mode(true)//
+app.all('*', function (req, res, next) {
+	// Just send the index.html for other files to support HTML5Mode
+	res.sendFile('./public/index.html', { root: __dirname });
+
+});
 
 //PORT//
 var port = process.env.PORT || 8080;
