@@ -1,7 +1,9 @@
-var passport = require('passport');
+var passport = require('passport'),
+	session = require('express-session');
 
 module.exports = {
 	validateUserLogin: function(req, res, next) {
+
 		passport.authenticate('local', function(err, user, info) {
 			if (err) { return next(err); }
 			// Redirect if it fails
@@ -12,8 +14,16 @@ module.exports = {
 				// Redirect if it succeeds
 				return res.redirect('/');
 			});
+			console.log(req.session)
 		})(req, res, next);
 	},
+	logoutUser: function(req, res, next) {
+		console.log(res.cache)
+		req.logout();
+		req.session.destroy();
+		res.redirect('/');
+		console.log(req.session)
+	}
 }
 
 

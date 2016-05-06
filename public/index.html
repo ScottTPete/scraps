@@ -5,13 +5,15 @@
 	<meta charset='utf-8'>
 	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 	<title>Scraps</title>
-	<link rel='stylesheet' href='styles/styles.css'>
 	<!--Base tag needed to make url pretty. all relative links will be based on the base-->
-<!--	<base href='/index.html/'>-->
+	<base href='/'>
+	<link rel='stylesheet' href='styles/styles.css'>
 </head>
 
 <body>
-
+	<form action="/auth/logout" method="get">
+		<input type="submit" value="Logout">
+	</form>
 	<ui-view></ui-view>
 
 	<!--ANGULAR-->
