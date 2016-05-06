@@ -2,27 +2,14 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var CommentSchema = new Schema({
-	/*post: {
-		type: Schema.Types.ObjectId,
-		ref: 'Post'
-	},*/
 	postedBy: {
-		user: {
-			type: Schema.Types.ObjectId,
-			ref: 'User'
-		},
-		postedByName:  {
-			type: String
-		},
-		postedByImage:  {
-			type: String
-		}
+		type: Schema.Types.ObjectId,
+		ref: 'User'
 	},
-	commentMessage: [{
+	commentMessage: {
 		type: String,
 		required: true
-	}]
-
+	}
 },
 {
 	timestamps: true,

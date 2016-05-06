@@ -1,18 +1,45 @@
 var mongoose = require('mongoose'),
+	validate = require('mongoose-validator'),
 	bcrypt = require('bcryptjs'),
 	Schema = mongoose.Schema;
+
+
+var validateName = [
+	validate({
+		validator: 'isAlpha',
+		passIfEmpty: true,
+		message: 'Name can only contain letters, no numbers or symbols'
+	})
+];
+
+var validateEmail = [
+	validate({
+		validator: 'isEmail',
+		passIfEmpty: true,
+	})
+];
+
+var validateDate = [
+	validate({
+		validator: 'isDate',
+	})
+];
 
 var UserSchema = new Schema({
 	name: {
 		firstname: {
 			type: String,
 			trim: true,
-			default: ''
+			default: '',
+			minglength: 2,
+			validate: validateName
 		},
 		lastname: {
 			type: String,
 			trim: true,
-			default: ''
+			default: '',
+			minlength: 2,
+			validate: validateName
 		}
 	},
 	username: {
@@ -25,20 +52,26 @@ var UserSchema = new Schema({
 	password: {
 		type: String,
 		required: true,
-		minlength: 6
+		minlength: 4,
+		trim: true
 	},
 	email: {
 		type: String,
 		default: '',
-		unique: true
+		unique: true,
+		validate: validateEmail,
+	},
+	profileImg: {
+		type: String,
 	},
 	age: {
 		type: Number,
 	},
 	birthday: {
-		type: Date
+		type: Date,
+		validate: validateDate
 	},
-	albums: [{
+	photoAlbums: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Album'
 	}],
@@ -51,11 +84,19 @@ var UserSchema = new Schema({
 		ref: 'User',
 		unique: true
 	}],
-	/*likes: [{
+	following: [{
 		type: Schema.Types.ObjectId,
-		ref: 'Likes',
+		ref: 'User'
+	}],
+	likes: [{
+		type: Schema.Types.ObjectId,
+		ref: 'Like',
 		unique: true
-	}],*/
+	}],
+	location: {
+		type: String,
+		default: ''
+	}
 },
 {
 	timestamps: true
@@ -84,11 +125,5 @@ UserSchema.methods.comparePassword = function(attemptedPassword, cb) {
 
 	})
 };
-
-/*UserSchema.statics.findByUsername = function (username, cb) {
-	var User = this;
-	return User.find({ username: username }, cb);
-};*/
-
 
 module.exports = mongoose.model('User', UserSchema);

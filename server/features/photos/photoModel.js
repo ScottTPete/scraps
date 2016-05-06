@@ -2,18 +2,10 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var PhotoSchema = new Schema({
-	/*post: {
-		type: Schema.Types.ObjectId,
-		ref: 'Post'
-	},*/
-	albumId: {
-		type: String,
-	},
 	description: {
 		type: String,
 		default: ''
 	},
-	// TODO: []fix photo schema
 	image: {
 		type: String,
 		required: true
@@ -24,11 +16,23 @@ var PhotoSchema = new Schema({
 	},
 	likes: [{
 		type: Schema.Types.ObjectId,
-		ref: 'Likes'
+		ref: 'User'
 	}],
 	postedBy: {
-
-	}
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	},
+	location: {
+		type: String,
+		default: ''
+	},
+	photoDate: {
+		type: Date
+	},
+	peopleInPhoto: [{
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	}]
 },
 {
 	timestamps: true,

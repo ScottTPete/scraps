@@ -1,42 +1,47 @@
 var mongoose = require('mongoose'),
-	CommentSchema = require('../comments/commentModel'),
-	LikeSchema = require('../comments/commentModel'),
 	Schema = mongoose.Schema;
 
-var albumSchema = new Schema({
-	/*post: {
-		type: Schema.Types.ObjectId,
-		ref: 'Post'
-	},*/
-	name: {
+var AlbumSchema = new Schema({
+	albumName: {
 		type: String,
 		required: true,
-		unique: true
 	},
-	// TODO: []fix photo property in album schema
 	photos: [{
 		type: Schema.Types.ObjectId,
-		ref: 'Photo'
+		ref: 'Photo',
+		required: true
 	}],
 	description: {
 		type: String,
 		default: ''
-
 	},
-	comments: {
+	comments: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Comment',
-	},
+	}],
 	publicEditable: {
 		type: Boolean,
 		default: false
 	},
 	likes: [{
 		type: Schema.Types.ObjectId,
-		ref: 'Likes'
+		ref: 'User'
 	}],
+	location: {
+		type: String,
+		default: ''
+	},
+	albumDate: {
+		type: Date
+	},
+	peopleIn: [{
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	}]
 
 },
 {
 	timestamps: true,
 })
+
+module.exports = mongoose.model('Album', AlbumSchema)
