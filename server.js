@@ -13,7 +13,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Routes//
-require('./server/features/auth/auth.server.routes')(app, passport); //auth
+require('./server/features/auth/auth.server.routes')(app); //auth
 require('./server/features/users/user.routes')(app); //user
 
 //Middlewear//
