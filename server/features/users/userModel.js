@@ -86,7 +86,7 @@ var UserSchema = new Schema({
 	}],
 	following: [{
 		type: Schema.Types.ObjectId,
-		ref: 'User'
+		ref: 'Following'
 	}],
 	likes: [{
 		type: Schema.Types.ObjectId,
