@@ -23,13 +23,13 @@ var LocalStrategy = require('passport-local').Strategy,
 		}));
 
 		passport.serializeUser(function(user, cb) {
-			console.log(user)
+			console.log(user + ' passport config serializeUser')
 			cb(null, user.id);
 		});
 
 		passport.deserializeUser(function(id, cb) {
 			User.findById(id, function (err, user) {
-				console.log(id)
+				console.log(id + ' passport config 32')
 				if (err) {
 					return cb(err);
 				}

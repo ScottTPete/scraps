@@ -17,10 +17,17 @@ module.exports = function (app, passport) {
     });
 
 	app.get('/loginSuccess', function(req, res) {
-		res.redirect('/');
+		var redirectPath;
+		if(req.user) {
+			redirectPath = '/'
+		}
+		res.status(200).json({user: req.user, redirectPath: redirectPath});
 	})
 
-	app.get('/loginFailure', function(req, res ) {
-		res.redirect('/login');
+	app.get('/loginFailure', function(req, res) {
+
+		var	redirectPath = '/login'
+
+		res.status(200).json({redirectPath: redirectPath});
 	})
 }

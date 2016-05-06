@@ -5,8 +5,9 @@ angular.module('scrapsApp')
 	var baseUrl = 'http://localhost:8080';
 
 	this.authenticateUser = function(username, password) {
-		console.log('hit svc ' + username + ' ' + password)
-		$http.post(baseUrl + '/auth/login', {username: username, password: password});
+		return $http.post(baseUrl + '/auth/login', {username: username, password: password}).then(function(response) {
+			return response.data;
+		})
 	};
 
 
