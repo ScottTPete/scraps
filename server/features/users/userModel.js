@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 
+/*
 var validateName = [
 	validate({
 		validator: 'isAlpha',
@@ -24,6 +25,7 @@ var validateDate = [
 		validator: 'isDate',
 	})
 ];
+*/
 
 var UserSchema = new Schema({
 	name: {
@@ -32,14 +34,14 @@ var UserSchema = new Schema({
 			trim: true,
 			default: '',
 			minglength: 2,
-			validate: validateName
+//			validate: validateName
 		},
 		lastname: {
 			type: String,
 			trim: true,
 			default: '',
 			minlength: 2,
-			validate: validateName
+//			validate: validateName
 		}
 	},
 	username: {
@@ -47,7 +49,11 @@ var UserSchema = new Schema({
 		required: true,
 		unique: true,
 		minlength: 3,
-		maxlength: 15
+		maxlength: 15,
+		index: {
+			unique: true,
+		},
+		trim: true
 	},
 	password: {
 		type: String,
@@ -59,7 +65,7 @@ var UserSchema = new Schema({
 		type: String,
 		default: '',
 		unique: true,
-		validate: validateEmail,
+//		validate: validateEmail,
 	},
 	profileImg: {
 		type: String,
@@ -69,7 +75,7 @@ var UserSchema = new Schema({
 	},
 	birthday: {
 		type: Date,
-		validate: validateDate
+//		validate: validateDate
 	},
 	photoAlbums: [{
 		type: Schema.Types.ObjectId,
@@ -104,9 +110,12 @@ var UserSchema = new Schema({
 
 UserSchema.pre('save', function(next) {
 	var user = this;
+	console.log('hit');
 	if(!user.isModified('password')) {
+
 		return next()
 	}
+
 	bcrypt.genSalt(10, function(err, salt) {
 		if(err) return next(err)
 		bcrypt.hash(user.password, salt, function(err, hash) {

@@ -1,28 +1,54 @@
 var passport = require('passport'),
-	session = require('express-session');
+	session = require('express-session'),
+	User = require('../users/userModel');
 
 module.exports = {
-	validateUserLogin: function(req, res, next) {
-
-		passport.authenticate('local', function(err, user, info) {
-			if (err) { return next(err); }
+	loginUser: function(req, res, next) {
+		passport.authenticate('local-login', function(err, user) {
+			if (err) {
+				return next(err);
+			}
 			// Redirect if it fails
-			if (!user) { return res.redirect('/login'); }
+			if (!user) {
+				return res.redirect('/login');
+			}
 			// Otherwise Login
 			req.logIn(user, function(err) {
-				if (err) { return next(err); }
+				if (err) {
+					return next(err);
+				}
 				// Redirect if it succeeds
 				return res.redirect('/');
 			});
-			console.log(req.session)
 		})(req, res, next);
 	},
 	logoutUser: function(req, res, next) {
-		console.log(res.cache)
-		req.logout();
-		req.session.destroy();
-		res.redirect('/');
-		console.log(req.session)
+		req.session.destroy(function (err) {
+			req.logout();
+			res.redirect('/');
+		});
+	},
+	registerUser: function(req, res, next) {
+		console.log(req.body)
+		passport.authenticate('local-signup', function(err, user) {
+			console.log(user)
+			if (err) {
+				return next(err);
+			}
+			// Redirect if it fails
+			if (!user) {
+				return res.redirect('/register');
+			}
+			// Otherwise Login
+			req.logIn(user, function(err) {
+				if (err) {
+					return next(err);
+				}
+				// Redirect if it succeeds
+				return res.redirect('/');
+			});
+		});
+
 	}
 }
 
@@ -59,3 +85,31 @@ module.exports = {
 		var	redirectPath = '/login'
 		res.status(200).json({redirectPath: redirectPath});
 	});*/
+
+
+/*console.log(req.body)
+		if(!req.body.username || !req.body.password) {
+			res.status(400).json({message: 'Please fill out all required fields'})
+		}
+
+		User.create(req.body, function(err, response) {
+			if(err) {
+				res.status(400).json(err)
+			} else {
+				res.status(200).json(response)
+
+			}
+		})
+
+		passport.authenticate('local-signup', function(err, user) {
+			if (err) {
+				return next(err)
+			}
+			req.logIn(user, function(err) {
+				if (err) {
+					return next(err);
+				}
+				// Redirect if it succeeds
+				return res.redirect('/');
+			})
+		});*/

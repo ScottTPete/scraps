@@ -1,5 +1,4 @@
 var passport = require('passport'),
-	User = require('./server/features/users/userModel'),
 	app = require('./server/config/express.config')();
 
 //Passport Local Auth//
