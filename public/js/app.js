@@ -10,20 +10,25 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 	})
 	.state('login', {
 		url: '/login',
-		templateUrl: 'features/login/loginView.html',
-		controller: 'loginCtrl'
+		templateUrl: 'features/auth/loginView.html',
+		controller: 'authCtrl',
+		caseInsensitve: true
 	})
 	.state('register', {
 		url: '/register',
-		templateUrl: 'features/register/registerView.html'
+		templateUrl: 'features/auth/registerView.html',
+		controller: 'authCtrl',
+		caseInsensitve: true
 	})
 	.state('profile', {
 		url: '/:username',
 		templateUrl: 'features/user/profileView.html',
+		caseInsensitve: true
 	})
 	.state('accountSettings', {
 		url: '/:username/settings',
-		templateUrl: 'features/user/accountSettingsView.html'
+		templateUrl: 'features/user/accountSettingsView.html',
+		caseInsensitve: true
 	})
 
 	//Gets rid of the hashtag in the url//
