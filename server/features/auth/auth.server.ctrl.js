@@ -5,6 +5,7 @@ var passport = require('passport'),
 module.exports = {
 	loginUser: function(req, res, next) {
 		passport.authenticate('local-login', function(err, user) {
+			console.log(user)
 			if (err) {
 				return next(err);
 			}
@@ -18,7 +19,7 @@ module.exports = {
 					return next(err);
 				}
 				// Redirect if it succeeds
-				return res.redirect('/');
+				return res.redirect('/' + user.username);
 			});
 		})(req, res, next);
 	},
@@ -32,7 +33,6 @@ module.exports = {
 		if(req.session.user) {
 			req.session.destroy(function (err) {
 				req.logout();
-				res.redirect('/');
 			});
 		}
 		console.log(req.body)
@@ -52,7 +52,7 @@ module.exports = {
 				}
 				console.log(req.session);
 				// Redirect if it succeeds
-				return res.redirect('/');
+				return res.redirect('/' + user.username);
 			});
 		})(req, res, next);
 

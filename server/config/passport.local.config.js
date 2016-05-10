@@ -34,7 +34,6 @@ module.exports = function (passport) {
 	passport.use('local-signup', new LocalStrategy({
 		passReqToCallback: true,
 	}, function (req, username, password, cb) {
-		console.log(req.body, ' passport config')
 		process.nextTick(function () {
 			User.findOne({
 				username: username
@@ -56,9 +55,7 @@ module.exports = function (passport) {
 						newUser.profileImg = req.body.profileImg
 					}
 
-					newUser.save(function(err, response) {
-						console.log(newUser)
-						console.log(response);
+					newUser.save(function(err) {
 
 						if (err) {
 							console.log(err.errors)
