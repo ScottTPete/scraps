@@ -3,8 +3,8 @@ var passport = require('passport'),
 	User = require('../users/userModel');
 
 module.exports = {
-	loginUser: function(req, res, next) {
-		passport.authenticate('local-login', function(err, user) {
+	loginUser: function (req, res, next) {
+		passport.authenticate('local-login', function (err, user) {
 			console.log(user)
 			if (err) {
 				return next(err);
@@ -14,7 +14,7 @@ module.exports = {
 				return res.redirect('/login');
 			}
 			// Otherwise Login
-			req.logIn(user, function(err) {
+			req.logIn(user, function (err) {
 				if (err) {
 					return next(err);
 				}
@@ -23,20 +23,20 @@ module.exports = {
 			});
 		})(req, res, next);
 	},
-	logoutUser: function(req, res, next) {
+	logoutUser: function (req, res, next) {
 		req.session.destroy(function (err) {
 			req.logout();
 			res.redirect('/');
 		});
 	},
-	registerUser: function(req, res, next) {
-		if(req.session.user) {
+	registerUser: function (req, res, next) {
+		if (req.session.user) {
 			req.session.destroy(function (err) {
 				req.logout();
 			});
 		}
 		console.log(req.body)
-		passport.authenticate('local-signup', function(err, user) {
+		passport.authenticate('local-signup', function (err, user) {
 			console.log(user + ' auth server ctl 34')
 			if (err) {
 				return next(err);
@@ -46,7 +46,7 @@ module.exports = {
 				return res.redirect('/register');
 			}
 			// Otherwise Login
-			req.logIn(user, function(err) {
+			req.logIn(user, function (err) {
 				if (err) {
 					return next(err);
 				}
@@ -56,6 +56,10 @@ module.exports = {
 			});
 		})(req, res, next);
 
+	},
+	currentUser: function(req, res, next) {
+//		console.log(req.user, ' auth server ctrl 61')
+		res.send(req.user)
 	}
 }
 

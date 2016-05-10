@@ -11,6 +11,7 @@ require('./server/config/passport.local.config')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 //Routes//
 require('./server/features/auth/auth.server.routes')(app); //auth
 require('./server/features/users/user.routes')(app); //user
@@ -31,7 +32,7 @@ app.all('*', function (req, res, next) {
 });
 
 //PORT//
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8000;
 
 app.listen(port, function () {
 	console.log('Listening on port ' + port);

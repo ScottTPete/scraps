@@ -6,8 +6,8 @@ module.exports = function(app) {
 		.get(userCtrl.getUsers)
 //		.post(userCtrl.createUser)
 
-	app.route('/api/v1/user/:id')
+	app.route('/api/v1/user/:username')
 		.put(userCtrl.editUser)
-		.get(userCtrl.getUserById)
+		.get(userCtrl.getUserByUsername)
 
 }

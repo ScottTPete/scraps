@@ -11,8 +11,8 @@
 </head>
 
 <body>
-	<form action="/auth/logout" method="get">
-		<input type="submit" value="Logout">
+	<form action='/auth/logout' method='get'>
+		<input type='submit' value='Logout'>
 	</form>
 	<ui-view></ui-view>
 
@@ -31,9 +31,11 @@
 
 	<!--SERVICES-->
 	<script src='services/authService.js'></script>
+	<script src='services/userService.js'></script>
 
 	<!--CONTROLLERS-->
-	<script src='features/login/loginCtrl.js'></script>
+	<script src='features/auth/authCtrl.js'></script>
+	<script src='features/user/userCtrl.js'></script>
 </body>
 
 </html>

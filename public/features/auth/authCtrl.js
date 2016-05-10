@@ -12,9 +12,12 @@ angular.module('scrapsApp')
 			});
 		};*/
 
-	$scope.userCredentials = {
+/*	$scope.userCredentials = {
 		username: '',
 		password: ''
-	}
+
+	}*/
+
+	$scope.getCurrentUser = function() {authSvc.getCurrentUser().then(function(response){$scope.currentUser = response})}
 
 })

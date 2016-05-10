@@ -13,13 +13,19 @@ module.exports = {
 			}
 		})
 	},
-	getUserById: function(req, res, next) {
-		User.findById(req.params.id, function(err, user) {
-			if (err) {
+	getUserByUsername: function(req, res, next) {
+		console.log(req.params.username)
+		User.findOne({username: req.params.username}, function(err, user) {
+			console.log(user)
+			if(err) {
 				res.status(500).send(err);
-			} else {
-				res.status(200).json(response);
 			}
+			if (!user) {
+				return res.status(500).send(err)
+			}
+
+			res.status(200).send(user);
+
 		})
 	},
 	getUsers: function (req, res, next) {

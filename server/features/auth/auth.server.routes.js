@@ -8,4 +8,6 @@ module.exports = function (app) {
 
 	app.post('/auth/register', authCtrl.registerUser);
 
+	app.get('/auth/currentUser', authCtrl.currentUser);
+
 }
