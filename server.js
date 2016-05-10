@@ -1,11 +1,11 @@
 var passport = require('passport'),
 	app = require('./server/config/express.config')();
 
-//Passport Local Auth//
-require('./server/config/passport.local.config')(passport);
-
-//Mongoose Setup//
+//Mongoose Config//
 require('./server/config/mongoose.config')();
+
+//Passport-Local Config//
+require('./server/config/passport.local.config')(passport);
 
 //Startup Passport//
 app.use(passport.initialize());
@@ -16,12 +16,12 @@ require('./server/features/auth/auth.server.routes')(app); //auth
 require('./server/features/users/user.routes')(app); //user
 
 //Middlewear//
-var requireAuth = function(req, res, next) {
+/*var requireAuth = function(req, res, next) {
 	if (!req.isAuthenticated()) {
 		return res.status(403).end();
 	}
 	return next();
-};
+};*/
 
 //Necessary to allow refresh/navigation in html5mode(true)//
 app.all('*', function (req, res, next) {

@@ -3,7 +3,11 @@ var LocalStrategy = require('passport-local').Strategy,
 
 module.exports = function (passport) {
 
-	passport.use('local-login', new LocalStrategy(function (username, password, cb) {
+	passport.use('local-login', new LocalStrategy({
+		passReqToCallback: true,
+	}, function (req, username, password, cb) {
+		console.log(req.body)
+		console.log(username);
 		User.findOne({
 			username: username
 		}, function (err, user) {
@@ -12,7 +16,7 @@ module.exports = function (passport) {
 			}
 
 			if (!user) {
-				cb(null, false);
+				return cb(null, false);
 			}
 
 			user.comparePassword(password, function (err, isMatch) {
