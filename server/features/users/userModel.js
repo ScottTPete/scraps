@@ -4,7 +4,6 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 
-/*
 var validateName = [
 	validate({
 		validator: 'isAlpha',
@@ -13,35 +12,32 @@ var validateName = [
 	})
 ];
 
-var validateEmail = [
+/*var validateEmail = [
 	validate({
 		validator: 'isEmail',
 		passIfEmpty: true,
 	})
-];
+];*/
 
 var validateDate = [
 	validate({
 		validator: 'isDate',
 	})
 ];
-*/
 
 var UserSchema = new Schema({
 	name: {
 		firstname: {
 			type: String,
 			trim: true,
-			default: '',
-			minglength: 2,
-//			validate: validateName
+			minlength: 2,
+			validate: validateName
 		},
 		lastname: {
 			type: String,
 			trim: true,
-			default: '',
 			minlength: 2,
-//			validate: validateName
+			validate: validateName
 		}
 	},
 	username: {
@@ -50,9 +46,6 @@ var UserSchema = new Schema({
 		unique: true,
 		minlength: 3,
 		maxlength: 15,
-		index: {
-			unique: true,
-		},
 		trim: true
 	},
 	password: {
@@ -63,8 +56,6 @@ var UserSchema = new Schema({
 	},
 	email: {
 		type: String,
-		default: '',
-		unique: true,
 //		validate: validateEmail,
 	},
 	profileImg: {
@@ -75,7 +66,7 @@ var UserSchema = new Schema({
 	},
 	birthday: {
 		type: Date,
-//		validate: validateDate
+		validate: validateDate
 	},
 	photoAlbums: [{
 		type: Schema.Types.ObjectId,
@@ -101,7 +92,6 @@ var UserSchema = new Schema({
 	}],
 	location: {
 		type: String,
-		default: ''
 	}
 },
 {

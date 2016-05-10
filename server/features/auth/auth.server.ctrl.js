@@ -29,9 +29,15 @@ module.exports = {
 		});
 	},
 	registerUser: function(req, res, next) {
+		if(req.session.user) {
+			req.session.destroy(function (err) {
+				req.logout();
+				res.redirect('/');
+			});
+		}
 		console.log(req.body)
 		passport.authenticate('local-signup', function(err, user) {
-			console.log(user)
+			console.log(user + ' auth server ctl 34')
 			if (err) {
 				return next(err);
 			}
@@ -44,10 +50,11 @@ module.exports = {
 				if (err) {
 					return next(err);
 				}
+				console.log(req.session);
 				// Redirect if it succeeds
 				return res.redirect('/');
 			});
-		});
+		})(req, res, next);
 
 	}
 }

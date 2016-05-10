@@ -1,6 +1,5 @@
 var LocalStrategy = require('passport-local').Strategy,
-	User = require('../features/users/userModel'),
-	userCtrl = require('../features/users/user.server.ctrl');
+	User = require('../features/users/userModel');
 
 module.exports = function (passport) {
 
@@ -35,9 +34,7 @@ module.exports = function (passport) {
 	passport.use('local-signup', new LocalStrategy({
 		passReqToCallback: true,
 	}, function (req, username, password, cb) {
-		console.log(username + ' ' + password)
 		console.log(req.body, ' passport config')
-
 		process.nextTick(function () {
 			User.findOne({
 				username: username
@@ -49,15 +46,22 @@ module.exports = function (passport) {
 				if (user) {
 					return cb(null, false);
 				} else {
+
 					var newUser = new User();
+
 					newUser.username = req.body.username;
 					newUser.password = req.body.password;
+
+					if(req.body.profileImg) {
+						newUser.profileImg = req.body.profileImg
+					}
 
 					newUser.save(function(err, response) {
 						console.log(newUser)
 						console.log(response);
 
 						if (err) {
+							console.log(err.errors)
 							throw err;
 						}
 						// Success
