@@ -1,5 +1,5 @@
 angular.module('scrapsApp')
-	.directive('fileread', function(imageSvc) {
+	.directive('fileread', function(imageSvc, userSvc) {
 
 		return {
 			restrict: 'A',
@@ -7,16 +7,25 @@ angular.module('scrapsApp')
 				elem.bind('change', function(changeEvent) {
 					var reader = new FileReader();
 
-					reader.onload = function(loadEvent) {
+					reader.onloadend = function(loadEvent) {
 						var fileread = loadEvent.target.result;
 						console.log(fileread);
 						var tempArray = elem['context'].value.split('');
 						var filename = tempArray[tempArray.length -1];
 
+						imageSvc.storeImage(fileread, filename, scope.userProfile._id).then(function(response){
+							scope.userProfile.image = response.data.location;
 
+							userSvc.getUserInfo(scope.userProfile.username);
+
+
+						}).catch(function(err) {
+							console.log(err);
+						});
 					}
+
 					reader.readAsDataURL(changeEvent.target.files[0]);
-				})
+				});
 			}
 		}
 

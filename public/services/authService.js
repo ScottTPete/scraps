@@ -5,7 +5,7 @@ angular.module('scrapsApp')
 
 	this.getCurrentUser = function() {
 		return $http.get('/auth/currentUser').then(function(response) {
-			if(!response.data && (state.current.name = 'accountSettings')) {
+			if(!response.data && state.current.name === 'accountSettings') {
 				$state.go('login')
 			}
 			return response.data
