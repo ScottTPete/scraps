@@ -1,12 +1,12 @@
 angular.module('scrapsApp')
-	.service('authSvc', function($http, $q) {
+	.service('authSvc', function($http, $state) {
+
+	var state  = $state;
 
 	this.getCurrentUser = function() {
-		return $http.get('/auth/currentUser').then(function(response, err) {
-			console.log(err);
-			var errMessage = 'Users must be logged on to edit their account.'
-			if(!response.data) {
-				throw err
+		return $http.get('/auth/currentUser').then(function(response) {
+			if(!response.data && (state.current.name = 'accountSettings')) {
+				$state.go('login')
 			}
 			return response.data
 		})

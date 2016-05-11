@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ScottTPete/scraps#readme",
   "dependencies": {
+    "aws-sdk": "^2.3.10",
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.0",
     "connect-flash": "^0.1.1",

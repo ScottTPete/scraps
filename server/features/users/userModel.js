@@ -30,13 +30,13 @@ var UserSchema = new Schema({
 		firstname: {
 			type: String,
 			trim: true,
-			minlength: 2,
+//			minlength: 2,
 			validate: validateName
 		},
 		lastname: {
 			type: String,
 			trim: true,
-			minlength: 2,
+//			minlength: 2,
 			validate: validateName
 		}
 	},

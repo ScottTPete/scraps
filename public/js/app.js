@@ -1,4 +1,9 @@
 angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
+
+	.run(function($rootScope, $state, $stateParams) {
+		$rootScope.$state = $state;
+		$rootScope.$stateParams = $stateParams;
+	})
 	.config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
 
 		$urlRouterProvider.otherwise('/');
@@ -54,9 +59,7 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 				resolve: {
 					currentUser: function (authSvc, $state) {
 						return authSvc.getCurrentUser().catch(function (err) {
-
 							$state.go('login')
-
 						})
 					}
 				}

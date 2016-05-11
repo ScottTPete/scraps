@@ -1,5 +1,18 @@
-<a ng-if='editButton' ui-sref='accountSettings'>
-	<button>Edit Profile</button>
-</a>
+<a ui-sref='login' ng-if='loginBtn'><button>Login</button></a>
 
-{{userInfo}}
+<form ng-if='logoutBtn' action='/auth/logout' method='get'>
+	<input type='submit' value='Logout'>
+</form>
+
+<div class='userInfo-container'>
+	<div class='profileImg-container'>
+		<img ng-src="{{userInfo.profileImg}}">
+	</div>
+	<input ng-if='uploadProfilePicBtn' type='file' value='Upload Profile Pic' images='images' accept='image/*' fileread>
+	<a ng-if='editButton' ui-sref='accountSettings'>
+		<button>Edit Profile</button>
+	</a>
+</div>
+hi
+
+
