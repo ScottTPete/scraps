@@ -60,13 +60,16 @@ var UserSchema = new Schema({
 	},
 	profileImg: {
 		type: String,
-	},
-	age: {
-		type: Number,
+		default: ''
 	},
 	birthday: {
 		type: Date,
 		validate: validateDate
+	},
+	bio: {
+		type: String,
+		maxlength: 150,
+		trim: true
 	},
 	photoAlbums: [{
 		type: Schema.Types.ObjectId,

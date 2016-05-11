@@ -1,8 +1,21 @@
 <h1>Edit Profile</h1>
-<form>
-	First Name: <input ng-model='user.name.firstname'>
-	Last Name: <input ng-model='user.name.lastname'>
-	Email: <input ng-model='user.email'>
-	Bio: <textarea type="text" ng-model='user.bio'></textarea>
-<!--	<input ng-submit=''>-->
+<form ng-submit="editProfile()">
+	<div>
+		First Name: <input ng-model='user.name.firstname' value='userInfo.name.firstname' placeholder="First Name">
+	</div>
+	<div>
+		Last Name: <input ng-model='user.name.lastname' value='userInfo.name.lastname' placeholder="First Name">
+	</div>
+	<div>
+		Username: <input ng-model='user.username' value='userInfo.username' placeholder="Email">
+	</div>
+	<div>
+		Email: <input ng-model='user.email' value='userInfo.email' placeholder="Email">
+	</div>
+	<div>
+		Bio: <textarea type="text" ng-model='user.bio' value='userInfo.bio' placeholder="Tell people about yourself! 150 characters or less"></textarea>
+	</div>
+	<div>
+		<input type="submit" value="Submit"/>
+	</div>
 </form>

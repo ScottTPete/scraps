@@ -10,4 +10,5 @@ module.exports = function (app) {
 
 	app.get('/auth/currentUser', authCtrl.currentUser);
 
+
 }

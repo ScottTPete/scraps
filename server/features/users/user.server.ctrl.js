@@ -40,13 +40,11 @@ module.exports = {
 		})
 	},
 	editUser: function (req, res, next) {
-		User.findByIdAndUpdate(req.params.id, function (err, user) {
+		User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
 			if (err) {
-				res.status(500).send(err);
-			} else if (!user) {
-
+				return res.status(500).send(err);
 			} else {
-				res.status(200).json(response);
+				return res.status(200).json(user);
 			}
 		})
 	}
