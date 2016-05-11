@@ -6,8 +6,7 @@ module.exports = function (passport) {
 	passport.use('local-login', new LocalStrategy({
 		passReqToCallback: true,
 	}, function (req, username, password, cb) {
-		console.log(req.body)
-		console.log(username);
+
 		User.findOne({
 			username: username
 		}, function (err, user) {
@@ -62,7 +61,7 @@ module.exports = function (passport) {
 					newUser.save(function(err) {
 
 						if (err) {
-							console.log(err.errors)
+
 							throw err;
 						}
 						// Success

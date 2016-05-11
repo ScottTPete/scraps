@@ -11,8 +11,6 @@ angular.module('scrapsApp')
 			$scope.editButton = true;
 		}
 
-		$scope.userInfo = userInfo
-
-		console.log($scope.userInfo);
+		$scope.userInfo = userInfo;
 
 	})

@@ -47,18 +47,14 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 				}
 			})
 			.state('accountSettings', {
-				url: '/:username/settings',
-				templateUrl: 'features/user/accountSettingsView.html',
+				url: '/account/settings',
+				templateUrl: 'features/settinigs/accountSettingsView.html',
 				caseInsensitve: true,
+				controller: 'settingsCtrl',
 				resolve: {
 					currentUser: function (authSvc, $state) {
 						return authSvc.getCurrentUser().catch(function (err) {
 							$state.go('login')
-						})
-					},
-					profile: function (authSvc, $stateParams, $state) {
-						return authSvc.checkUsernameExists($stateParams.username).catch(function (err) {
-							$state.go('home')
 						})
 					}
 				}
