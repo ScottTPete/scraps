@@ -3,8 +3,8 @@ angular.module('scrapsApp')
 
 	this.getCurrentUser = function() {
 		return $http.get('/auth/currentUser').then(function(response) {
-			console.log(response);
-			return response
+			console.log(response.data);
+			return response.data
 		})
 	};
 

@@ -8,7 +8,7 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 				url: '/',
 				templateUrl: 'features/home/homeView.html',
 				resolve: {
-					user: function (authSvc, $state) {
+					currentUser: function (authSvc, $state) {
 						return authSvc.getCurrentUser().catch(function (err) {
 							return null
 						})
@@ -18,29 +18,31 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 			.state('login', {
 				url: '/login',
 				templateUrl: 'features/auth/loginView.html',
-				controller: 'authCtrl',
 				caseInsensitve: true
 			})
 			.state('register', {
 				url: '/register',
 				templateUrl: 'features/auth/registerView.html',
-				controller: 'authCtrl',
 				caseInsensitve: true
 			})
-			.state('profile', {
+			.state('userProfile', {
 				url: '/:username',
 				templateUrl: 'features/user/profileView.html',
+				controller: 'userCtrl',
 				caseInsensitve: true,
 				resolve: {
-					user: function (authSvc, $state) {
+					currentUser: function (authSvc, $state) {
 						return authSvc.getCurrentUser().catch(function (err) {
 							return null
 						})
 					},
-					profile: function (authSvc, $stateParams, $state) {
+					checkUsernameExists: function (authSvc, $stateParams, $state) {
 						return authSvc.checkUsernameExists($stateParams.username).catch(function (err) {
 							$state.go('home')
 						})
+					},
+					userInfo: function(userSvc, $stateParams) {
+						return userSvc.getUserInfo($stateParams.username)
 					}
 				}
 			})
@@ -49,7 +51,7 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 				templateUrl: 'features/user/accountSettingsView.html',
 				caseInsensitve: true,
 				resolve: {
-					user: function (authSvc, $state) {
+					currentUser: function (authSvc, $state) {
 						return authSvc.getCurrentUser().catch(function (err) {
 							$state.go('login')
 						})
