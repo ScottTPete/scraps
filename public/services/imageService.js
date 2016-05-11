@@ -1,5 +1,5 @@
 angular.module('scrapsApp')
-	.factory('imageSvc', function ($http) {
+	.service('imageSvc', function ($http) {
 
 
 
