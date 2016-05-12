@@ -13,19 +13,24 @@ var AlbumSchema = new Schema({
 		type: String,
 		default: ''
 	},
-	comments: [CommentSchema],
-	likes: [{
-		type: Schema.Types.ObjectId,
-		ref: 'User'
-	}],
 	albumCover: [PhotoSchema], //array in case user wants rotating pictures as cover.
 	location: [{
 		type: String,
 		default: ''
 	}],
-	albumDate: {
-		type: Date
+	albumDates: {
+		startDate: {
+			type: Date,
+		},
+		endDate: {
+			type: Date,
+		}
 	},
+	comments: [CommentSchema],
+	likes: [{
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	}],
 	peopleIn: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User'

@@ -22,6 +22,7 @@ angular.module('scrapsApp')
 							scope.userInfo.profileImg = response.data.location;
 
 							userSvc.getUserInfo(scope.userInfo.username);
+							console.log(scope.userInfo);
 
 
 						}).catch(function(err) {

@@ -1,5 +1,6 @@
 var AWS = require('aws-sdk'),
-	secret = require('../../config/s3.secrets');
+	secret = require('../../config/s3.secrets'),
+	User = require('../users/userModel');
 
 AWS.config.update({
 	accessKeyId: secret.AWSAccessKey,
@@ -11,27 +12,45 @@ var s3 = new AWS.S3();
 
 module.exports = {
 
-	/*saveImage: function (req, res) {
-			var buf = new Buffer(req.body.imageBody.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+	saveImage: function (req, res) {
 
-			var bucketName = secret.AWSBucket + req.body.userId
+		var buf = new Buffer(req.body.imageBody.replace(/^data:image\/\w+;base64,/, ''), 'base64'); //must convert base64 to Buffer so that amazon will accept the file
 
-			var params = {
-				Bucket: bucketName,
-				Key: req.body.imageName,
-				Body: buf,
-				ContentType: 'image/' + req.body.imageExtension,
-				ACL: 'public-read'
-			}
+		var bucketName = secret.AWSBucket + req.body.userId
 
-			s3.upload(params, function(err, response) {
+		var params = {
+			Bucket: bucketName,
+			Key: req.body.imageName,
+			Body: buf,
+			ContentType: 'image/' + req.body.imageExtension,
+			ACL: 'public-read'
+		}
+
+		s3.upload(params, function (err, response) {
+				console.log(response);
 				if (err) {
 					return res.status(500).send(err)
 				}
-				console.log(response);
-				res.status(200).json(response);
+
+				User.findById(req.body.userId, function (err, user) {
+					console.log(user + ' s3 line 36');
+					if (err) {
+						return res.status(500).send(err)
+					}
+					user.profileImg = response.Location;
+
+					user.save(function (err, updatedUser) {
+						if (err) {
+							console.log(err);
+						}
+
+						return res.status(200).send(updatedUser);
+
+
+					})
+				})
+
 			})
 
-		},*/
-
+	},
 }
