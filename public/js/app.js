@@ -12,6 +12,7 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 			.state('home', {
 				url: '/',
 				templateUrl: 'features/home/homeView.html',
+				controller: 'homeCtrl',
 				resolve: {
 					currentUser: function (authSvc, $state) {
 						return authSvc.getCurrentUser().catch(function (err) {

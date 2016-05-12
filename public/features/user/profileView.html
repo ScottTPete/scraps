@@ -8,8 +8,12 @@
 	<div class='profileImg-container'>
 		<img ng-src='{{userInfo.profileImg}}'>
 	</div>
-
 	<input ng-if='uploadProfilePicBtn' type='file' value='Upload Profile Pic' images='images' accept='image/*' fileread>
+
+	<div class='user-names'>
+		<h3>{{userInfo.username}}</h3>
+		<h3>{{userInfo.name.firstname}} {{userInfo.name.lastname}}</h3>
+	</div>
 
 	<a ng-if='editButton' ui-sref='accountSettings'>
 		<button>Edit Profile</button>

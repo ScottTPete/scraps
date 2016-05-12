@@ -15,7 +15,7 @@ app.use(passport.session());
 //Routes//
 require('./server/features/auth/auth.server.routes')(app); //auth
 require('./server/features/users/user.routes')(app); //users
-require('./server/features/photos/photos.server.routes')(app) //photos
+require('./server/features/s3/s3.server.routes')(app) //photos
 
 //Necessary to allow refresh/navigation in html5mode(true)//
 app.all('*', function (req, res, next) {
