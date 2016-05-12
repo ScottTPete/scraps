@@ -1,7 +1,6 @@
 var mongoose = require('mongoose'),
 	validate = require('mongoose-validator'),
 	bcrypt = require('bcryptjs'),
-	AlbumSchema = require('../albums/albumSchema'),
 	PhotoSchema = require('../photos/photoSchema'),
 	CommentSchema = require('../comments/commentSchema'),
 	Schema = mongoose.Schema;
@@ -74,7 +73,10 @@ var UserSchema = new Schema({
 		maxlength: 150,
 		trim: true
 	},
-	photoAlbums: [AlbumSchema],
+	photoAlbums: [{
+		type: Schema.Types.ObjectId,
+		ref: 'Album'
+	}],
 	photos: [PhotoSchema],
 	friends: [{
 		type: Schema.Types.ObjectId,
@@ -87,7 +89,10 @@ var UserSchema = new Schema({
 		unique: true
 	}],
 	likes: {
-		albums: [AlbumSchema],
+		albums: [{
+			type: Schema.Types.ObjectId,
+			ref: 'Album'
+		}],
 		photos: [PhotoSchema]
 
 	},

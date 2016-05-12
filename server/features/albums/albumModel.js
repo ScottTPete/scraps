@@ -4,6 +4,10 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 var AlbumSchema = new Schema({
+	postedBy: {
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	},
 	albumName: {
 		type: String,
 		required: true,
@@ -38,11 +42,15 @@ var AlbumSchema = new Schema({
 	publicEditable: {
 		type: Boolean,
 		default: false
-	}
+	},
+	usersWithAccess: [{
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	}]
 
 },
 {
 	timestamps: true,
 })
 
-module.exports = AlbumSchema;
+module.exports = mongoose.model('Album', AlbumSchema);
