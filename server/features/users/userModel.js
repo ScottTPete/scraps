@@ -1,6 +1,9 @@
 var mongoose = require('mongoose'),
 	validate = require('mongoose-validator'),
 	bcrypt = require('bcryptjs'),
+	AlbumSchema = require('../albums/albumSchema'),
+	PhotoSchema = require('../photos/photoSchema'),
+	CommentSchema = require('../comments/commentSchema'),
 	Schema = mongoose.Schema;
 
 
@@ -12,12 +15,12 @@ var validateName = [
 	})
 ];
 
-/*var validateEmail = [
+var validateEmail = [
 	validate({
 		validator: 'isEmail',
 		passIfEmpty: true,
 	})
-];*/
+];
 
 var validateDate = [
 	validate({
@@ -56,11 +59,11 @@ var UserSchema = new Schema({
 	},
 	email: {
 		type: String,
-//		validate: validateEmail,
+		validate: validateEmail,
 	},
 	profileImg: {
 		type: String,
-		default: ''
+		default: 'https://www.drupal.org/files/profile_default.jpg'
 	},
 	birthday: {
 		type: Date,
@@ -71,14 +74,8 @@ var UserSchema = new Schema({
 		maxlength: 150,
 		trim: true
 	},
-	photoAlbums: [{
-		type: Schema.Types.ObjectId,
-		ref: 'Album'
-	}],
-	photos: [{
-		type: Schema.Types.ObjectId,
-		ref: 'Photo'
-	}],
+	photoAlbums: [AlbumSchema],
+	photos: [PhotoSchema],
 	friends: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User',
@@ -86,13 +83,15 @@ var UserSchema = new Schema({
 	}],
 	following: [{
 		type: Schema.Types.ObjectId,
-		ref: 'Following'
-	}],
-	likes: [{
-		type: Schema.Types.ObjectId,
-		ref: 'Like',
+		ref: 'User',
 		unique: true
 	}],
+	likes: {
+		albums: [AlbumSchema],
+		photos: [PhotoSchema]
+
+	},
+	comments: [CommentSchema],
 	location: {
 		type: String,
 	}

@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+	CommentSchema = require('../comments/commentSchema'),
 	Schema = mongoose.Schema;
 
 var PhotoSchema = new Schema({
@@ -10,10 +11,7 @@ var PhotoSchema = new Schema({
 		type: String,
 		required: true
 	},
-	comments: {
-		type: Schema.Types.ObjectId,
-		ref: 'Comment',
-	},
+	comments: [CommentSchema],
 	likes: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User'
@@ -29,7 +27,7 @@ var PhotoSchema = new Schema({
 	photoDate: {
 		type: Date
 	},
-	peopleInPhoto: [{
+	peopleIn: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User'
 	}]
@@ -38,4 +36,4 @@ var PhotoSchema = new Schema({
 	timestamps: true,
 })
 
-model.exports = mongoose.model('Photo', PhotoSchema);
+module.exports = PhotoSchema;

@@ -1,4 +1,6 @@
 var mongoose = require('mongoose'),
+	PhotoSchema = require('../photos/photoSchema'),
+	CommentSchema = require('../comments/commentSchema'),
 	Schema = mongoose.Schema;
 
 var AlbumSchema = new Schema({
@@ -6,42 +8,36 @@ var AlbumSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	photos: [{
-		type: Schema.Types.ObjectId,
-		ref: 'Photo',
-		required: true
-	}],
+	photos: [PhotoSchema],
 	description: {
 		type: String,
 		default: ''
 	},
-	comments: [{
-		type: Schema.Types.ObjectId,
-		ref: 'Comment',
-	}],
-	publicEditable: {
-		type: Boolean,
-		default: false
-	},
+	comments: [CommentSchema],
 	likes: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User'
 	}],
-	location: {
+	albumCover: [PhotoSchema], //array in case user wants rotating pictures as cover.
+	location: [{
 		type: String,
 		default: ''
-	},
+	}],
 	albumDate: {
 		type: Date
 	},
 	peopleIn: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User'
-	}]
+	}],
+	publicEditable: {
+		type: Boolean,
+		default: false
+	}
 
 },
 {
 	timestamps: true,
 })
 
-module.exports = mongoose.model('Album', AlbumSchema)
+module.exports = AlbumSchema;

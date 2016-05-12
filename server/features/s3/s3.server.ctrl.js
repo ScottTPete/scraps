@@ -11,7 +11,7 @@ var s3 = new AWS.S3();
 
 module.exports = {
 
-	saveImage: function (req, res) {
+	/*saveImage: function (req, res) {
 			var buf = new Buffer(req.body.imageBody.replace(/^data:image\/\w+;base64,/, ""), 'base64');
 
 			var bucketName = secret.AWSBucket + req.body.userId
@@ -28,10 +28,10 @@ module.exports = {
 				if (err) {
 					return res.status(500).send(err)
 				}
-
+				console.log(response);
 				res.status(200).json(response);
 			})
 
-		},
+		},*/
 
 }

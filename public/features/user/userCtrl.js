@@ -8,8 +8,7 @@ angular.module('scrapsApp')
 		if($scope.currentUser) {
 			$scope.loginBtn = false;
 			$scope.logoutBtn = true;
-
-		}
+        }
 
 		$scope.uploadProfilePicBtn = false;
 		$scope.editButton = false;
@@ -17,7 +16,6 @@ angular.module('scrapsApp')
 			$scope.editButton = true;
 			$scope.uploadProfilePicBtn = true;
 		}
-
 
 		$scope.userInfo = userInfo;
 

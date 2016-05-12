@@ -8,9 +8,7 @@ angular.module('scrapsApp')
 		};
 
 		this.editProfile = function(user) {
-			return $http.put('/api/v1/user/' + user._id, user).then(function(response) {
-				return response.data
-			})
+			$http.put('/api/v1/user/' + user._id, user);
 		}
 
 

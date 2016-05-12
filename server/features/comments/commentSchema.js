@@ -6,7 +6,7 @@ var CommentSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'User'
 	},
-	commentMessage: {
+	comment: {
 		type: String,
 		required: true
 	}
@@ -15,4 +15,4 @@ var CommentSchema = new Schema({
 	timestamps: true,
 });
 
-module.exports = mongoose.model('Comment', CommentSchema;
+module.exports = CommentSchema;

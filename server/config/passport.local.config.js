@@ -77,10 +77,12 @@ module.exports = function (passport) {
 
 	passport.serializeUser(function (user, cb) {
 		cb(null, user.id);
+		console.log(user);
 	});
 
 	passport.deserializeUser(function (id, cb) {
 		User.findById(id, function (err, user) {
+			console.log(user);
 			if (err) {
 				return cb(err);
 			}

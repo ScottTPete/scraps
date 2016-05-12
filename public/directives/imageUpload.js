@@ -8,15 +8,20 @@ angular.module('scrapsApp')
 					var reader = new FileReader();
 
 					reader.onloadend = function(loadEvent) {
+
 						var fileread = loadEvent.target.result;
-						console.log(fileread);
-						var tempArray = elem['context'].value.split('');
+
+						var tempArray = elem[0].value.split('\\');
 						var filename = tempArray[tempArray.length -1];
 
-						imageSvc.storeImage(fileread, filename, scope.userProfile._id).then(function(response){
-							scope.userProfile.image = response.data.location;
+						console.log(scope.userInfo);
+						console.log(elem, filename);
 
-							userSvc.getUserInfo(scope.userProfile.username);
+						imageSvc.storeImage(fileread, filename, scope.userInfo._id).then(function(response){
+							console.log(response);
+							scope.userInfo.profileImg = response.data.location;
+
+							userSvc.getUserInfo(scope.userInfo.username);
 
 
 						}).catch(function(err) {

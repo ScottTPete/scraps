@@ -1,6 +1,6 @@
 angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 
-	.run(function($rootScope, $state, $stateParams) {
+	.run(function ($rootScope, $state, $stateParams) {
 		$rootScope.$state = $state;
 		$rootScope.$stateParams = $stateParams;
 	})
