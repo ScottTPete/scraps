@@ -31,7 +31,7 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 				templateUrl: 'features/auth/registerView.html',
 				caseInsensitve: true
 			})
-			.state('userProfile', {
+			.state('profile', {
 				url: '/:username',
 				templateUrl: 'features/user/profileView.html',
 				controller: 'userCtrl',

@@ -6,6 +6,7 @@ angular.module('scrapsApp')
 	$scope.logoutBtn = false;
 	$scope.loginBtn = true;
 	$scope.signUpBtn = true;
+
 	if($scope.currentUser) {
 		$scope.loginBtn = false;
 		$scope.logoutBtn = true;

@@ -37,7 +37,7 @@ module.exports = {
 					if (err) {
 						return res.status(500).send(err)
 					}
-					user.profileImg = response.Location;
+					user.profilePic = response.Location;
 
 					user.save(function (err, updatedUser) {
 						if (err) {

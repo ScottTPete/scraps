@@ -32,13 +32,11 @@ var UserSchema = new Schema({
 		firstname: {
 			type: String,
 			trim: true,
-//			minlength: 2,
 			validate: validateName
 		},
 		lastname: {
 			type: String,
 			trim: true,
-//			minlength: 2,
 			validate: validateName
 		}
 	},
@@ -60,7 +58,7 @@ var UserSchema = new Schema({
 		type: String,
 		validate: validateEmail,
 	},
-	profileImg: {
+	profilePic: {
 		type: String,
 		default: 'https://www.drupal.org/files/profile_default.jpg'
 	},
@@ -77,6 +75,10 @@ var UserSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Album'
 	}],
+	gender: {
+		type: String,
+		enum: ['Male', 'Female']
+	},
 	photos: [PhotoSchema],
 	friends: [{
 		type: Schema.Types.ObjectId,
@@ -84,6 +86,11 @@ var UserSchema = new Schema({
 		unique: true
 	}],
 	following: [{
+		type: Schema.Types.ObjectId,
+		ref: 'User',
+		unique: true
+	}],
+	followers: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User',
 		unique: true

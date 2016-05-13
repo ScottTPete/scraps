@@ -9,10 +9,14 @@ angular.module('scrapsApp')
 				imageName: filename,
 				imageBody: imageData,
 				imageExtension: imageExtension,
-				userId: userId
+				userId: userId,
 			};
 
-			return $http.post('/api/v1/photos', newImage);
+			return $http.post('/api/v1/photos', newImage).then(function(response) {
+				console.log(response);
+
+				return response.data;
+			})
 		}
 
 

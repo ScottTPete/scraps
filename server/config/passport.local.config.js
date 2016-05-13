@@ -54,8 +54,8 @@ module.exports = function (passport) {
 					newUser.username = req.body.username;
 					newUser.password = req.body.password;
 
-					if(req.body.profileImg) {
-						newUser.profileImg = req.body.profileImg
+					if(req.body.profilePic) {
+						newUser.profilePic = req.body.profilePic
 					}
 
 					newUser.save(function(err) {
@@ -77,12 +77,10 @@ module.exports = function (passport) {
 
 	passport.serializeUser(function (user, cb) {
 		cb(null, user.id);
-		console.log(user);
 	});
 
 	passport.deserializeUser(function (id, cb) {
 		User.findById(id, function (err, user) {
-			console.log(user);
 			if (err) {
 				return cb(err);
 			}

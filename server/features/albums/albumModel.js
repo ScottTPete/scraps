@@ -43,7 +43,7 @@ var AlbumSchema = new Schema({
 		type: Boolean,
 		default: false
 	},
-	usersWithAccess: [{
+	contributers: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User'
 	}]
