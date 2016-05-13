@@ -1,43 +1,39 @@
 var mongoose = require('mongoose'),
-	validate = require('mongoose-validator'),
+//	validate = require('mongoose-validator'),
 	bcrypt = require('bcryptjs'),
 	PhotoSchema = require('../photos/photoSchema'),
 	CommentSchema = require('../comments/commentSchema'),
 	Schema = mongoose.Schema;
 
 
-var validateName = [
-	validate({
-		validator: 'isAlpha',
-		passIfEmpty: true,
-		message: 'Name can only contain letters, no numbers or symbols'
-	})
-];
+require('mongoose-type-email');
 
-var validateEmail = [
-	validate({
-		validator: 'isEmail',
-		passIfEmpty: true,
-	})
-];
 
-var validateDate = [
-	validate({
-		validator: 'isDate',
-	})
-];
+//var validateName = [
+//	validate({
+//		validator: 'isAlpha',
+//		passIfEmpty: true,
+//		message: 'Name can only contain letters, no numbers or symbols'
+//	})
+//];
+//
+//var validateDate = [
+//	validate({
+//		validator: 'isDate',
+//	})
+//];
 
 var UserSchema = new Schema({
 	name: {
 		firstname: {
 			type: String,
 			trim: true,
-			validate: validateName
+//			validate: validateName
 		},
 		lastname: {
 			type: String,
 			trim: true,
-			validate: validateName
+//			validate: validateName
 		}
 	},
 	username: {
@@ -55,8 +51,7 @@ var UserSchema = new Schema({
 		trim: true
 	},
 	email: {
-		type: String,
-		validate: validateEmail,
+		type: mongoose.SchemaTypes.Email,
 	},
 	profilePic: {
 		type: String,
@@ -64,7 +59,7 @@ var UserSchema = new Schema({
 	},
 	birthday: {
 		type: Date,
-		validate: validateDate
+//		validate: validateDate
 	},
 	bio: {
 		type: String,
