@@ -18,7 +18,12 @@ module.exports = function() {
 
 	app.use(cors());
 	app.use(session({secret: secret.sessionSecret, resave: false, saveUninitialized: false}));
-	app.use(flash())
+	app.use(flash());
+
+	app.use(function(err, req, res, next) {
+		console.error(err.stack);
+		res.status(500).send('Something broke!');
+	});
 
 	app.use(express.static('./public'));
 

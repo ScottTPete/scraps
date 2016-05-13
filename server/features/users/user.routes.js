@@ -3,13 +3,11 @@ var userCtrl = require('./user.server.ctrl');
 module.exports = function(app) {
 
 	app.route('/api/v1/users')
+		.post(userCtrl.createUser)
 		.get(userCtrl.getUsers)
-//		.post(userCtrl.createUser)
-
-	app.route('/api/v1/user/:username')
-		.get(userCtrl.getUserByUsername)
 
 	app.route('/api/v1/user/:id')
 		.put(userCtrl.editUser)
+		.delete(userCtrl.deleteUser)
 
 }

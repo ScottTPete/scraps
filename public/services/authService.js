@@ -17,11 +17,4 @@ angular.module('scrapsApp')
 		})
 	};
 
-	this.checkUsernameExists = function(username) {
-		return $http.get('/api/v1/user/' + username).then(function(response) {
-			return response
-		})
-	};
-
-
 })

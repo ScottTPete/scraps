@@ -6,7 +6,7 @@ module.exports = function (app) {
 
 	app.get('/auth/logout', authCtrl.logoutUser);
 
-	app.post('/auth/register', authCtrl.registerUser);
+	app.post('/auth/registerUser', authCtrl.registerUser);
 
 	app.get('/auth/currentUser', authCtrl.currentUser);
 
