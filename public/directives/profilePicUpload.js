@@ -1,5 +1,5 @@
 angular.module('scrapsApp')
-	.directive('fileread', function(imageSvc, userSvc) {
+	.directive('profilePic', function(imageUploadSvc, userSvc) {
 
 		return {
 			restrict: 'A',
@@ -15,10 +15,11 @@ angular.module('scrapsApp')
 						var tempArray = elem[0].value.split('\\');
 						var filename = tempArray[tempArray.length -1];
 
-						imageSvc.storeImage(fileread, filename, scope.userInfo._id).then(function(response){
-							console.log(response);
+						imageUploadSvc.storeImage(fileread, filename, scope.userInfo._id).then(function(response){
 
-							scope.userInfo.profilePic = response.profilePic;
+							scope.userInfo.profilePic = response.Location;
+
+							userSvc.editProfile(scope.userInfo)
 
 						}).catch(function(err) {
 							console.log(err);

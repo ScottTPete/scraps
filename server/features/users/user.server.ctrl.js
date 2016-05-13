@@ -13,36 +13,6 @@ module.exports = {
 			}
 		})
 	},
-	getUserByUsername: function (req, res, next) {
-
-		User.findOne({
-			username: req.params.username
-		}, function (err, user) {
-
-			if (err) {
-				res.status(500).send(err);
-			}
-			if (!user) {
-				return res.status(500).send(err)
-			}
-
-			res.status(200).send(user);
-
-		})
-	},
-	getUserById: function (req, res, next) {
-		console.log('hi');
-		User.find({_id: req.params.id}, function (err, user) {
-			console.log(err);
-			console.log(user);
-			if (err) {
-				console.log(err);
-				return res.status(500).send(err);
-			} else {
-				return res.status(200).json(user);
-			}
-		})
-	},
 	getUsers: function (req, res, next) {
 		User.find(req.query, function (err, users) {
 			if (err) {
@@ -69,7 +39,19 @@ module.exports = {
 				return res.status(200).json(response);
 			}
 		})
-	}
+	},
+	/*addFriend: function(req, res, next) {
+
+	},
+	unFriend: function(req, res, next ){
+
+	},
+	followUser: function(req, res, next) {
+
+	},
+	unFollowUser: function(req, res, next) {
+
+	}*/
 
 
 

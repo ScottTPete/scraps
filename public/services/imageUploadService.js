@@ -1,5 +1,5 @@
 angular.module('scrapsApp')
-	.service('imageSvc', function ($http) {
+	.service('imageUploadSvc', function ($http) {
 
 		this.storeImage = function (imageData, filename, userId) {
 			var imageExtension = imageData.split(';')[0].split('/');

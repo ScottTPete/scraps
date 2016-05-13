@@ -1,5 +1,5 @@
 var AWS = require('aws-sdk'),
-	secret = require('../../config/s3.secrets'),
+	secret = require('../../config/s3.config'),
 	User = require('../users/userModel');
 
 AWS.config.update({
@@ -27,30 +27,14 @@ module.exports = {
 		}
 
 		s3.upload(params, function (err, response) {
-				console.log(response);
-				if (err) {
-					return res.status(500).send(err)
-				}
+			console.log(response);
+			if (err) {
+				return res.status(500).send(err)
+			}
 
-				User.findById(req.body.userId, function (err, user) {
-					console.log(user + ' s3 line 36');
-					if (err) {
-						return res.status(500).send(err)
-					}
-					user.profilePic = response.Location;
+			res.send(response)
 
-					user.save(function (err, updatedUser) {
-						if (err) {
-							console.log(err);
-						}
-
-						return res.status(200).send(updatedUser);
-
-
-					})
-				})
-
-			})
+		})
 	},
 
 	/*deleteImage: function(req, res) {
