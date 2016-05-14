@@ -45,9 +45,4 @@ var PhotoSchema = new Schema({
 	);
 });*/
 
-PhotoSchema.pre('find', function(next) {
-	this.populate('postedBy');
-	next();
-})
-
 module.exports = mongoose.model('Photo', PhotoSchema);

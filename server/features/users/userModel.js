@@ -118,6 +118,11 @@ var UserSchema = new Schema({
 	timestamps: true
 });
 
+UserSchema.pre('find', function(next) {
+	this.populate('photos');
+	next();
+})
+
 UserSchema.pre('save', function(next) {
 	var user = this;
 	if(!user.isModified('password')) {
