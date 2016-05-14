@@ -12,7 +12,7 @@ angular.module('scrapsApp')
 				userId: userId,
 			};
 
-			return $http.post('/api/v1/photos', newImage).then(function(response) {
+			return $http.post('/api/v1/uploadImg', newImage).then(function(response) {
 				console.log(response);
 
 				return response.data;

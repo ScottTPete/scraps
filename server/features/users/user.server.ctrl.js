@@ -9,16 +9,16 @@ module.exports = {
 				res.status(500).send(err);
 			} else {
 
-				res.status(200).json(user);
+				res.status(200).send(user);
 			}
 		})
 	},
 	getUsers: function (req, res, next) {
 		User.find(req.query, function (err, users) {
 			if (err) {
-				res.status(500).json(err);
+				res.status(500).send(err);
 			} else {
-				res.status(200).json(users);
+				res.status(200).send(users);
 			}
 		})
 	},
@@ -27,7 +27,7 @@ module.exports = {
 			if (err) {
 				return res.status(500).send(err);
 			} else {
-				return res.status(200).json(user);
+				return res.status(200).send(user);
 			}
 		})
 	},
@@ -36,7 +36,7 @@ module.exports = {
 			if(err) {
 				return res.status(500).send(err);
 			} else {
-				return res.status(200).json(response);
+				return res.status(200).send(response);
 			}
 		})
 	},

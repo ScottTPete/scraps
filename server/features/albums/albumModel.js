@@ -33,11 +33,13 @@ var AlbumSchema = new Schema({
 	comments: [CommentSchema],
 	likes: [{
 		type: Schema.Types.ObjectId,
-		ref: 'User'
+		ref: 'User',
+		unique: true
 	}],
 	peopleIn: [{
 		type: Schema.Types.ObjectId,
-		ref: 'User'
+		ref: 'User',
+		unique: true
 	}],
 	publicEditable: {
 		type: Boolean,
@@ -45,7 +47,8 @@ var AlbumSchema = new Schema({
 	},
 	contributers: [{
 		type: Schema.Types.ObjectId,
-		ref: 'User'
+		ref: 'User',
+		unique: true
 	}]
 
 },

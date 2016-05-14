@@ -9,7 +9,7 @@ var PhotoSchema = new Schema({
 	},
 	image: {
 		type: String,
-		required: true
+//		required: true
 	},
 	comments: [CommentSchema],
 	likes: [{
@@ -34,6 +34,20 @@ var PhotoSchema = new Schema({
 },
 {
 	timestamps: true,
+});
+
+/*PhotoSchema.pre('remove', function(next){
+	this.model('User').update(
+		{_id: {$in: this.users}},
+		{$pull: {photos: this._id}},
+		{multi: true},
+		next
+	);
+});*/
+
+PhotoSchema.pre('find', function(next) {
+	this.populate('postedBy');
+	next();
 })
 
-module.exports = PhotoSchema;
+module.exports = mongoose.model('Photo', PhotoSchema);

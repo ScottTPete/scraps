@@ -52,6 +52,7 @@ var UserSchema = new Schema({
 	},
 	email: {
 		type: mongoose.SchemaTypes.Email,
+		unique: true
 	},
 	profilePic: {
 		type: String,
@@ -68,13 +69,18 @@ var UserSchema = new Schema({
 	},
 	photoAlbums: [{
 		type: Schema.Types.ObjectId,
-		ref: 'Album'
+		ref: 'Album',
+		unique: true
 	}],
 	gender: {
 		type: String,
 		enum: ['Male', 'Female']
 	},
-	photos: [PhotoSchema],
+	photos: [{
+		type: Schema.Types.ObjectId,
+		ref: 'Photo',
+		unique: true
+	}],
 	friends: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User',
@@ -93,9 +99,14 @@ var UserSchema = new Schema({
 	likes: {
 		albums: [{
 			type: Schema.Types.ObjectId,
-			ref: 'Album'
+			ref: 'Album',
+			unique: true
 		}],
-		photos: [PhotoSchema]
+		photos: [{
+			type: Schema.Types.ObjectId,
+			ref: 'Photo',
+			unique: true
+		}]
 
 	},
 	comments: [CommentSchema],
