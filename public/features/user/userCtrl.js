@@ -1,10 +1,8 @@
 angular.module('scrapsApp')
-	.controller('userCtrl', function ($scope, currentUser, $stateParams, userInfo, userSvc) {
-
+	.controller('userCtrl', function ($scope, currentUser, $stateParams, userInfo) {
 
 		$scope.currentUser = currentUser;
 
-		$scope.logoutBtn = false
 		$scope.loginBtn = true;
 		if($scope.currentUser) {
 			$scope.loginBtn = false;
@@ -12,20 +10,22 @@ angular.module('scrapsApp')
 			$scope.profileLink = true;
         }
 
-		$scope.uploadProfilePicBtn = false;
 		$scope.editButton = false;
 		if ($stateParams.username === $scope.currentUser.username) {
 			$scope.editButton = true;
 			$scope.uploadProfilePicBtn = true;
+			$scope.uploadPhotoBtn = true;
 		}
 
 		$scope.userInfo = userInfo;
+		var userInfo = $scope.userInfo;
 
-		/*$scope.profileImgChanged = function() {
-			userSvc.getUserInfo($scope.currentUser.username).then(function(response) {
-				console.log(response);
-				$scope.userInfo = response;
-			})
-		}*/
+		$scope.newPhoto = {};
+
+		if(userInfo.photos.length >= 1) {
+			$scope.userPhotos = true;
+		}
+
+		$scope.photos = $scope.userInfo.photos;
 
 	})

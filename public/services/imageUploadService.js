@@ -14,7 +14,6 @@ angular.module('scrapsApp')
 
 			return $http.post('/api/v1/uploadImg', newImage).then(function(response) {
 				console.log(response);
-
 				return response.data;
 			})
 		}

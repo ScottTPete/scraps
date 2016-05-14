@@ -1,5 +1,5 @@
 angular.module('scrapsApp')
-	.directive('postPhoto', function(imageUploadSvc, userSvc) {
+	.directive('postPhoto', function(imageUploadSvc, postSvc) {
 
 	return {
 		restrict: 'A',
@@ -16,7 +16,16 @@ angular.module('scrapsApp')
 					var filename = tempArray[tempArray.length -1];
 
 					imageUploadSvc.storeImage(fileread, filename, scope.userInfo._id).then(function(response){
+
 						console.log(response);
+						console.log(scope.userInfo);
+
+						scope.newPhoto.postedBy = scope.userInfo._id
+						scope.newPhoto.image = response.Location;
+
+						postSvc.savePhoto(scope.newPhoto);
+
+
 
 
 

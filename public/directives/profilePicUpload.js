@@ -1,5 +1,5 @@
 angular.module('scrapsApp')
-	.directive('profilePic', function(imageUploadSvc, userSvc) {
+	.directive('profilePicUpload', function(imageUploadSvc, userSvc) {
 
 		return {
 			restrict: 'A',

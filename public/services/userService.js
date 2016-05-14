@@ -9,6 +9,7 @@ angular.module('scrapsApp')
 
 		this.getUserInfo = function (username) {
 			return $http.get('/api/v1/users?username=' + username).then(function (response) {
+				console.log(response.data[0]);
 				return response.data[0]
 			})
 		};

@@ -1,0 +1,43 @@
+<button ng-if='loginBtn'><a ui-sref='login'>Login</a></button>
+<button ng-if='profileLink'><a ui-sref='profile({username: currentUser.username})'>Profile</a></button>
+
+<form ng-if='logoutBtn' action='/auth/logout' method='get'>
+	<input type='submit' value='Logout'>
+</form>
+
+<div class='userInfo-container'>
+
+	<div class='profilePic-container'>
+		<img ng-src='{{userInfo.profilePic}}' class='profilePic'>
+	</div>
+
+	<input ng-if='uploadProfilePicBtn' type='file' value='Upload Profile Pic' images='images' accept='image/*' profile-pic-upload>
+
+	<div class='user-names'>
+		<h3>{{userInfo.username}}</h3>
+		<h3>{{userInfo.name.firstname}} {{userInfo.name.lastname}}</h3>
+	</div>
+
+	<a ng-if='editButton' ui-sref='accountSettings'>
+		<button>Edit Profile</button>
+	</a>
+
+	<input ng-if='uploadPhotoBtn' type='file' value='Upload A Photo' images='images' accept='image/*' post-photo>
+
+</div>
+
+<div class='postsContainer' ng-if='userPhotos'>
+
+	<div class=photoContainer ng-repeat='photo in photos'>
+		<img ng-src='{{photo.image}}'>
+	</div>
+
+
+
+
+
+</div>
+
+
+
+

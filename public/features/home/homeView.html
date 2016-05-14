@@ -1,9 +1,6 @@
-<a ui-sref='login' ng-if='loginBtn'>
-	<button>Login</button>
-</a>
-<a ui-sref='register' ng-if='signUpBtn'>
-	<button>Sign Up</button>
-</a>
+<button><a ui-sref='login' ng-if='loginBtn'>Login</a></button>
+<button><a ui-sref='register' ng-if='signUpBtn'>Sign Up</a></button>
+
 <form ng-if='logoutBtn' action='/auth/logout' method='get'>
 	<input type='submit' value='Logout'>
 </form>
