@@ -3,10 +3,14 @@ angular.module('scrapsApp')
 
 		this.savePhoto = function (photo) {
 			return $http.post('/api/v1/photo', photo);
-		}
+		};
 
-		this.editPhoto = function (photo) {
-			return $http.put('/api/v1/photo/' + photo._id, photo)
+		this.editPhoto = function (photo, photoId) {
+			return $http.put('/api/v1/photo/' + photoId, photo)
+		};
+
+		this.deletePhoto = function(photoId) {
+			$http.delete('/api/v1/photo/' + photoId)
 		};
 
 	})

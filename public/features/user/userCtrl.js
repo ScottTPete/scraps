@@ -1,36 +1,71 @@
 angular.module('scrapsApp')
-	.controller('userCtrl', function ($scope, currentUser, $stateParams, userInfo, postSvc) {
+	.controller('userCtrl', function ($scope, currentUser, $stateParams, userInfo, postSvc, userSvc) {
 
-		$scope.currentUser = currentUser;
+		$scope.currentUser = currentUser; //Current user.
+		$scope.userInfo = userInfo;	//Info of user whose page someone is on.
 
+		$scope.newPhoto = {}; //create an object on scope that is used by the photoUpload directive.
+		$scope.photos = $scope.userInfo.photos;  //put user photos on scope.
+
+		//By default assume there will be no user logged in.
 		$scope.loginBtn = true;
 		$scope.signUpBtn = true;
-		if($scope.currentUser) {
+		$scope.editingPhotoBtn = false;
+		$scope.editOptions = false;
+
+		//Number of posts a user has made. Show the stat by default.
+		$scope.postCount = $scope.userInfo.photos.length;
+		$scope.postStats = true;
+
+		//If there is a current user don't show login/sig. Do show a link to your profile and a signout option.
+		if ($scope.currentUser) {
 			$scope.loginBtn = false;
 			$scope.signUpBtn = false;
 			$scope.logoutBtn = true;
 			$scope.profileLink = true;
-        }
+		};
 
-		$scope.editButton = false;
-		if ($stateParams.username === $scope.currentUser.username) {
-			$scope.editButton = true;
+		//If the current user is on their own page, these options are accessible.
+		if ($stateParams.username === currentUser.username) {
+			$scope.editingPhotoBtn = true;
 			$scope.uploadProfilePicBtn = true;
 			$scope.uploadPhotoBtn = true;
+			$scope.deletePhotoBtn = true;
+		};
+
+		//If the user has no posts. Don't show the stat.
+		if ($scope.postCount < 1) {
+			$scope.postStats = false;
+		};
+
+		$scope.getPhotos = function() {
+			userSvc.getUsersPhotos($scope.currentUser.username).then(function(response) {
+				return $scope.photos = response;
+			})
 		}
 
-		$scope.userInfo = userInfo;
-		var userInfo = $scope.userInfo;
+		//Show the edit options when clicked. Hide the editingBtn.
+		$scope.editingPhoto = function (index) {
+			$scope.editOptions = true;
+			$scope.editingPhotoBtn = false;
+		};
 
-		$scope.newPhoto = {};
+		//Cancels editing and returns the prior scope. Well that's the plan, but it's broken.
+		$scope.resetPhoto = function (index) {
+			$scope.editOptions = false;
+			$scope.editingPhotoBtn = true;
+		};
 
-		$scope.photos = $scope.userInfo.photos;
+		//Updates a photo if user changes details about it.
+		$scope.updatePhoto = function (photo, id) {
+			postSvc.editPhoto(photo, id);
+		};
 
-		$scope.editedPhoto = {};
+		//Delete a photo from a user and the database.
+		$scope.deletePhoto = function(photoId) {
+			postSvc.deletePhoto(photoId);
 
-		$scope.editPhoto = function(photo) {
-			console.log(photo);
-			postSvc.editPhoto(photo);
+			$scope.getPhotos();
 		}
 
 	})

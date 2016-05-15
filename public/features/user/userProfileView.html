@@ -19,11 +19,16 @@
 		<h3>{{userInfo.name.firstname}} {{userInfo.name.lastname}}</h3>
 	</div>
 
+	<div class='user-stats'>
+		<h3 ng-if='postStats'>{{postCount}}</h3>
+	</div>
+
 	<a ng-if='editButton' ui-sref='accountSettings'>
 		<button>Edit Profile</button>
 	</a>
 
 	<input ng-if='uploadPhotoBtn' type='file' value='Upload A Photo' images='images' accept='image/*' post-photo>
+
 
 </div>
 
@@ -35,13 +40,14 @@
 		{{photo.description}}
 
 
-		<button ng-hide='toggleEditing' ng-click='editOptions = !editOptions; toggleEditing = !toggleEditing'>Edit Photo</button>
+		<button ng-show='editingPhotoBtn' ng-click='editingPhoto()'>Edit Photo</button>
 		<div ng-show='editOptions'>
 			<input placeholder='Describe this photo' ng-model='photo.description'>
 			<input placeholder='When was this taken?' ng-model='photo.date'>
 			<input placeholder='Where was this taken?' ng-model='photo.location'>
-			<input type='submit' ng-click='editPhoto(photo)' value='Save Changes'>
-			<button ng-click='toggleEditing = !toggleEditing; editOptions = !editOptions'>Done</button>
+			<input type='submit' ng-click='updatePhoto(photo, photo._id)' value='Save Changes'>
+			<button ng-click='resetPhoto($index)'>Cancel</button>
+			<button ng-click='deletePhoto(photo._id)' ng-if='deletePhotoBtn'>Delete</button>
 		</div>
 	</div>
 

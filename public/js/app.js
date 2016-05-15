@@ -42,9 +42,10 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 							return null
 						})
 					},
-					checkUsernameExists: function (userSvc, $stateParams, $state) {
-						return userSvc.checkUsernameExists($stateParams.username).catch(function (err) {
-							$state.go('home')
+					checkUserExists: function (userSvc, $stateParams, $state) {
+						return userSvc.getUserInfo($stateParams.username).catch(function (err) {
+							//if no user exists with that username go back to the home route
+							$state.go('home');
 						})
 					},
 					userInfo: function (userSvc, $stateParams) {
