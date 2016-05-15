@@ -1,4 +1,5 @@
 <button ng-if='loginBtn'><a ui-sref='login'>Login</a></button>
+<button ng-if='signUpBtn'><a ui-sref='register'>Sign Up</a></button>
 <button ng-if='profileLink'><a ui-sref='profile({username: currentUser.username})'>Profile</a></button>
 
 <form ng-if='logoutBtn' action='/auth/logout' method='get'>
@@ -26,10 +27,22 @@
 
 </div>
 
-<div class='postsContainer' ng-if='userPhotos'>
+<div class='postsContainer'>
 
-	<div class=photoContainer ng-repeat='photo in photos'>
+	<div class=photoContainer ng-repeat='photo in photos track by $index'>
+		{{photo.location}}
 		<img ng-src='{{photo.image}}'>
+		{{photo.description}}
+
+
+		<button ng-hide='toggleEditing' ng-click='editOptions = !editOptions; toggleEditing = !toggleEditing'>Edit Photo</button>
+		<div ng-show='editOptions'>
+			<input placeholder='Describe this photo' ng-model='photo.description'>
+			<input placeholder='When was this taken?' ng-model='photo.date'>
+			<input placeholder='Where was this taken?' ng-model='photo.location'>
+			<input type='submit' ng-click='editPhoto(photo)' value='Save Changes'>
+			<button ng-click='toggleEditing = !toggleEditing; editOptions = !editOptions'>Done</button>
+		</div>
 	</div>
 
 

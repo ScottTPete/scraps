@@ -13,16 +13,18 @@ a {
 	text-decoration: none;
 }
 
-.userInfo-container: {
+/*.userInfo-container {
 	width: 100%;
-	height: 20%;
+	height: 25%;
+	border: 1px solid red;
 }
 
 
-.profilePic-container: {
-	width: 200px;
+.profilePic-container {
+	background-color: gold;
+	width: 300px;
 	height: 200px;
-}
+}*/
 
 .profilePic {
 	background-image: url('ng-src');

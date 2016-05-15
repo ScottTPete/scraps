@@ -23,8 +23,10 @@ module.exports = {
 		})
 	},
 	editUser: function (req, res, next) {
+		console.log(req.body);
 		User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
 			if (err) {
+				console.log(err);
 				return res.status(500).send(err);
 			} else {
 				return res.status(200).send(user);

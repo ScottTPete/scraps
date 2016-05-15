@@ -1,7 +1,6 @@
 var mongoose = require('mongoose'),
 //	validate = require('mongoose-validator'),
 	bcrypt = require('bcryptjs'),
-	PhotoSchema = require('../photos/photoSchema'),
 	CommentSchema = require('../comments/commentSchema'),
 	Schema = mongoose.Schema;
 
@@ -52,7 +51,8 @@ var UserSchema = new Schema({
 	},
 	email: {
 		type: mongoose.SchemaTypes.Email,
-		unique: true
+		/*unique: true,
+		index: true*/
 	},
 	profilePic: {
 		type: String,

@@ -1,11 +1,13 @@
 angular.module('scrapsApp')
-	.controller('userCtrl', function ($scope, currentUser, $stateParams, userInfo) {
+	.controller('userCtrl', function ($scope, currentUser, $stateParams, userInfo, postSvc) {
 
 		$scope.currentUser = currentUser;
 
 		$scope.loginBtn = true;
+		$scope.signUpBtn = true;
 		if($scope.currentUser) {
 			$scope.loginBtn = false;
+			$scope.signUpBtn = false;
 			$scope.logoutBtn = true;
 			$scope.profileLink = true;
         }
@@ -22,10 +24,13 @@ angular.module('scrapsApp')
 
 		$scope.newPhoto = {};
 
-		if(userInfo.photos.length >= 1) {
-			$scope.userPhotos = true;
-		}
-
 		$scope.photos = $scope.userInfo.photos;
+
+		$scope.editedPhoto = {};
+
+		$scope.editPhoto = function(photo) {
+			console.log(photo);
+			postSvc.editPhoto(photo);
+		}
 
 	})

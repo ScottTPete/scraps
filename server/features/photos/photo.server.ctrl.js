@@ -1,4 +1,4 @@
-var Photo = require('./photoSchema'),
+var Photo = require('./photoModel'),
 	User = require('../users/userModel');
 
 module.exports = {
@@ -13,6 +13,7 @@ module.exports = {
 						'photos': response._id
 					}
 				}, function (err, user) {
+					console.log(user);
 					if (err) {
 						res.status(500).send(err)
 					} else {

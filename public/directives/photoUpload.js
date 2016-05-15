@@ -1,5 +1,5 @@
 angular.module('scrapsApp')
-	.directive('postPhoto', function(imageUploadSvc, postSvc) {
+	.directive('postPhoto', function(imageUploadSvc, postSvc, userSvc) {
 
 	return {
 		restrict: 'A',
@@ -20,13 +20,17 @@ angular.module('scrapsApp')
 						console.log(response);
 						console.log(scope.userInfo);
 
-						scope.newPhoto.postedBy = scope.userInfo._id
+						scope.newPhoto.postedBy = scope.userInfo._id;
 						scope.newPhoto.image = response.Location;
 
-						postSvc.savePhoto(scope.newPhoto);
+						var newPhoto = scope.newPhoto;
+						var userPhotos = scope.userInfo.photos;
 
+						postSvc.savePhoto(newPhoto);
 
+						userPhotos.unshift(newPhoto);
 
+						console.log(scope.userInfo);
 
 
 					}).catch(function(err) {

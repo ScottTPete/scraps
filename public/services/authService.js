@@ -8,11 +8,6 @@ angular.module('scrapsApp')
 			if(!response.data &&  window.location.href.includes('account/settings')) {
 				$state.go('login')
 			};
-
-			//Was working. Inexplicably broke. I will get it working again.
-			/*if(!response.data && state.current.name === 'accountSettings') {
-				$state.go('login')
-			}*/
 			return response.data
 		})
 	};

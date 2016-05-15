@@ -1,5 +1,4 @@
 var mongoose = require('mongoose'),
-	PhotoSchema = require('../photos/photoSchema'),
 	CommentSchema = require('../comments/commentSchema'),
 	Schema = mongoose.Schema;
 
@@ -12,12 +11,20 @@ var AlbumSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	photos: [PhotoSchema],
+	photos: [{
+		type: Schema.Types.ObjectId,
+		ref: 'Photo',
+		unique: true
+	}],
 	description: {
 		type: String,
 		default: ''
 	},
-	albumCover: [PhotoSchema], //array in case user wants rotating pictures as cover.
+	albumCover: [{ //array in case user wants rotating pictures as cover.
+		type: Schema.Types.ObjectId,
+		ref: 'Photo',
+		unique: true
+	}],
 	location: [{
 		type: String,
 		default: ''
