@@ -40,13 +40,13 @@
 		{{photo.description}}
 
 
-		<button ng-show='editingPhotoBtn' ng-click='editingPhoto()'>Edit Photo</button>
-		<div ng-show='editOptions'>
+		<button ng-hide='photo.photoEditorEnabled' ng-click='editPhotoEnabled($index)'>Edit Photo</button>
+		<div ng-show='photo.photoEditOptions'>
 			<input placeholder='Describe this photo' ng-model='photo.description'>
 			<input placeholder='When was this taken?' ng-model='photo.date'>
 			<input placeholder='Where was this taken?' ng-model='photo.location'>
-			<input type='submit' ng-click='updatePhoto(photo, photo._id)' value='Save Changes'>
-			<button ng-click='resetPhoto($index)'>Cancel</button>
+			<input type='submit' ng-click='updatePhoto(photos[$index], photo._id)' value='Save Changes'>
+			<button ng-click='cancelEditingPhoto($index)'>Cancel</button>
 			<button ng-click='deletePhoto(photo._id)' ng-if='deletePhotoBtn'>Delete</button>
 		</div>
 	</div>
