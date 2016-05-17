@@ -9,7 +9,6 @@ var PhotoSchema = new Schema({
 	},
 	image: {
 		type: String,
-//		required: true
 	},
 	comments: [CommentSchema],
 	likes: [{
@@ -19,7 +18,6 @@ var PhotoSchema = new Schema({
 	postedBy: {
 		type: Schema.Types.ObjectId,
 		ref: 'User',
-//		required: true
 	},
 	location: {
 		type: String,
@@ -36,14 +34,5 @@ var PhotoSchema = new Schema({
 {
 	timestamps: true,
 });
-
-/*PhotoSchema.pre('remove', function(next){
-	this.model('User').update(
-		{_id: {$in: this.users}},
-		{$pull: {photos: this._id}},
-		{multi: true},
-		next
-	);
-});*/
 
 module.exports = mongoose.model('Photo', PhotoSchema);

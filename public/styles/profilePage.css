@@ -1,0 +1,58 @@
+.main-user-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.user-content-container {
+	width: 65%;
+	height: 100%;
+}
+.user-header {
+	height: 25%;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.user-profilePic-container {
+	width: 200px;
+	height: 200px;
+
+	position: relative;
+	display: flex;
+	margin-right:
+}
+.user-profilePic {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+.user-profilePic-upload {
+	align-self: flex-end;
+	z-index: 2;
+	position: absolute;
+	bottom: 0;
+}
+.userInfo-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.userInfo-column: {
+	display: flex;
+}
+.userInfo-column.one: {
+	flex-direction: row;
+	justify-content: space-between;
+}
+.userInfo-column.two: {
+	flex-direction: row;
+	justify-content: space-between;
+}
+.userInfo-column.three: {
+	flex-direction: row;
+	justify-content: space-between;
+}

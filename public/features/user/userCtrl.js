@@ -8,6 +8,9 @@ angular.module('scrapsApp')
 		$scope.photos = $scope.userInfo.photos; //put user photos on scope.
 		$scope.photo = {};
 
+		//By default assume a user will not be on their own page.
+		$scope.photo.photoEditorEnabled = true;
+
 		//By default assume there will be no user logged in.
 		$scope.loginBtn = true;
 		$scope.signUpBtn = true;
@@ -26,7 +29,8 @@ angular.module('scrapsApp')
 
 		//If the current user is on their own page, these options are accessible.
 		if ($stateParams.username === currentUser.username) {
-			//			$scope.userPhotos.photoEditorEnabled = true;
+			$scope.editAccountBtn = true;
+			$scope.photo.photoEditorEnabled = false;
 			$scope.uploadProfilePicBtn = true;
 			$scope.uploadPhotoBtn = true;
 			$scope.deletePhotoBtn = true;
@@ -46,7 +50,6 @@ angular.module('scrapsApp')
 		//Show the edit options when clicked. Hide the editingBtn.
 		$scope.editPhotoEnabled = function (index) {
 			$scope.photo = $scope.photos[index]
-			$scope.photo.photoEditorEnabled = true;
 			$scope.photo.photoEditOptions = true;
 			console.log($scope.photo);
 		};
@@ -67,6 +70,6 @@ angular.module('scrapsApp')
 		$scope.deletePhoto = function (photoId) {
 			postSvc.deletePhoto(photoId);
 			$scope.getPhotos();
-		}
+		};
 
 	})

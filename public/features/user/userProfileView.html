@@ -1,62 +1,65 @@
-<button ng-if='loginBtn'><a ui-sref='login'>Login</a></button>
-<button ng-if='signUpBtn'><a ui-sref='register'>Sign Up</a></button>
-<button ng-if='profileLink'><a ui-sref='profile({username: currentUser.username})'>Profile</a></button>
+<nav-bar></nav-bar>
+<div class='main-user-container'>
+	<div class='user-content-container'>
+		<div class='user-header'>
 
-<form ng-if='logoutBtn' action='/auth/logout' method='get'>
-	<input type='submit' value='Logout'>
-</form>
+			<div class='user-profilePic-container'>
 
-<div class='userInfo-container'>
+				<img class='user-profilePic' ng-src='{{userInfo.profilePic}}'>
 
-	<div class='profilePic-container'>
-		<img ng-src='{{userInfo.profilePic}}' class='profilePic'>
-	</div>
+				<input class='user-profilePic-upload' ng-if='uploadProfilePicBtn' type='file' value='Upload Profile Pic' images='images' accept='image/*' profile-pic-upload>
 
-	<input ng-if='uploadProfilePicBtn' type='file' value='Upload Profile Pic' images='images' accept='image/*' profile-pic-upload>
+			</div>
 
-	<div class='user-names'>
-		<h3>{{userInfo.username}}</h3>
-		<h3>{{userInfo.name.firstname}} {{userInfo.name.lastname}}</h3>
-	</div>
+			<div class= 'userInfo-container'>
 
-	<div class='user-stats'>
-		<h3 ng-if='postStats'>{{postCount}}</h3>
-	</div>
+				<div class='userInfo-column one'>
+					<h3 class="userInfo-username">{{userInfo.username}}</h3>
+					<a ng-if='editAccountBtn' ui-sref='accountSettings'>
+						<button type="button">Edit Profile</button>
+					</a>
+				</div>
 
-	<a ng-if='editButton' ui-sref='accountSettings'>
-		<button>Edit Profile</button>
-	</a>
+				<div class='userInfo-column two'>
+					<h3 class='userInfo-fullname'>{{userInfo.name.firstname}} {{userInfo.name.lastname}}</h3>
+					<p>{{userInfo.bio}}</p>
+				</div>
 
-	<input ng-if='uploadPhotoBtn' type='file' value='Upload A Photo' images='images' accept='image/*' post-photo>
+				<div class='userInfo-column three'>
+					<h3 ng-if='postStats'>{{postCount}}</h3>
+				</div>
+			</div>
+
+		</div>
+
+		<input ng-if='uploadPhotoBtn' type='file' value='Upload A Photo' images='images' accept='image/*' post-photo>
+
+		<div class='postsContainer'>
+
+			<div class=photoContainer ng-repeat='photo in photos track by $index'>
+				{{photo.location}}
+				<img ng-src='{{photo.image}}'>
+				{{photo.description}}
 
 
-</div>
+				<button ng-hide='currentUser._id !== photo.postedBy' ng-click='editPhotoEnabled($index)'>Edit Photo</button>
+				<div ng-show='photo.photoEditOptions'>
+					<input placeholder='Describe this photo' ng-model='photo.description'>
+					<input placeholder='When was this taken?' ng-model='photo.date'>
+					<input placeholder='Where was this taken?' ng-model='photo.location'>
+					<input type='submit' ng-click='updatePhoto(photos[$index], photo._id)' value='Save Changes'>
+					<button ng-click='cancelEditingPhoto($index)'>Cancel</button>
+					<button ng-click='deletePhoto(photo._id)' ng-if='deletePhotoBtn'>Delete</button>
+				</div>
+			</div>
 
-<div class='postsContainer'>
-
-	<div class=photoContainer ng-repeat='photo in photos track by $index'>
-		{{photo.location}}
-		<img ng-src='{{photo.image}}'>
-		{{photo.description}}
 
 
-		<button ng-hide='photo.photoEditorEnabled' ng-click='editPhotoEnabled($index)'>Edit Photo</button>
-		<div ng-show='photo.photoEditOptions'>
-			<input placeholder='Describe this photo' ng-model='photo.description'>
-			<input placeholder='When was this taken?' ng-model='photo.date'>
-			<input placeholder='Where was this taken?' ng-model='photo.location'>
-			<input type='submit' ng-click='updatePhoto(photos[$index], photo._id)' value='Save Changes'>
-			<button ng-click='cancelEditingPhoto($index)'>Cancel</button>
-			<button ng-click='deletePhoto(photo._id)' ng-if='deletePhotoBtn'>Delete</button>
+
+
 		</div>
 	</div>
-
-
-
-
-
 </div>
-
 
 
 

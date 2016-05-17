@@ -9,26 +9,12 @@ html, body {
 	height: 100vh;
 }
 
+/*So that the browser won't display a template until app is loaded*/
+[ng\:cloak], [ng-cloak], .ng-cloak {
+	display: none !important;
+}
+
 a {
 	text-decoration: none;
 }
 
-/*.userInfo-container {
-	width: 100%;
-	height: 25%;
-	border: 1px solid red;
-}
-
-
-.profilePic-container {
-	background-color: gold;
-	width: 300px;
-	height: 200px;
-}*/
-
-.profilePic {
-	background-image: url('ng-src');
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
-}

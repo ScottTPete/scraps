@@ -7,11 +7,16 @@
 	<title>Scraps</title>
 	<!--Base tag needed to make url pretty. All relative links will be based on the base.-->
 	<base href='/'>
+	<link rel='stylesheet' href='styles/reset.css'>
 	<link rel='stylesheet' href='styles/normalize.css'>
 	<link rel='stylesheet' href='styles/styles.css'>
+	<link rel='stylesheet' href='styles/navBar.css'>
+	<link rel='stylesheet' href='styles/profilePage.css'>
+	<!--Font Awesome Icons-->
+	<script src="https://use.fontawesome.com/987d0da3e4.js"></script>
 </head>
 
-<body>
+<body ng-cloak>
 
 	<ui-view></ui-view>
 
@@ -40,8 +45,9 @@
 	<script src='features/home/homeCtrl.js'></script>
 
 	<!--DIRECTIVES-->
-	<script src='directives/profilePicUpload.js'></script>
-	<script src='directives/photoUpload.js'></script>
+	<script src='directives/imgUploading/profilePicUpload.js'></script>
+	<script src='directives/imgUploading/photoUpload.js'></script>
+	<script src='directives/navbar/navDirective.js'></script>
 </body>
 
 </html>
