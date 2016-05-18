@@ -2,45 +2,52 @@
 <div class='main-user-container'>
 	<div class='user-content-container'>
 		<div class='user-header'>
+			<div class='user-profilePic-wrapper'>
+				<div class='user-profilePic-container'>
 
-			<div class='user-profilePic-container'>
+					<img class='user-profilePic' ng-src='{{userInfo.profilePic}}'>
 
-				<img class='user-profilePic' ng-src='{{userInfo.profilePic}}'>
+					<input class='user-profilePic-upload' ng-if='uploadProfilePicBtn' type='file' value='Upload Profile Pic' images='images' accept='image/*' profile-pic-upload>
 
-				<input class='user-profilePic-upload' ng-if='uploadProfilePicBtn' type='file' value='Upload Profile Pic' images='images' accept='image/*' profile-pic-upload>
-
+				</div>
 			</div>
+			<div class='userInfo-container'>
 
-			<div class= 'userInfo-container'>
-
-				<div class='userInfo-column one'>
+				<div class='userInfo-row one'>
 					<h3 class="userInfo-username">{{userInfo.username}}</h3>
-					<a ng-if='editAccountBtn' ui-sref='accountSettings'>
-						<button type="button">Edit Profile</button>
+					<a class='userInfo-settingsLink' ng-if='editAccountBtn' ui-sref='accountSettings'>
+						<button type="button" class='userInfo-settinsBtn'>Edit Profile</button>
 					</a>
 				</div>
 
-				<div class='userInfo-column two'>
+				<div class='userInfo-row two'>
 					<h3 class='userInfo-fullname'>{{userInfo.name.firstname}} {{userInfo.name.lastname}}</h3>
-					<p>{{userInfo.bio}}</p>
+					<p class='userInfo-bio'>{{userInfo.bio}}</p>
 				</div>
 
-				<div class='userInfo-column three'>
-					<h3 ng-if='postStats'>{{postCount}}</h3>
+				<div class='userInfo-row three'>
+					<h3 ng-if='postStats' class='userInfo-stats'> <span class='stats-number'>{{postCount}}</span> Posts</h3>
+					<h3 class='userInfo-stats'> <span class='stats-number'>131</span> Followers</h3>
+					<h3 class='userInfo-stats'> <span class='stats-number'>164</span> Following</h3>
 				</div>
 			</div>
 
 		</div>
 
-		<input ng-if='uploadPhotoBtn' type='file' value='Upload A Photo' images='images' accept='image/*' post-photo>
+		<input class='user-upload-photoBtn' ng-if='uploadPhotoBtn' type='file' value='Upload A Photo' images='images' accept='image/*' post-photo>
 
-		<div class='postsContainer'>
+		<div class='user-posts-container'>
 
-			<div class=photoContainer ng-repeat='photo in photos track by $index'>
-				{{photo.location}}
-				<img ng-src='{{photo.image}}'>
-				{{photo.description}}
-
+			<div class='user-photo-wrapper' ng-repeat='photo in photos track by $index'>
+				<div class='photoInfo location'>
+					<h3>{{photo.location}}</h3>
+				</div>
+				<div class='user-photo-container'>
+					<img ng-src='{{photo.image}}' class='user-photo'>
+				</div>
+				<div class='photoInfo description'>
+					<h3>{{photo.description}}</h3>
+				</div>
 
 				<button ng-hide='currentUser._id !== photo.postedBy' ng-click='editPhotoEnabled($index)'>Edit Photo</button>
 				<div ng-show='photo.photoEditOptions'>
@@ -60,6 +67,3 @@
 		</div>
 	</div>
 </div>
-
-
-

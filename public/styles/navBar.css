@@ -4,38 +4,41 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: #ffe566;
 }
+
 .nav-content-container {
-	width: 65%;
+	width: 72%;
 	height: 50%;
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
 	flex-direction: row;
 	justify-content: space-between;
+}
 
-}
-.nav-logo-container {
-	width: 33%;
-}
+.nav-logo-container {}
+
 .nav-search-container {
 	text-align: center;
 	position: relative;
-	width: 33%;
 }
+
 .nav-search {
 	width: 100%;
 }
+
 .nav-links-container {
 	display: flex;
 	text-align: center;
 	flex-direction: row;
 	align-items: center;
-	width: 33%;
 }
+
 .fa-search {
 	z-index: 2;
 }
+
 .nav-links {
 	margin-left: 20px;
 }

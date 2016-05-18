@@ -1,58 +1,144 @@
+/*PAGE STRUCTURE*/
+
 .main-user-container {
-	width: 100%;
 	height: 100%;
+	width: 100%;
 	display: flex;
 	justify-content: center;
-	align-items: center;
 }
-.user-content-container {
-	width: 65%;
-	height: 100%;
-}
-.user-header {
-	height: 25%;
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-.user-profilePic-container {
-	width: 200px;
-	height: 200px;
 
-	position: relative;
+.user-content-container {
+	width: 72%;
+	height: 100%;
+	margin-top: 40px;
+}
+
+
+/*PROFILE PAGE HEADER--USER INFO*/
+
+.user-header {
 	display: flex;
-	margin-right:
+	align-items: center;
+	padding: 20px 20px;
+	margin-bottom: 45px;
+	justify-content: center
 }
-.user-profilePic {
-	height: 100%;
-	width: 100%;
-	position: absolute;
-}
-.user-profilePic-upload {
-	align-self: flex-end;
-	z-index: 2;
-	position: absolute;
-	bottom: 0;
-}
-.userInfo-container {
-	width: 100%;
-	height: 100%;
+
+.user-profilePic-wrapper {
 	display: flex;
 	flex-direction: column;
+	flex-basis: 0;
+	flex-grow: 1;
+	margin-right: 15px;
 }
-.userInfo-column: {
+
+.user-profilePic-container {
+	height: 152px;
+	width: 152px;
+	display: block;
+	margin: 0 auto;
+	border-radius: 50%;
+	border: 1px solid #cccfd0;
+	overflow: hidden;
+	position: relative;
+}
+
+.user-profilePic {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.user-profilePic-upload {
+	/*	width: 150px;*/
+}
+
+.userInfo-container {
 	display: flex;
+	flex-direction: column;
+	flex-basis: 25px;
+	flex-grow: 3.25;
 }
-.userInfo-column.one: {
-	flex-direction: row;
-	justify-content: space-between;
+
+.userInfo-row {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	margin-bottom: 14px;
 }
-.userInfo-column.two: {
-	flex-direction: row;
-	justify-content: space-between;
+
+.userInfo-username {
+	font-size: 34px;
+	font-weight: 400;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
-.userInfo-column.three: {
-	flex-direction: row;
-	justify-content: space-between;
+
+.userInfo-settingsLink {
+	margin-left: 20px;
+}
+
+.userInfo-fullname {
+	font-size: 20px;
+	font-weight: 600;
+	margin-right: 10px;
+}
+
+.userInfo-bio {
+	font-size: 17px;
+	/*	align-self: flex-end;*/
+}
+
+.userInfo-stats {
+	margin-right: 10px;
+	font-size: 17px;
+}
+
+.stats-number {
+	font-weight: 600;
+}
+
+.user-upload-photoBtn {
+	margin: 0 auto;
+}
+
+
+/*POSTS CONTAINER*/
+
+.user-posts-container {
+	margin-top: 10px;
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+	margin-bottom: 20px;
+	justify-content: flex-start;
+	padding: 20px 20px 20px 20px;
+}
+
+.user-photo-wrapper {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 0;
+	margin: 15px;
+}
+
+.user-photo-container {
+	height: 300px;
+	width: 300px;
+	display: block;
+	overflow: hidden;
+}
+
+.user-photo {
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+}
+
+.photoInfo {
+	height: 16px;
 }
