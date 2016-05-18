@@ -5,7 +5,9 @@
 	height: 8%;
 	width: 100%;
 	justify-content: center;
-	background-color: #FFE566;
+	background-color: #FFC04C;
+	position: relative;
+	margin-top: auto;
 }
 
 .footer-content-container {
