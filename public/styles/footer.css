@@ -1,0 +1,28 @@
+/*FOOTER*/
+
+.footer-container {
+	display: flex;
+	height: 8%;
+	width: 100%;
+	justify-content: center;
+	background-color: #FFE566;
+}
+
+.footer-content-container {
+	width: 72%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 35px 0 35px;
+}
+
+.footer-copyright-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.footer-copyright-container h4 {
+	color: #FFF;
+}

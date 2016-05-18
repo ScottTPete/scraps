@@ -19,6 +19,11 @@
 
 .nav-logo-container {}
 
+.nav-company-name {
+	font-family: bad-script;
+	color: #FFF;
+}
+
 .nav-search-container {
 	text-align: center;
 	position: relative;

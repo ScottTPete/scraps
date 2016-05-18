@@ -1,7 +1,6 @@
 /*PAGE STRUCTURE*/
 
 .main-user-container {
-	height: 100%;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -103,6 +102,15 @@
 
 .user-upload-photoBtn {
 	margin: 0 auto;
+}
+
+
+/*USER CONTROLS*/
+
+.user-controls-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 
