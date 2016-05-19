@@ -1,0 +1,88 @@
+/*REGISTER*/
+
+.register-page-container {
+	width: 100%;
+	height: 84vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.register-page-content-container {
+	display: flex;
+	width: 36%;
+	height: 80%;
+	border-radius: 5px;
+	border: 7px solid #FFC04C;
+	background-color: #FFC04C;
+	position: relative;
+	margin-right: 73px;
+}
+
+.register-box-container {
+	height: 100%;
+	width: 100%;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 5px;
+	border: 5px solid #CCC;
+	background-color: #FAFAFA;
+}
+
+.register-company-name-container {
+	width: 70%;
+	display: flex;
+	justify-content: center;
+	padding-top: 30px;
+	padding-bottom: 21px;
+	margin-bottom: 40px;
+	border-bottom: 1px solid #CCC;
+}
+
+.register-company-name {
+	font-size: 70px;
+	font-family: bad-script;
+	color: #FFC04C;
+}
+
+.register-form-container {
+	display: flex;
+	flex-direction: column;
+	width: 75%;
+	margin-top: 35px;
+}
+
+.register-form-option-container {
+	display: flex;
+	flex-flow: row nowrap;
+	width: 100%;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.register-form-left {
+	display: flex;
+	margin-right: 20px;
+	justify-content: flex-end;
+	flex-basis: 150px;
+}
+
+.register-form-right {
+	display: flex;
+	margin-right: 15px;
+}
+
+.register-createBtn {
+	margin-right: 20px;
+}
+
+.register-login-label {
+	font-size: 12px;
+}
+
+.register-loginLink {
+	color: #ffc04c;
+	font-weight: 700;
+}

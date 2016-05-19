@@ -1,0 +1,94 @@
+/*SEARCH*/
+
+.nav-search-input-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.nav-search-input-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.fa-search {
+	z-index: 2;
+}
+
+.search-input {
+	margin-left: 5px;
+	padding: 6px 0px 6px 10px;
+	border-radius: 15px;
+	outline: none;
+	border: 0;
+}
+
+.search-results-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	width: 300px;
+	position: absolute;
+	max-height: 362px;
+	margin-left: -125px;
+}
+
+.search-arrow-icon-container {
+	display: flex;
+	justify-content: center;
+}
+
+.search-results-user-container {
+	display: flex;
+	flex-flow: row nowrap;
+	padding: 10px;
+	max-height: 362px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 0;
+	background-color: #FFF;
+	box-shadow: 0 0 5px rgba(0, 0, 0, .13);
+	border-left: 1px solid #cccfd0;
+	border-right: 1px solid #cccfd0;
+}
+
+.search-userLink {
+	display: flex;
+	color: #cccfd0;
+	width: 100%;
+}
+
+.search-results-user-wrapper {
+	display: flex;
+	flex-flow: row nowrap;
+	flex-basis: 300px;
+	padding: 10px;
+}
+
+.search-thumbnail-container {
+	border-right: 1px solid #FFC04C;
+}
+
+.search-thumbnail {
+	height: 36px;
+	width: 36px;
+	display: block;
+	margin: 0 auto;
+	border-radius: 50%;
+	border: 1px solid #cccfd0;
+	overflow: hidden;
+	position: relative;
+	margin-right: 15px;
+}
+
+.search-names-container {
+	display: flex;
+	flex-flow: row nowrap;
+	width: 100%;
+	align-items: center;
+	margin-left: 5px;
+	padding-left: 20px;
+	border-bottom: 1px solid #cccfd0;
+}

@@ -1,13 +1,41 @@
-<form action="/auth/login" method="post">
-	<div>
-		<label>Username:</label>
-		<input type="text" name="username"/>
+<nav-bar></nav-bar>
+<div class='login-page-container'>
+
+	<div class='login-page-content-container'>
+		<div class='login-box-container'>
+			<div class='login-company-name-container'>
+				<h1 class='login-company-name'>Login</h1>
+			</div>
+			<div class='login-form-container'>
+				<form action="/auth/login" method="post" class='login-form'>
+					<div class='login-form-option-container'>
+						<label class='login-form-left'>Username:</label>
+						<input type="text" name="username" class='login-input' />
+					</div>
+					<div class='login-form-option-container'>
+						<label class='login-form-left'>Password:</label>
+						<input type="password" name="password" class='login-input' />
+					</div>
+					<div class='login-form-option-container'>
+						<div class='login-form-left'></div>
+						<input type="submit" value="Log In" class='login-form-right btn' />
+						<a ui-sref='home'>
+							<button class='login-cancel-btn btn'>Cancel</button>
+						</a>
+					</div>
+					<div class='login-form-option-container'>
+						<div class='login-form-left'></div>
+						<label class='login-register-label'>Dont't have an account? Sign up
+							<a ui-sref='register' class='login-registerLink'>
+							here!
+						</a>
+						</label>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
-	<div>
-		<label>Password:</label>
-		<input type="password" name="password"/>
-	</div>
-	<div>
-		<input type="submit" value="Log In"/>
-	</div>
-</form>
+
+</div>
+
+<page-footer></page-footer>

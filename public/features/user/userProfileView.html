@@ -7,9 +7,9 @@
 
 					<img class='user-profilePic' ng-src='{{userInfo.profilePic}}'>
 
-					<input class='user-profilePic-upload' ng-if='uploadProfilePicBtn' type='file' value='Upload Profile Pic' images='images' accept='image/*' profile-pic-upload>
-
 				</div>
+
+				<input class='user-profilePic-upload' ng-if='uploadProfilePicBtn' type='file' value='Upload Profile Pic' images='images' accept='image/*' profile-pic-upload>
 			</div>
 			<div class='userInfo-container'>
 
@@ -21,35 +21,36 @@
 				</div>
 
 				<div class='userInfo-row two'>
-					<h3 class='userInfo-fullname'>{{userInfo.name.firstname}} {{userInfo.name.lastname}}</h3>
+					<h3 class='userInfo-fullname' ng-if='fullname'>{{userInfo.name.firstname}} {{userInfo.name.lastname}}</h3>
 					<p class='userInfo-bio'>{{userInfo.bio}}</p>
 				</div>
 
 				<div class='userInfo-row three'>
 					<h3 ng-if='postStats' class='userInfo-stats'> <span class='stats-number'>{{postCount}}</span> Posts</h3>
-					<h3 class='userInfo-stats'> <span class='stats-number'>131</span> Followers</h3>
-					<h3 class='userInfo-stats'> <span class='stats-number'>164</span> Following</h3>
+					<h3 class='userInfo-stats'> <span class='stats-number'></span> Followers</h3>
+					<h3 class='userInfo-stats'> <span class='stats-number'></span> Following</h3>
 				</div>
 			</div>
 
 		</div>
 
-		<input class='user-upload-photoBtn' ng-if='uploadPhotoBtn' type='file' value='Upload A Photo' images='images' accept='image/*' post-photo>
-
+		<div class='user-controls-container' ng-if='userControls'>
+			<input class='user-upload-photoBtn' ng-if='uploadPhotoBtn' type='file' value='Upload A Photo' images='images' accept='image/*' post-photo>
+		</div>
 		<div class='user-posts-container'>
 
 			<div class='user-photo-wrapper' ng-repeat='photo in photos track by $index'>
 				<div class='photoInfo location'>
-					<h3>{{photo.location}}</h3>
+					<h3 class='photo-details'>{{photo.location}}</h3>
 				</div>
 				<div class='user-photo-container'>
 					<img ng-src='{{photo.image}}' class='user-photo'>
 				</div>
 				<div class='photoInfo description'>
-					<h3>{{photo.description}}</h3>
+					<h3 class='photo-details'>{{photo.description}}</h3>
 				</div>
 
-				<button ng-hide='currentUser._id !== photo.postedBy' ng-click='editPhotoEnabled($index)'>Edit Photo</button>
+				<button ng-show='editPhotoBtnVisible' ng-click='editPhotoEnabled($index)'>Edit Photo</button>
 				<div ng-show='photo.photoEditOptions'>
 					<input placeholder='Describe this photo' ng-model='photo.description'>
 					<input placeholder='When was this taken?' ng-model='photo.date'>
@@ -67,3 +68,5 @@
 		</div>
 	</div>
 </div>
+
+<page-footer></page-footer>

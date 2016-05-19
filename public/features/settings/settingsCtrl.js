@@ -1,23 +1,24 @@
 angular.module('scrapsApp')
-	.controller('settingsCtrl', function($scope, currentUser, userSvc) {
+	.controller('settingsCtrl', function ($scope, currentUser, userSvc) {
 
 		$scope.profileLink = true;
 
-		$scope.user = currentUser;
+		$scope.currentUser = currentUser;
+		console.log($scope.currentUser);
 
-		$scope.editProfile = function() {
+		$scope.editProfile = function () {
 			console.log($scope.user);
-			userSvc.editProfile($scope.user); //pass in the user to userSvc editProfile func.
+			userSvc.editProfile($scope.currentUser); //pass in the user to userSvc editProfile func.
 
-			getUserInfo($scope.user.username); //call getUserInfo to update scope with new the new userInfo.
+			getUserInfo($scope.currentUser.username); //call getUserInfo to update scope with new the new userInfo.
 		};
 
-	function getUserInfo(username) {
-		userSvc.getUserInfo(username).then(function(response) {
-			$scope.user = response; //gets current user details and puts userInfo on scope.
-		})
-	};
+		function getUserInfo(username) {
+			userSvc.getUserInfo(username).then(function (response) {
+				$scope.currentUser = response; //gets current user details and puts userInfo on scope.
+			})
+		};
 
 
 
-})
+	})

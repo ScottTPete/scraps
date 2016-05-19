@@ -1,6 +1,8 @@
 angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 
-	.run(function ($rootScope, $state, $stateParams) {
+.constant("$MD_THEME_CSS", "")
+
+.run(function ($rootScope, $state, $stateParams) {
 		$rootScope.$state = $state;
 		$rootScope.$stateParams = $stateParams;
 	})
@@ -10,55 +12,71 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 
 		$stateProvider
 			.state('home', {
-				url: '/',
-				templateUrl: 'features/home/homeView.html',
-				controller: 'homeCtrl',
-				resolve: {
+				url: '/'
+				, templateUrl: 'features/home/homeView.html'
+				, controller: 'homeCtrl'
+				, resolve: {
 					currentUser: function (authSvc, $state) {
 						return authSvc.getCurrentUser().catch(function (err) {
 							return null
 						})
-					},
-				}
+					}
+				, }
 			})
 			.state('login', {
-				url: '/login',
-				templateUrl: 'features/auth/loginView.html',
-				caseInsensitve: true
-			})
-			.state('register', {
-				url: '/register',
-				templateUrl: 'features/auth/registerView.html',
-				caseInsensitve: true
-			})
-			.state('profile', {
-				url: '/:username',
-				templateUrl: 'features/user/userProfileView.html',
-				controller: 'userCtrl',
-				caseInsensitve: true,
-				resolve: {
+				url: '/login'
+				, templateUrl: 'features/auth/loginView.html'
+				, caseInsensitve: true
+				, controller: 'authCtrl'
+				, resolve: {
 					currentUser: function (authSvc, $state) {
 						return authSvc.getCurrentUser().catch(function (err) {
 							return null
 						})
-					},
-					checkUserExists: function (userSvc, $stateParams, $state) {
+					}
+				}
+			})
+			.state('register', {
+				url: '/register'
+				, templateUrl: 'features/auth/registerView.html'
+				, caseInsensitve: true
+				, controller: 'authCtrl'
+				, resolve: {
+					currentUser: function (authSvc, $state) {
+						return authSvc.getCurrentUser().catch(function (err) {
+							return null
+						})
+					}
+				}
+			})
+			.state('profile', {
+				url: '/:username'
+				, templateUrl: 'features/user/userProfileView.html'
+				, controller: 'userCtrl'
+				, caseInsensitve: true
+				, resolve: {
+					currentUser: function (authSvc, $state) {
+						return authSvc.getCurrentUser().catch(function (err) {
+							return null
+						})
+					}
+					, checkUserExists: function (userSvc, $stateParams, $state) {
 						return userSvc.getUserInfo($stateParams.username).catch(function (err) {
 							//if no user exists with that username go back to the home route
 							$state.go('home');
 						})
-					},
-					userInfo: function (userSvc, $stateParams) {
+					}
+					, userInfo: function (userSvc, $stateParams) {
 						return userSvc.getUserInfo($stateParams.username)
 					}
 				}
 			})
 			.state('accountSettings', {
-				url: '/account/settings',
-				templateUrl: 'features/settings/accountSettingsView.html',
-				caseInsensitve: true,
-				controller: 'settingsCtrl',
-				resolve: {
+				url: '/account/settings'
+				, templateUrl: 'features/settings/accountSettingsView.html'
+				, caseInsensitve: true
+				, controller: 'settingsCtrl'
+				, resolve: {
 					currentUser: function (authSvc, $state) {
 						return authSvc.getCurrentUser().catch(function (err) {
 							$state.go('login')

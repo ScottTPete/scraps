@@ -3,38 +3,45 @@
 	<div class='nav-content-container'>
 
 		<div class='nav-logo-container'>
-			placeholder
+			<a ui-sref='home'>
+				<h1 class='nav-company-name'>Scraps</h1>
+			</a>
 		</div>
 
-		<div class='nav-search-container'> <i class="fa fa-search fa-1x" aria-hidden="true"></i>
-			<input>
+		<div class='nav-search-input-container'>
+			<div class='nav-search-input-wrapper'>
+				<i class="fa fa-search fa-1x" aria-hidden="true"></i>
+				<input type='search' ng-model='searchForUsers' placeholder='Search' pattern=".{1,}" required class='search-input'>
+			</div>
+
+			<search-results></search-results>
+
 		</div>
 
 		<div class='nav-links-container'>
 
-			<div class='nav-links login-container'>
-				<button class='nav-login' ng-if='loginBtn'>
+			<div class='login-container'>
+				<button class='nav-login nav-links' ng-if='loginBtn'>
 					<a ui-sref='login'>Login</a>
 				</button>
 			</div>
 
-			<div class='nav-links signup-container'>
-				<button class='nav-signUp' ng-if='signUpBtn'>
+			<div class='signup-container'>
+				<button class='nav-signUp nav-links' ng-if='signUpBtn'>
 					<a ui-sref='register'>Sign Up</a>
 				</button>
 			</div>
-			<div class='nav-links profileLink-container'>
-				<a ui-sref='profile({username: currentUser.username})' class='nav-profileLink'>
-					<i class="fa fa-user fa-2x" aria-hidden="true" ng-if='profileLink'></i>
+			<div class='profileLink-container' ng-if='profileLink'>
+				<a ui-sref='profile({username: currentUser.username})' class='nav-links nav-profileLink'>
+					<i class="fa fa-user fa-2x" aria-hidden="true"></i>
 				</a>
 			</div>
-			<div class='nav-links logout-container'>
-				<form class='nav-logout' ng-if='logoutBtn' action='/auth/logout' method='get'>
+			<div class='logout-container' ng-if='logoutBtn'>
+				<form class='nav-links nav-logout' action='/auth/logout' method='get'>
 					<input type='submit' value='Logout'>
 				</form>
 			</div>
 		</div>
 
-	</div>
 
-</div>
+	</div>

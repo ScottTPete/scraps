@@ -13,6 +13,7 @@
 	height: 80%;
 	display: flex;
 	flex-direction: row;
+	border: 2px solid #FFC04C;
 }
 
 .settings-options-container {
@@ -20,11 +21,47 @@
 	flex-direction: column;
 	flex-basis: 236px;
 	padding: 15px 15px 15px 30px;
+	border-right: 2px solid #FFC04C;
 }
 
 .settings-form-container {
 	display: flex;
 	flex-direction: column;
-	align-self: flex-start width: 75%;
+	align-self: flex-start;
+	width: 75%;
 	margin: 75px;
+}
+
+.settings-form-option-container {
+	display: flex;
+	flex-flow: row nowrap;
+	width: 100%;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.settings-form-left {
+	display: flex;
+	margin-right: 20px;
+	justify-content: flex-end;
+	flex-basis: 150px;
+}
+
+.settings-form-right {
+	flex-basis: 355px;
+	display: flex;
+	/*padding-right: 60px;*/
+	/*	flex: 1;*/
+}
+
+.settings-form-input {
+	flex: 1;
+	height: 32px;
+	padding-left: 10px;
+	font-size: 16px;
+}
+
+.settings-bio {
+	height: 60px;
+	padding-top: 6px;
 }

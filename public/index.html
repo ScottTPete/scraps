@@ -7,13 +7,24 @@
 	<title>Scraps</title>
 	<!--Base tag needed to make url pretty. All relative links will be based on the base.-->
 	<base href='/'>
-	<link rel='stylesheet' href='styles/reset.css'>
-	<link rel='stylesheet' href='styles/normalize.css'>
-	<link rel='stylesheet' href='styles/styles.css'>
-	<link rel='stylesheet' href='styles/navBar.css'>
-	<link rel='stylesheet' href='styles/profilePage.css'>
 	<!--Font Awesome Icons-->
 	<script src="https://use.fontawesome.com/987d0da3e4.js"></script>
+	<!--Logo Font-->
+	<script src="http://use.edgefonts.net/bad-script:n4:all.js"></script>
+	<!--CSS Reset/Normalize-->
+	<link rel='stylesheet' href='styles/reset.css'>
+	<link rel='stylesheet' href='styles/normalize.css'>
+	<!--My Styles-->
+	<link rel='stylesheet' href='styles/styles.css'>
+	<link rel='stylesheet' href='styles/navBar.css'>
+	<link rel='stylesheet' href='styles/search.css'>
+	<link rel='stylesheet' href='styles/profilePage.css'>
+	<link rel='stylesheet' href='styles/icons.css'>
+	<link rel='stylesheet' href='styles/footer.css'>
+	<link rel='stylesheet' href='styles/home.css'>
+	<link rel='stylesheet' href='styles/settings.css'>
+	<link rel='stylesheet' href='styles/login.css'>
+	<link rel='stylesheet' href='styles/register.css'>
 </head>
 
 <body ng-cloak>
@@ -30,6 +41,9 @@
 	<!--ANGULAR MATERIAL-->
 	<script src='http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.js'></script>
 
+	<!--Javascript load Image-->
+	<script src='js/load-image.all.min.js'></script>
+
 	<!--APP-->
 	<script src='js/app.js'></script>
 
@@ -43,11 +57,14 @@
 	<script src='features/user/userCtrl.js'></script>
 	<script src='features/settings/settingsCtrl.js'></script>
 	<script src='features/home/homeCtrl.js'></script>
+	<script src="features/auth/authCtrl.js"></script>
 
 	<!--DIRECTIVES-->
 	<script src='directives/imgUploading/profilePicUpload.js'></script>
 	<script src='directives/imgUploading/photoUpload.js'></script>
 	<script src='directives/navbar/navDirective.js'></script>
+	<script src="directives/footer/footerDirective.js"></script>
+	<script src="directives/search/searchDirective.js"></script>
 </body>
 
 </html>

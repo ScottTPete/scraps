@@ -1,0 +1,22 @@
+<div class='search-results-container' ng-if='searchResults'>
+	<div class='search-arrow-icon-container'>
+		<i class="fa fa-sort-asc fa-3x" aria-hidden="true"></i>
+	</div>
+	<div class='search-results-user-container' ng-repeat='user in searchUsers | filter: searchForUsers'>
+		<a ui-sref='profile({username: user.username})' class='search-userLink'>
+			<div class='search-results-user-wrapper'>
+				<div class='search-thumbnail-container'>
+					<img ng-src='{{user.profilePic}}' class='search-thumbnail'>
+				</div>
+				<div class='search-names-container'>
+					<div class='search-username-container'>
+						<label>{{user.username}}</label>
+					</div>
+					<div class='search-name-container' ng-if='fullname'>
+						<label>{{user.name.firstname}} {{user.name.lastname}}</label>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
