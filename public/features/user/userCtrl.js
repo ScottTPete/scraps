@@ -12,14 +12,17 @@ angular.module('scrapsApp')
 
 		//By default assume a user will not be on their own page.
 		$scope.photo.photoEditorEnabled = true;
+		$scope.followBtn = true;
 
 		//By default assume there will be no user logged in.
 		$scope.loginBtn = true;
 		$scope.signUpBtn = true;
 
-		//Number of posts a user has made. Show the stat by default.
+		//User stats: posts/followers/following. Show stats by default.
 		$scope.postCount = $scope.userInfo.photos.length;
-		$scope.postStats = true;
+		$scope.followersCount = $scope.userInfo.followers.length;
+		$scope.followingCount = $scope.userInfo.following.length;
+
 
 		//If there is a current user don't show login/sig. Do show a link to your profile and a signout option.
 		if ($scope.currentUser) {
@@ -29,31 +32,33 @@ angular.module('scrapsApp')
 			$scope.profileLink = true;
 		};
 
-		if ($scope.userInfo.name && $scope.userInfo.name.firsname) {
+		if ($scope.userInfo.name && $scope.userInfo.name.firstname) {
 			$scope.fullname = true;
 		}
 
 		//If the current user is on their own page, these options are accessible.
-		if ($stateParams.username === currentUser.username) {
+		if ($stateParams.username === $scope.currentUser.username) {
 			$scope.editAccountBtn = true;
 			$scope.photo.photoEditorEnabled = false;
 			$scope.uploadProfilePicBtn = true;
 			$scope.uploadPhotoBtn = true;
 			$scope.deletePhotoBtn = true;
 			$scope.userControls = true
+			$scope.followBtn = false;
 		};
 
-		//If the user has no posts. Don't show the stat.
-		if ($scope.postCount < 1) {
-			$scope.postStats = false;
-		};
-
-		if ($scope.photos < 1) {
+		if (!$scope.currentUser.photos) {
 			$scope.editPhotoBtnVisible = false;
-
-		} else if (currentUser._id === $scope.photos[0].postedBy) {
-			$scope.editPhotoBtnVisible = true;;
+		} else if ($scope.currentUser.photos > 0 && $scope.currentUser._id === $scope.photos[0].postedBy._id) {
+			$scope.editPhotoBtnVisible = true;
 		}
+
+		function checkIfFollowing() {
+			console.log($scope.userInfo.followers);
+			console.log($scope.currentUser.following);
+		}
+
+		checkIfFollowing();
 
 		//Show the edit options when clicked. Hide the editingBtn.
 		$scope.editPhotoEnabled = function (index) {
@@ -88,5 +93,20 @@ angular.module('scrapsApp')
 				reload: true
 			});
 		};
+
+		$scope.followUser = function () {
+			if (!$scope.currentUser) {
+				$state.go('login');
+			} else {
+				userSvc.followUser($scope.currentUser._id, $scope.userInfo._id);
+
+				$scope.followBtn = false;
+				$scope.unfollowBtn = true;
+
+				$state.go($state.current, {}, {
+					reload: true
+				});
+			}
+		}
 
 	})

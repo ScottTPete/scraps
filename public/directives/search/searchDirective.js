@@ -6,7 +6,7 @@ angular.module('scrapsApp')
 			, link: function (scope, element, attrs) {
 
 				scope.fullname = true;
-				userSvc.getUsers().then(function (response) {
+				userSvc.getUsersForSearch().then(function (response) {
 					response = response.splice(0, 5);
 
 					scope.searchUsers = response;
@@ -24,7 +24,7 @@ angular.module('scrapsApp')
 
 				searchInput.on('input', function () {
 					var inputLength = searchInput.val().length
-					console.log(inputLength)
+
 
 					if (inputLength > 1) {
 						scope.searchResults = true;

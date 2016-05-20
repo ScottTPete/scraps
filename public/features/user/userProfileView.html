@@ -15,6 +15,8 @@
 
 				<div class='userInfo-row one'>
 					<h3 class="userInfo-username">{{userInfo.username}}</h3>
+					<button class='follow-user-btn' ng-if='followBtn' ng-click='followUser()'>Follow</button>
+					<button ng-if='unfollowBtn' class='unfollow-user-btn' ng-click='unfollowUser()'>Unfollow</button>
 					<a class='userInfo-settingsLink' ng-if='editAccountBtn' ui-sref='accountSettings'>
 						<button type="button" class='userInfo-settinsBtn'>Edit Profile</button>
 					</a>
@@ -26,9 +28,9 @@
 				</div>
 
 				<div class='userInfo-row three'>
-					<h3 ng-if='postStats' class='userInfo-stats'> <span class='stats-number'>{{postCount}}</span> Posts</h3>
-					<h3 class='userInfo-stats'> <span class='stats-number'></span> Followers</h3>
-					<h3 class='userInfo-stats'> <span class='stats-number'></span> Following</h3>
+					<h3 class='userInfo-stats'> <span class='stats-number'>{{postCount}}</span> Posts</h3>
+					<h3 class='userInfo-stats'> <span class='stats-number'>{{followersCount}}</span> Followers</h3>
+					<h3 class='userInfo-stats'> <span class='stats-number'>{{followingCount}}</span> Following</h3>
 				</div>
 			</div>
 

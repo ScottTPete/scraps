@@ -1,6 +1,6 @@
-var passport = require('passport'),
-	session = require('express-session'),
-	User = require('../users/userModel');
+var passport = require('passport')
+	, session = require('express-session')
+	, User = require('../users/userModel');
 
 module.exports = {
 
@@ -22,7 +22,7 @@ module.exports = {
 				}
 
 				// Redirect if it succeeds
-				return res.redirect('/' + user.username);
+				return res.redirect('/user/' + user.username);
 			});
 		})(req, res, next);
 	},
@@ -62,8 +62,9 @@ module.exports = {
 			});
 		})(req, res, next);
 
-	},
-	currentUser: function (req, res, next) {
+	}
+	, currentUser: function (req, res, next) {
+		console.log(req.user)
 		res.send(req.user)
 	}
 

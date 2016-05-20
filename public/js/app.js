@@ -50,7 +50,7 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 				}
 			})
 			.state('profile', {
-				url: '/:username'
+				url: '/user/:username'
 				, templateUrl: 'features/user/userProfileView.html'
 				, controller: 'userCtrl'
 				, caseInsensitve: true
@@ -70,6 +70,22 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 						return userSvc.getUserInfo($stateParams.username)
 					}
 				}
+			})
+			.state('following', {
+				url: '/following'
+				, templateUrl: 'features/following/followingView.html'
+				, controller: 'followingCtrl'
+				, resolve: {
+					currentUser: function (authSvc, $state) {
+						return authSvc.getCurrentUser().catch(function (err) {
+							$state.go('login')
+						})
+					}
+					, getFollowing: function (followingSvc) {
+						return followingSvc.getFollowing();
+					}
+				}
+
 			})
 			.state('accountSettings', {
 				url: '/account/settings'

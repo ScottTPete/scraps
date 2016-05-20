@@ -3,8 +3,6 @@ angular.module('scrapsApp')
 
 		this.getUserInfo = function (username) {
 			return $http.get('/api/v1/users?username=' + username).then(function (response) {
-				//reverse the array so we get the latest photos first.
-				response.data[0].photos
 
 				return response.data[0]
 			})
@@ -22,7 +20,7 @@ angular.module('scrapsApp')
 			$http.put('/api/v1/user/' + user._id, user);
 		};
 
-		this.getUsers = function () {
+		this.getUsersForSearch = function () {
 			return $http.get('/api/v1/users').then(function (response) {
 				var searchUsers = [];
 				response.data.forEach(function (user) {
@@ -38,6 +36,14 @@ angular.module('scrapsApp')
 
 				return searchUsers;
 			})
+		};
+
+		this.followUser = function (currentUserId, userToFollowId) {
+			console.log(currentUserId, userToFollowId);
+			$http.put('/api/v1/user/' + currentUserId + '/following', {
+				userToFollow: userToFollowId
+				, currentUserId: currentUserId
+			});
 		}
 
 
