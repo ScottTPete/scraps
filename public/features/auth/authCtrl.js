@@ -10,7 +10,10 @@ angular.module('scrapsApp')
 
 		if ($scope.currentUser) {
 			$scope.profileLink = true;
+			$scope.logoutBtn = true;
 		}
+
+
 
 
 	})

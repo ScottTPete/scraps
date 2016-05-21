@@ -58,14 +58,14 @@ module.exports = {
 				}
 
 				// Redirect if it succeeds
-				return res.redirect('/' + user.username);
+				return res.redirect('/user/' + user.username);
 			});
 		})(req, res, next);
 
 	}
 	, currentUser: function (req, res, next) {
-		console.log(req.user)
 		res.send(req.user)
+
 	}
 
 

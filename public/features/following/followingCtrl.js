@@ -3,6 +3,7 @@ angular.module('scrapsApp')
 
 		$scope.currentUser = currentUser;
 		$scope.following = getFollowing;
+		console.log($scope.currentUser);
 
 
 

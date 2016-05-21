@@ -2,6 +2,7 @@ angular.module('scrapsApp')
 	.controller('settingsCtrl', function ($scope, currentUser, userSvc) {
 
 		$scope.profileLink = true;
+		$scope.logoutBtn = true;
 
 		$scope.currentUser = currentUser;
 		console.log($scope.currentUser);

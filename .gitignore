@@ -3,5 +3,4 @@ node_modules
 toDo.js
 
 /server/config/secrets.config.js
-/server/config/s3.secrets.js
 /server/config/s3.config.js
