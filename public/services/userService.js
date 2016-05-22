@@ -44,6 +44,13 @@ angular.module('scrapsApp')
 				userToFollow: userToFollowId
 				, currentUserId: currentUserId
 			});
+		};
+
+		this.unfollowUser = function (currentUserId, userToUnfollowId) {
+			console.log(userToUnfollowId)
+			$http.put('/api/v1/user/' + currentUserId + '/unfollow', {
+				id: userToUnfollowId
+			})
 		}
 
 

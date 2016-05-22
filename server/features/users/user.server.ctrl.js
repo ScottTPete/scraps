@@ -70,7 +70,31 @@ module.exports = {
 		})
 
 	}
-	, unFollowUser: function (req, res, next) {}
+	, unfollowUser: function (req, res, next) {
+		console.log(req.body)
+		User.findByIdAndUpdate(req.params.id, {
+			$pull: {
+				'following': req.body.id
+			}
+		}, function (err, response) {
+			if (err) {
+				res.status(500).send(err);
+			}
+			User.findByIdAndUpdate(req.body.id, {
+				$pull: {
+					'followers': req.params.id
+				}
+			}, function (err, response) {
+				if (err) {
+					res.status(500).send(err);
+				} else {
+					res.status(200).send(response);
+				}
+
+			})
+		});
+
+	}
 
 
 }

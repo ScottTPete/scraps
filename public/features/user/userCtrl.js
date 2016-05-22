@@ -2,8 +2,11 @@ angular.module('scrapsApp')
 	.controller('userCtrl', function ($scope, currentUser, $stateParams, userInfo, postSvc, userSvc, $state) {
 
 		$scope.currentUser = currentUser; //Current user.
+		console.log(currentUser);
 		console.log(userInfo);
 		$scope.userInfo = userInfo; //Info of user whose page someone is on.
+
+
 
 
 		$scope.newPhoto = {}; //create an object on scope that is used by the photoUpload directive.
@@ -32,6 +35,13 @@ angular.module('scrapsApp')
 			$scope.logoutBtn = true;
 			$scope.profileLink = true;
 			$scope.followingLink = true;
+			for (var i = 0; i < currentUser.following.length; i++) {
+				console.log(currentUser.following[i])
+				if ($scope.currentUser.following[i] === $scope.userInfo._id) {
+					$scope.followBtn = false;
+					$scope.unfollowBtn = true;
+				}
+			}
 		};
 
 		$scope.fullname = true;
@@ -42,6 +52,7 @@ angular.module('scrapsApp')
 		//If the current user is on their own page, these options are accessible.
 		if ($stateParams.username === $scope.currentUser.username) {
 			$scope.editAccountBtn = true;
+			$scope.editPhotoBtn = true;
 			$scope.photo.photoEditorEnabled = false;
 			$scope.uploadProfilePicBtn = true;
 			$scope.uploadPhotoBtn = true;
@@ -50,20 +61,12 @@ angular.module('scrapsApp')
 		};
 
 
-		$scope.mouseEnter = function () {
-			this.editPhotoBtn = true;
-			if (this.photoEditOptions === true) {
-				this.editPhotoBtn = false;
-			}
-		}
-
-		$scope.mouseExit = function () {
-			this.editPhotoBtn = false;
-		}
-
 		if (!$scope.currentUser.photos) {
-			$scope.editPhotoBtnVisible = false;
-		} else if ($scope.currentUser.photos > 0 && $scope.currentUser._id === $scope.photos[0].postedBy._id) {}
+			$scope.editPhotoBtn = false;
+		} else if ($scope.currentUser.photos > 0 && $scope.currentUser._id === $scope.photos[0].postedBy._id) {
+
+			$scope.editPhotoBtn = true;
+		}
 
 
 		//Show the edit options when clicked. Hide the editingBtn.
@@ -102,19 +105,40 @@ angular.module('scrapsApp')
 			});
 		};
 
+		if ($scope.currentUser.following >= 1) {
+
+		}
+
 		$scope.followUser = function () {
 			if (!$scope.currentUser) {
 				$state.go('login');
 			} else {
 				userSvc.followUser($scope.currentUser._id, $scope.userInfo._id);
 
-				$scope.followBtn = false;
 				$scope.unfollowBtn = true;
+				$scope.followBtn = false;
+				userSvc.getUserInfo($scope.currentUser.username).then(function (response) {
+					$scope.currentUser = response;
+					$state.go($state.current, {}, {
+						reload: true
+					});
+				})
+			}
 
+
+		}
+
+		$scope.unfollowUser = function () {
+			userSvc.unfollowUser($scope.currentUser._id, $scope.userInfo._id);
+
+			$scope.unfollowBtn = false;
+			$scope.followBtn = true;
+			userSvc.getUserInfo($scope.currentUser.username).then(function (response) {
+				$scope.currentUser = response;
 				$state.go($state.current, {}, {
 					reload: true
 				});
-			}
+			})
 		}
 
 	})

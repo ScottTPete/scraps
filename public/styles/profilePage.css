@@ -87,6 +87,10 @@
 	margin-left: 20px;
 }
 
+.unfollow-user-btn {
+	margin-left: 20px;
+}
+
 .userInfo-settingsLink {
 	margin-left: 20px;
 }
@@ -141,9 +145,10 @@
 	flex-direction: column;
 	justify-content: center;
 	flex-basis: 0;
+	position: relative;
 	align-items: flex-start;
 	margin: 15px;
-	box-shadow: 0 0 5px rgba(0, 0, 0, .13);
+	box-shadow: 0 0 5px rgba(0, 0, 0, .45);
 }
 
 .user-photo-container {
@@ -163,22 +168,42 @@
 	object-fit: scale-down;
 }
 
+.photo-footer-container {
+	display: flex;
+	flex-flow: row nowrap;
+	width: 100%;
+}
+
 .photo-details {
 	font-size: 14px;
 	color: #191919;
 }
 
-.photoInfo {
+.photo-like-icon {
+	margin-left: 6px;
+	display: flex;
+	align-items: center;
+}
+
+.photoInfo-location {
+	height: 20px;
+	margin-left: 6px;
+	padding-top: 4px;
+}
+
+.photoInfo-description {
 	height: 20px;
 	/*background-color: #FFC04C;*/
 	display: flex;
 	align-items: center;
 	margin-left: 6px;
+	margin-right: 3px;
+	flex-basis: 245px;
 }
 
 .edit-icon-container {
 	height: 20px;
 	display: flex;
-	justify-content: flex-end;
-	align-self: flex-end;
+	align-items: center;
+	margin-right: 5px;
 }
