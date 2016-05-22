@@ -4,15 +4,27 @@
 <div class='following-page-container'>
 
 	<div class='following-content-container'>
-		where'd you go I miss you so
+
+		<div ng-repeat='post in posts' class='post-container'>
+
+			<div class='post-header-container'>
+
+				<div class='post-thumbnail-container'>
+					<img ng-src='{{post.profilePic}}' class='post-thumbnail'>
+				</div>
+
+				<h3>{{post.username}}</h3>
 
 
-		<div ng-repeat='post in followingPosts'>{{post.username}}</div>
+
+			</div>
+			<div class='following-photo-wrapper'>
+				<div class='following-photo-container'>
+					<img ng-src='{{post.photo.image}}' class='following-photo'>
+				</div>
+			</div>
+		</div>
 	</div>
-
-
-
-
 </div>
 
 

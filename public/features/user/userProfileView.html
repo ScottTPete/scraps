@@ -41,7 +41,7 @@
 		</div>
 		<div class='user-posts-container'>
 
-			<div class='user-photo-wrapper' ng-repeat='photo in photos track by $index'>
+			<div class='user-photo-wrapper' ng-repeat='photo in photos track by $index' ng-mouseenter="mouseEnter()" ng-mouseleave="mouseExit()" ng-class='selected-photo'>
 				<div class='photoInfo location'>
 					<h3 class='photo-details'>{{photo.location}}</h3>
 				</div>
@@ -52,14 +52,18 @@
 					<h3 class='photo-details'>{{photo.description}}</h3>
 				</div>
 
-				<button ng-show='editPhotoBtnVisible' ng-click='editPhotoEnabled($index)'>Edit Photo</button>
-				<div ng-show='photo.photoEditOptions'>
+				<div class='edit-icon-container'>
+					<span class="icon-pencil" ng-show='editPhotoBtn' ng-click='editPhotoEnabled()'></span>
+				</div>
+				<div ng-show='photoEditOptions'>
 					<input placeholder='Describe this photo' ng-model='photo.description'>
 					<input placeholder='When was this taken?' ng-model='photo.date'>
 					<input placeholder='Where was this taken?' ng-model='photo.location'>
-					<input type='submit' ng-click='updatePhoto(photos[$index], photo._id)' value='Save Changes'>
-					<button ng-click='cancelEditingPhoto($index)'>Cancel</button>
-					<button ng-click='deletePhoto(photo._id)' ng-if='deletePhotoBtn'>Delete</button>
+					<div class='edit-photo-actions-container'>
+						<input type='submit' ng-click='updatePhoto(photos[$index], photo._id)' value='Save Changes'>
+						<button ng-click='cancelEditingPhoto($index)'>Cancel</button>
+						<button ng-click='deletePhoto(photo._id)' ng-if='deletePhotoBtn'>Delete</button>
+					</div>
 				</div>
 			</div>
 

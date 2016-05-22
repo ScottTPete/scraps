@@ -1,7 +1,7 @@
 /*FOLLOWING PAGE*/
 
 .following-page-container {
-	height: 84vh;
+	min-height: 84vh;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -10,6 +10,58 @@
 .following-content-container {
 	display: flex;
 	flex-direction: column;
-	width: 50%;
+	width: 35%;
 	height: 100%;
+}
+
+.post-container {
+	display: flex;
+	flex-flow: column nowrap;
+	width: 100%;
+	align-items: center;
+	box-shadow: 0 0 5px rgba(0, 0, 0, .13);
+	margin: 60px 0;
+}
+
+.post-header-container {
+	display: flex;
+	flex-flow: row nowrap;
+	height: 64px;
+	width: 100%;
+	align-items: center;
+}
+
+.post-thumbnail-container {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.post-thumbnail {
+	height: 36px;
+	width: 36px;
+	display: block;
+	margin: 0 auto;
+	border-radius: 50%;
+	border: 1px solid #cccfd0;
+	overflow: hidden;
+	position: relative;
+}
+
+.following-photo-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.following-photo-container {
+	height: auto;
+	width: 600px;
+	display: block;
+	overflow: hidden;
+	border-right: 6px solid #FAFAFA;
+	border-left: 6px solid #FAFAFA;
+}
+
+.following-photo {
+	height: auto;
+	width: 100%;
 }

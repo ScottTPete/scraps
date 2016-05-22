@@ -107,10 +107,7 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 						})
 					}
 					, getFollowingPosts: function (followingSvc) {
-						followingSvc.getFollowingPosts()/*.then(function (response) {
-	console.log(response)
-	return response
-})*/
+						return followingSvc.getFollowingPosts();
 					}
 				}
 

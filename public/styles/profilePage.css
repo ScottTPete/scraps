@@ -139,13 +139,15 @@
 .user-photo-wrapper {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	flex-basis: 0;
+	align-items: flex-start;
 	margin: 15px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, .13);
 }
 
 .user-photo-container {
-	height: 300px;
+	height: auto;
 	width: 300px;
 	display: block;
 	overflow: hidden;
@@ -163,7 +165,7 @@
 
 .photo-details {
 	font-size: 14px;
-	color: #ffc04c;
+	color: #191919;
 }
 
 .photoInfo {
@@ -172,4 +174,11 @@
 	display: flex;
 	align-items: center;
 	margin-left: 6px;
+}
+
+.edit-icon-container {
+	height: 20px;
+	display: flex;
+	justify-content: flex-end;
+	align-self: flex-end;
 }

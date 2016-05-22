@@ -45,30 +45,41 @@ angular.module('scrapsApp')
 			$scope.photo.photoEditorEnabled = false;
 			$scope.uploadProfilePicBtn = true;
 			$scope.uploadPhotoBtn = true;
-			$scope.deletePhotoBtn = true;
 			$scope.userControls = true
 			$scope.followBtn = false;
 		};
 
+
+		$scope.mouseEnter = function () {
+			this.editPhotoBtn = true;
+			if (this.photoEditOptions === true) {
+				this.editPhotoBtn = false;
+			}
+		}
+
+		$scope.mouseExit = function () {
+			this.editPhotoBtn = false;
+		}
+
 		if (!$scope.currentUser.photos) {
 			$scope.editPhotoBtnVisible = false;
-		} else if ($scope.currentUser.photos > 0 && $scope.currentUser._id === $scope.photos[0].postedBy._id) {
-			$scope.editPhotoBtnVisible = true;
-		}
+		} else if ($scope.currentUser.photos > 0 && $scope.currentUser._id === $scope.photos[0].postedBy._id) {}
 
 
 		//Show the edit options when clicked. Hide the editingBtn.
-		$scope.editPhotoEnabled = function (index) {
-			$scope.photo = $scope.photos[index]
-			$scope.photo.photoEditOptions = true;
-			$scope.editPhotoBtnVisible = false;
+		$scope.editPhotoEnabled = function () {
+			this.photoEditOptions = true;
+			this.editPhotoBtn = false;
+			this.deletePhotoBtn = true;
 
 		};
 
+
+
 		//Cancels editing and returns the prior scope. Well that's the plan, but it's broken.
 		$scope.cancelEditingPhoto = function (index) {
-			$scope.photo = $scope.photos[index];
-			$scope.photo.photoEditOptions = !$scope.photo.photoEditOptions;
+
+			this.photoEditOptions = !this.photoEditOptions;
 
 			$state.go($state.current, {}, {
 				reload: true

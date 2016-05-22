@@ -3,29 +3,42 @@ angular.module('scrapsApp')
 
 		this.getFollowingPosts = function () {
 			return $http.get('/api/v1/following').then(function (response) {
+				var followingUsers = response.data.following;
+				var post;
+				var postsArr = [];
 
-				var following = response.data.following;
-				console.log(following);
-				var followingInfo = {};
-				var followingPosts = [];
+				function getPosts(followingArr) {
+					for (var i = 0; i < followingArr.length; i++) {
+						if (followingArr[i].photos.length >= 1) {
+							for (var j = 0; j < followingArr[i].photos.length; j++) {
+								var photo = followingArr[i].photos[j];
 
-				for (var i = 0; i < following.length; i++) {
-					followingInfo = following[i];
+								post = {
+									username: followingArr[i].username
+									, profilePic: followingArr[i].profilePic
+									, photo: photo
+								, }
+								postsArr.push(post)
+							}
 
-					followingInfo.username = following[i].username;
-					followingInfo.profilePic = following[i].profilePic;
-					followingInfo.photos = following[i].photos;
+						}
+					}
 
-
-					followingPosts.push(followingInfo);
+					return postsArr;
 				}
 
-				console.log(followingPosts);
-				return followingPosts;
+				var posts = getPosts(followingUsers);
 
+				return posts;
 			})
 
+
+
+
+
 		}
+
+
 
 
 

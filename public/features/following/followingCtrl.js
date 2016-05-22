@@ -2,9 +2,9 @@ angular.module('scrapsApp')
 	.controller('followingCtrl', function ($scope, getFollowingPosts, currentUser) {
 
 		$scope.currentUser = currentUser;
-		$scope.followingPosts = getFollowingPosts;
+		$scope.posts = getFollowingPosts;
 
-		console.log($scope.followingPosts);
+		console.log($scope.posts);
 
 
 
