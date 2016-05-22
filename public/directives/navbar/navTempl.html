@@ -20,26 +20,41 @@
 
 		<div class='nav-links-container'>
 
-			<div class='login-container'>
-				<button class='nav-login nav-links' ng-if='loginBtn'>
-					<a ui-sref='login'>Login</a>
-				</button>
+			<div class='login-container' ng-if='loginBtn'>
+
+				<a ui-sref='login'>
+					<button class='nav-login nav-links'>Login</button>
+				</a>
+
 			</div>
 
-			<div class='signup-container'>
-				<button class='nav-signUp nav-links' ng-if='signUpBtn'>
-					<a ui-sref='register'>Sign Up</a>
-				</button>
+			<div class='signup-container' ng-if='signUpBtn'>
+				<a ui-sref='register'>
+					<button class='nav-signUp nav-links'>
+						Sign Up
+					</button>
+				</a>
+			</div>
+			<div class='following-icon-container' ng-if='followingLink'>
+
+				<a class='followingIcon' ui-sref='following'>
+					<span class="icon-images"></span>
+				</a>
+
+
+
 			</div>
 			<div class='profileLink-container' ng-if='profileLink'>
 				<a ui-sref='profile({username: currentUser.username})' class='nav-links nav-profileLink'>
-					<i class="fa fa-user fa-2x" aria-hidden="true"></i>
+					<i class="fa fa-user fa-2x " aria-hidden="true "></i>
 				</a>
 			</div>
 			<div class='logout-container' ng-if='logoutBtn'>
 				<form class='nav-links nav-logout' action='/auth/logout' method='get'>
 					<input type='submit' value='Logout'>
 				</form>
+
+
 			</div>
 		</div>
 

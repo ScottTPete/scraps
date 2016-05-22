@@ -3,16 +3,20 @@ angular.module('scrapsApp')
 
 		$scope.currentUser = currentUser;
 
-		$scope.logoutBtn = false;
+
 		$scope.loginBtn = true;
 		$scope.signUpBtn = true;
+
 
 		if ($scope.currentUser) {
 			$scope.loginBtn = false;
 			$scope.logoutBtn = true;
 			$scope.signUpBtn = false;
 			$scope.profileLink = true;
+			$scope.followingLink = true;
 		}
+
+
 
 
 	})

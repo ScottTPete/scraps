@@ -2,9 +2,10 @@ angular.module('scrapsApp')
 	.controller('userCtrl', function ($scope, currentUser, $stateParams, userInfo, postSvc, userSvc, $state) {
 
 		$scope.currentUser = currentUser; //Current user.
+		console.log(userInfo);
 		$scope.userInfo = userInfo; //Info of user whose page someone is on.
 
-		console.log($scope.userInfo);
+
 		$scope.newPhoto = {}; //create an object on scope that is used by the photoUpload directive.
 		$scope.photos = $scope.userInfo.photos; //put user photos on scope.
 		$scope.photos.reverse();
@@ -30,10 +31,12 @@ angular.module('scrapsApp')
 			$scope.signUpBtn = false;
 			$scope.logoutBtn = true;
 			$scope.profileLink = true;
+			$scope.followingLink = true;
 		};
 
-		if ($scope.userInfo.name && $scope.userInfo.name.firstname) {
-			$scope.fullname = true;
+		$scope.fullname = true;
+		if (!$scope.userInfo.name) {
+			$scope.fullname = false;
 		}
 
 		//If the current user is on their own page, these options are accessible.
@@ -53,19 +56,13 @@ angular.module('scrapsApp')
 			$scope.editPhotoBtnVisible = true;
 		}
 
-		function checkIfFollowing() {
-			console.log($scope.userInfo.followers);
-			console.log($scope.currentUser.following);
-		}
-
-		checkIfFollowing();
 
 		//Show the edit options when clicked. Hide the editingBtn.
 		$scope.editPhotoEnabled = function (index) {
 			$scope.photo = $scope.photos[index]
 			$scope.photo.photoEditOptions = true;
 			$scope.editPhotoBtnVisible = false;
-			console.log($scope.photo);
+
 		};
 
 		//Cancels editing and returns the prior scope. Well that's the plan, but it's broken.

@@ -7,3 +7,9 @@
 .fa-sort-asc {
 	height: 20px;
 }
+
+.icon-images:before {
+	content: "\e90e";
+	font-size: 30px;
+	color: #FFF
+}

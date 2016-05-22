@@ -1,0 +1,15 @@
+/*FOLLOWING PAGE*/
+
+.following-page-container {
+	height: 84vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.following-content-container {
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	height: 100%;
+}

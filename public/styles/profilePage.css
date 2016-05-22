@@ -58,7 +58,7 @@
 }
 
 .user-profilePic-upload {
-	width: 102px;
+	width: 90px;
 }
 
 .userInfo-container {
@@ -92,14 +92,13 @@
 }
 
 .userInfo-fullname {
-	font-size: 20px;
-	font-weight: 600;
+	font-size: 27px;
 	margin-right: 10px;
 }
 
 .userInfo-bio {
 	font-size: 17px;
-	/*	align-self: flex-end;*/
+	align-self: flex-end;
 }
 
 .userInfo-stats {

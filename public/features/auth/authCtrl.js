@@ -3,7 +3,7 @@ angular.module('scrapsApp')
 
 		$scope.currentUser = currentUser;
 
-		if (!$scope.currentUser && $state.includes('login')) {
+		if (!$scope.currentUser && $state.includes('login') || $state.includes('register')) {
 			$scope.loginBtn = true;;
 			$scope.signUpBtn = true;
 		}

@@ -3,12 +3,12 @@ angular.module('scrapsApp')
 
 		$scope.profileLink = true;
 		$scope.logoutBtn = true;
+		$scope.followingLink = true;
 
 		$scope.currentUser = currentUser;
-		console.log($scope.currentUser);
+
 
 		$scope.editProfile = function () {
-			console.log($scope.user);
 			userSvc.editProfile($scope.currentUser); //pass in the user to userSvc editProfile func.
 
 			getUserInfo($scope.currentUser.username); //call getUserInfo to update scope with new the new userInfo.
