@@ -5,7 +5,7 @@
 
 	<div class='following-content-container'>
 
-		<div ng-repeat='post in posts' class='post-container'>
+		<div ng-repeat='post in posts | orderBy: "photo.createdAt":true ' class='post-container'>
 
 			<div class='post-header-container'>
 
