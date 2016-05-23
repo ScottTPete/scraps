@@ -1,5 +1,5 @@
 angular.module('scrapsApp')
-	.controller('followingCtrl', function ($scope, getFollowingPosts, currentUser) {
+	.controller('followingCtrl', function ($scope, getFollowingPosts, currentUser, postSvc) {
 
 		$scope.currentUser = currentUser;
 		$scope.posts = getFollowingPosts;
@@ -11,6 +11,8 @@ angular.module('scrapsApp')
 		$scope.profileLink = true;
 		$scope.logoutBtn = true;
 		$scope.followingLink = true;
+		$scope.like = true;
+
 
 
 

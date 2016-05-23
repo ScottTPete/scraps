@@ -39,9 +39,10 @@
 		<div class='user-controls-container' ng-if='userControls'>
 			<input class='user-upload-photoBtn' ng-if='uploadPhotoBtn' type='file' value='Upload A Photo' images='images' accept='image/*' post-photo>
 		</div>
+
 		<div class='user-posts-container'>
 
-			<div class='user-photo-wrapper' ng-repeat='photo in photos track by $index' ng-class='selected-photo'>
+			<div class='user-photo-wrapper' ng-repeat='photo in photos track by $index' ng-class='selected-photo' check-likes>
 				<div class='photoInfo-location'>
 					<h3 class='photo-details'>{{photo.location}}</h3>
 				</div>
@@ -49,17 +50,28 @@
 					<img ng-src='{{photo.image}}' class='user-photo'>
 				</div>
 				<div class='photo-footer-container'>
-					<div class='photo-like-icon'>
-						<span class="icon-heart"></span>
+
+					<div class='photo-like-icon' ng-if='like'>
+						<i class="fa fa-heart like" aria-hidden="true" like-photo></i>
 					</div>
+					<div class='photo-like-icon' ng-if='liked'>
+						<i class="fa fa-heart liked" aria-hidden="true" unlike-photo></i>
+					</div>
+
+					<div class='photo-like-count-container'>
+						<h3 ng-if='photo.likes.length > 0' class='like-count'>{{photo.likes.length}}</h3>
+					</div>
+
 					<div class='photoInfo-description'>
 						<h3 class='photo-details'>{{photo.description}}</h3>
 					</div>
 
 					<div class='edit-icon-container' ng-show='editPhotoBtn'>
-						<span class="icon-pencil" ng-click='editPhotoEnabled()'></span>
+						<i class="fa fa-pencil" aria-hidden="true" ng-click='editPhotoEnabled()'></i>
+
 					</div>
 				</div>
+
 				<div ng-show='photoEditOptions'>
 					<input placeholder='Describe this photo' ng-model='photo.description'>
 					<input placeholder='When was this taken?' ng-model='photo.date'>

@@ -172,6 +172,7 @@
 	display: flex;
 	flex-flow: row nowrap;
 	width: 100%;
+	align-items: center;
 }
 
 .photo-details {
@@ -183,6 +184,7 @@
 	margin-left: 6px;
 	display: flex;
 	align-items: center;
+	margin-right: 2px;
 }
 
 .photoInfo-location {
@@ -191,14 +193,18 @@
 	padding-top: 4px;
 }
 
+.photo-like-count-container {
+	width: 5px;
+}
+
 .photoInfo-description {
 	height: 20px;
 	/*background-color: #FFC04C;*/
 	display: flex;
 	align-items: center;
 	margin-left: 6px;
-	margin-right: 3px;
-	flex-basis: 245px;
+	margin-right: 11px;
+	flex-basis: 235px;
 }
 
 .edit-icon-container {

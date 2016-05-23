@@ -9,8 +9,18 @@ angular.module('scrapsApp')
 			return $http.put('/api/v1/photo/' + photoId, photo)
 		};
 
-		this.deletePhoto = function(photoId) {
+		this.deletePhoto = function (photoId) {
 			$http.delete('/api/v1/photo/' + photoId)
+		};
+
+		this.likePhoto = function (photoId) {
+			console.log(photoId);
+			return $http.put('/api/v1/photo/' + photoId + '/likes');
+		};
+
+		this.unlikePhoto = function (photoId) {
+			console.log(photoId)
+			return $http.put('/api/v1/photo/' + photoId + '/unlike');
 		};
 
 	})

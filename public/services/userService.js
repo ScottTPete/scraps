@@ -10,11 +10,11 @@ angular.module('scrapsApp')
 
 		this.getUsersPhotos = function (username) {
 			return $http.get('/api/v1/users?username=' + username).then(function (response) {
-				var userPhotos = response.data[0].photos.reverse();
+				var userPhotos = response.data[0].photos
 
 				return userPhotos;
 			})
-		}
+		};
 
 		this.editProfile = function (user) {
 			$http.put('/api/v1/user/' + user._id, user);
@@ -51,7 +51,7 @@ angular.module('scrapsApp')
 			$http.put('/api/v1/user/' + currentUserId + '/unfollow', {
 				id: userToUnfollowId
 			})
-		}
+		};
 
 
 	})

@@ -73,6 +73,17 @@
 	width: 100%;
 }
 
+.following-like-cotainer {
+	margin-left: 6px;
+	display: flex;
+	align-items: center;
+	margin-right: 2px;
+}
+
+.following-like-count-container {
+	width: 5px;
+}
+
 .following-description-like-container {
 	display: flex;
 	flex-flow: row nowrap;
@@ -83,4 +94,9 @@
 .following-photo-description-container {
 	display: flex;
 	width: 100%;
+	margin-left: 6px;
+}
+
+.following-like-container {
+	margin-right: 5px;
 }

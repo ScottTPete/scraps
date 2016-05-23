@@ -2,21 +2,22 @@ angular.module('scrapsApp')
 	.controller('userCtrl', function ($scope, currentUser, $stateParams, userInfo, postSvc, userSvc, $state) {
 
 		$scope.currentUser = currentUser; //Current user.
-		console.log(currentUser);
-		console.log(userInfo);
 		$scope.userInfo = userInfo; //Info of user whose page someone is on.
-
-
-
 
 		$scope.newPhoto = {}; //create an object on scope that is used by the photoUpload directive.
 		$scope.photos = $scope.userInfo.photos; //put user photos on scope.
 		$scope.photos.reverse();
 		$scope.photo = {};
+		//All photos like button will be shown by default
+		$scope.like = true;
+		if (!$scope.currentUser) {
+			$scope.like = true;
+			$scope.liked = false;
+		}
 
 		//By default assume a user will not be on their own page.
-		$scope.photo.photoEditorEnabled = true;
 		$scope.followBtn = true;
+		$scope.editPhotoBtn = false;
 
 		//By default assume there will be no user logged in.
 		$scope.loginBtn = true;
@@ -36,7 +37,6 @@ angular.module('scrapsApp')
 			$scope.profileLink = true;
 			$scope.followingLink = true;
 			for (var i = 0; i < currentUser.following.length; i++) {
-				console.log(currentUser.following[i])
 				if ($scope.currentUser.following[i] === $scope.userInfo._id) {
 					$scope.followBtn = false;
 					$scope.unfollowBtn = true;
@@ -53,21 +53,16 @@ angular.module('scrapsApp')
 		if ($stateParams.username === $scope.currentUser.username) {
 			$scope.editAccountBtn = true;
 			$scope.editPhotoBtn = true;
-			$scope.photo.photoEditorEnabled = false;
 			$scope.uploadProfilePicBtn = true;
 			$scope.uploadPhotoBtn = true;
 			$scope.userControls = true
 			$scope.followBtn = false;
 		};
 
-
-		if (!$scope.currentUser.photos) {
-			$scope.editPhotoBtn = false;
-		} else if ($scope.currentUser.photos > 0 && $scope.currentUser._id === $scope.photos[0].postedBy._id) {
+		if ($scope.currentUser.photos > 0 && $scope.currentUser._id === $scope.photos[0].postedBy._id) {
 
 			$scope.editPhotoBtn = true;
-		}
-
+		};
 
 		//Show the edit options when clicked. Hide the editingBtn.
 		$scope.editPhotoEnabled = function () {
@@ -77,13 +72,9 @@ angular.module('scrapsApp')
 
 		};
 
-
-
-		//Cancels editing and returns the prior scope. Well that's the plan, but it's broken.
-		$scope.cancelEditingPhoto = function (index) {
-
+		//Cancels editing and returns the prior scope.
+		$scope.cancelEditingPhoto = function () {
 			this.photoEditOptions = !this.photoEditOptions;
-
 			$state.go($state.current, {}, {
 				reload: true
 			});
@@ -105,10 +96,6 @@ angular.module('scrapsApp')
 			});
 		};
 
-		if ($scope.currentUser.following >= 1) {
-
-		}
-
 		$scope.followUser = function () {
 			if (!$scope.currentUser) {
 				$state.go('login');
@@ -124,9 +111,7 @@ angular.module('scrapsApp')
 					});
 				})
 			}
-
-
-		}
+		};
 
 		$scope.unfollowUser = function () {
 			userSvc.unfollowUser($scope.currentUser._id, $scope.userInfo._id);
@@ -139,6 +124,5 @@ angular.module('scrapsApp')
 					reload: true
 				});
 			})
-		}
-
+		};
 	})

@@ -31,3 +31,8 @@ a {
 .btn {
 	cursor: pointer;
 }
+
+.like-count {
+	color: #CCC;
+	margin-left: 2px;
+}

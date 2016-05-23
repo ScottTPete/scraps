@@ -5,7 +5,7 @@
 
 	<div class='following-content-container'>
 
-		<div ng-repeat='post in posts | orderBy: "photo.createdAt":true ' class='post-container'>
+		<div ng-repeat='post in posts | orderBy: "photo.createdAt":true ' class='post-container' check-following-likes>
 
 			<div class='post-header-container'>
 
@@ -25,11 +25,17 @@
 			</div>
 			<div class='following-photo-footer-container'>
 				<div class='following-description-like-container'>
-					<div class='following-like-container'>
-						<span class="icon-heart"></span>
+					<div class='following-like-container' ng-if='like'>
+						<i class="fa fa-heart like" aria-hidden="true" like-following-photo></i>
+					</div>
+					<div class='following-like-container' ng-if='liked'>
+						<i class="fa fa-heart liked" aria-hidden="true" unlike-following-photo></i>
+					</div>
+					<div class='post-like-count-container'>
+						<h3 ng-if='post.photo.likes.length > 0' class='like-count'>{{post.photo.likes.length}}</h3>
 					</div>
 
-					<div class='following-photo-description-container'>
+					<div class=' following-photo-description-container '>
 						<h3>{{post.photo.description}}</h3>
 					</div>
 

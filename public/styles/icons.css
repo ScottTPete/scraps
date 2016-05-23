@@ -1,20 +1,36 @@
 /*ICONS*/
 
 .fa {
-	color: #FFF
+	color: #FAFAFA;
 }
 
 .fa-sort-asc {
 	height: 20px;
 }
 
-.icon-images:before {
-	content: "\e90e";
-	font-size: 30px;
-	color: #FFF
+.like {
+	color: #CCC;
+	cursor: pointer;
 }
 
-.icon-pencil {
-	color: #FFC04C;
+.like:hover {
+	color: #FFC40C;
+}
+
+.liked {
+	color: #ffc40c;
 	cursor: pointer;
+}
+
+.liked:hover {
+	color: #CCC;
+}
+
+.fa-pencil {
+	color: #CCC;
+	cursor: pointer;
+}
+
+.fa-pencil:hover {
+	color: #ffc40c;
 }
