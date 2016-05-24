@@ -41,6 +41,7 @@
 	width: 152px;
 	display: block;
 	margin: 0 auto;
+	margin-bottom: 5px;
 	border-radius: 50%;
 	border: 1px solid #cccfd0;
 	overflow: hidden;
