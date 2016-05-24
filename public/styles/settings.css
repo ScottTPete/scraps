@@ -24,6 +24,12 @@
 	border-right: 2px solid #FE9873;
 }
 
+.settings-list-item {
+	display: flex;
+	width: 75%;
+	justify-content: center;
+}
+
 .settings-form-container {
 	display: flex;
 	flex-direction: column;
@@ -64,4 +70,16 @@
 .settings-bio {
 	height: 60px;
 	padding-top: 6px;
+}
+
+.settings-save-btn {
+	padding: 5px 0;
+	color: #FE9873;
+	background: #FAFAFA;
+	border: 1px solid #FE9873;
+}
+
+.settings-save-btn:hover {
+	color: #FAFAFA;
+	background: #fe9873;
 }
