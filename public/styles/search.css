@@ -25,7 +25,7 @@
 	outline: none;
 	border: 2px solid #dbdbdb;
 	background-color: #FAFAFA;
-	color: coral;
+	color: #bdbdbd;
 	height: 30px;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .search-thumbnail-container {
-	border-right: 1px solid #/#FE9873;
+	border-right: 1px solid #FE9873;
 }
 
 .search-thumbnail {

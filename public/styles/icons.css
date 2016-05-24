@@ -9,6 +9,10 @@
 	height: 20px;
 }
 
+.search-icon {
+	color: #ccc;
+}
+
 .like {
 	color: #CCC;
 	cursor: pointer;
