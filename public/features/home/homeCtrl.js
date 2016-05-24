@@ -1,7 +1,8 @@
 angular.module('scrapsApp')
-	.controller('homeCtrl', function ($scope, currentUser) {
+	.controller('homeCtrl', function ($scope, currentUser, photosForCollage) {
 
 		$scope.currentUser = currentUser;
+		$scope.photos = photosForCollage;
 
 
 		$scope.loginBtn = true;

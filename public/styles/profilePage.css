@@ -59,6 +59,7 @@
 
 .user-profilePic-upload {
 	width: 90px;
+	font-size: 12px;
 }
 
 .userInfo-container {
@@ -76,10 +77,9 @@
 }
 
 .userInfo-username {
-	font-size: 34px;
+	font-size: 24px;
 	font-weight: 400;
 	white-space: nowrap;
-	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
@@ -93,6 +93,10 @@
 
 .userInfo-settingsLink {
 	margin-left: 20px;
+}
+
+.userInfo-settingsBtn {
+	cursor: pointer;
 }
 
 .userInfo-fullname {
@@ -112,6 +116,7 @@
 
 .stats-number {
 	font-weight: 600;
+	color: coral;
 }
 
 .user-upload-photoBtn {
@@ -178,6 +183,8 @@
 .photo-details {
 	font-size: 14px;
 	color: #191919;
+	margin-left: 3px;
+	font-weight: 500;
 }
 
 .photo-like-icon {

@@ -1,0 +1,22 @@
+<div class='photo-collage-container'>
+
+	<div class='collage-wrapper'>
+		<div class='photo-collage-image-container' ng-repeat='photo in photos | orderBy: "photo.createdAt":reverse track by $index'>
+
+			<img ng-src='{{photo.image}}' class='collage-image'>
+
+
+
+
+		</div>
+
+
+	</div>
+
+
+
+
+
+
+
+</div>

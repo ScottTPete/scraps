@@ -20,10 +20,12 @@
 .search-input {
 	margin-left: 5px;
 	padding: 6px 0px 6px 10px;
-	border-radius: 15px;
-	color: #949494;
+	border-radius: 3px;
+	font-weight: 700;
 	outline: none;
-	border: 0;
+	border: 2px solid #dbdbdb;
+	background-color: beige;
+	color: coral;
 }
 
 .search-results-container {
@@ -50,7 +52,7 @@
 	overflow-x: hidden;
 	padding: 0;
 	background-color: #FFF;
-	box-shadow: 0 0 5px rgba(0, 0, 0, .13);
+	box-shadow: 0 0 5px rgba(0, 0, 0, .45);
 	border-left: 1px solid #cccfd0;
 	border-right: 1px solid #cccfd0;
 }

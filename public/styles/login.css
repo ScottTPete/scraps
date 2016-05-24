@@ -13,7 +13,7 @@
 		width: 36%;
 		height: 80%;
 		border-radius: 5px;
-		border: 7px solid #FFC04C;
+		border: 5px solid #FFC04C;
 		background-color: #FFC04C;
 		position: relative;
 		margin-right: 73px;
@@ -72,10 +72,18 @@
 	.login-form-right {
 		display: flex;
 		margin-right: 15px;
+		height: 25px;
+		color: #ffc04c;
 	}
 	
 	.login-input {
-		/*		width: 229px;*/
+		padding: 4px;
+	}
+
+	.login-cancel-btn {
+		height: 25px;
+		font-size: 15px;
+		color: #ffc04c;
 	}
 	
 	.login-form-option-container a {
@@ -84,7 +92,7 @@
 	}
 	
 	.login-register-label {
-		font-size: 16px;
+		font-size: 14px;
 	}
 	
 	.login-registerLink {

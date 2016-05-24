@@ -23,4 +23,18 @@ angular.module('scrapsApp')
 			return $http.put('/api/v1/photo/' + photoId + '/unlike');
 		};
 
+		this.getPhotos = function () {
+			return $http.get('/api/v1/photos').then(function (response) {
+				console.log(response);
+				var responsePhotos = response.data;
+
+
+				var reverseArr = responsePhotos.reverse()
+
+				var twelvePhotos = reverseArr.splice(0, 12);
+				console.log(twelvePhotos);
+				return twelvePhotos;
+			})
+		}
+
 	})

@@ -13,7 +13,7 @@
 	width: 36%;
 	height: 80%;
 	border-radius: 5px;
-	border: 7px solid #FFC04C;
+	border: 5px solid #FFC04C;
 	background-color: #FFC04C;
 	position: relative;
 	margin-right: 73px;
@@ -74,12 +74,19 @@
 	margin-right: 15px;
 }
 
+.register-input {
+	padding: 4px;
+}
+
 .register-createBtn {
+	height: 25px;
 	margin-right: 20px;
+	color: #FFC04C;
+	font-size: 15px;
 }
 
 .register-login-label {
-	font-size: 15px;
+	font-size: 12px;
 }
 
 .register-loginLink {

@@ -84,6 +84,11 @@
 	width: 5px;
 }
 
+.like-count {
+	color: #FFC04c;
+	font-weight: 700;
+}
+
 .following-description-like-container {
 	display: flex;
 	flex-flow: row nowrap;
@@ -95,6 +100,10 @@
 	display: flex;
 	width: 100%;
 	margin-left: 6px;
+}
+
+.following-photo-description {
+	font-size: 14px;
 }
 
 .following-like-container {

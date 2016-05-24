@@ -1,4 +1,4 @@
-angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
+angular.module('scrapsApp', ['ui.router'/*, 'ngMaterial'*/])
 
 .constant("$MD_THEME_CSS", "")
 
@@ -19,6 +19,12 @@ angular.module('scrapsApp', ['ui.router', 'ngMaterial'])
 					currentUser: function (authSvc, $state) {
 						return authSvc.getCurrentUser().catch(function (err) {
 							return null
+						})
+					}
+					, photosForCollage: function (postSvc) {
+						return postSvc.getPhotos().then(function (response) {
+							console.log(response);
+							return response;
 						})
 					}
 				, }
