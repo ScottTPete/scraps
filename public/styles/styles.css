@@ -24,18 +24,28 @@ body {
 
 a {
 	text-decoration: none;
-	color: #FFF;
+	color: #FE9873;
 	cursor: pointer;
+	outline: none;
 }
-
-
 
 button {
 	font-size: 14px;
 }
 
+input[type=file] {
+	display: none;
+}
+
 .btn {
 	cursor: pointer;
+	color: #FE9873;
+	outline: none;
+}
+
+.btn:hover {
+	color: #FAFAFA;
+	background: #FE9873;
 }
 
 .like-count {

@@ -13,8 +13,8 @@
 		width: 36%;
 		height: 80%;
 		border-radius: 5px;
-		border: 5px solid #FFC04C;
-		background-color: #FFC04C;
+		border: 5px solid #FE9873;
+		background-color: #FE9873;
 		position: relative;
 		margin-right: 73px;
 	}
@@ -44,7 +44,7 @@
 	.login-company-name {
 		font-size: 70px;
 		font-family: bad-script;
-		color: #FFC04C;
+		color: #FE9873;
 	}
 	
 	.login-form-container {
@@ -73,7 +73,8 @@
 		display: flex;
 		margin-right: 15px;
 		height: 25px;
-		color: #ffc04c;
+		border: 1px solid #FE9873;
+		background: #FAFAFA;
 	}
 	
 	.login-input {
@@ -83,7 +84,14 @@
 	.login-cancel-btn {
 		height: 25px;
 		font-size: 15px;
-		color: #ffc04c;
+		color: #FE9873;
+		border: 1px solid #FE9873;
+		background: #FAFAFA;
+	}
+
+	.login-cancel-btn:hover {
+		color: #FAFAFA;
+		background: #FE9873;
 	}
 	
 	.login-form-option-container a {
@@ -96,6 +104,6 @@
 	}
 	
 	.login-registerLink {
-		color: #ffc04c;
+		color: #FE9873;
 		font-weight: 700;
 	}

@@ -1,7 +1,7 @@
 /*ICONS*/
 
 .fa {
-	color: #ffc04c;
+	color: #FE9873;
 	font-weight: 700;
 }
 
@@ -15,11 +15,11 @@
 }
 
 .like:hover {
-	color: #FFC40C;
+	color: #FE9873;
 }
 
 .liked {
-	color: #ffc40c;
+	color: #FE9873;
 	cursor: pointer;
 }
 
@@ -33,5 +33,5 @@
 }
 
 .fa-pencil:hover {
-	color: #ffc40c;
+	color: #FE9873;
 }

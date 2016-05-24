@@ -33,7 +33,7 @@
 	flex-basis: 0;
 	flex-grow: 1;
 	margin-right: 15px;
-	border-right: 1px solid #FFC04C;
+	border-right: 1px solid #FE9873;
 }
 
 .user-profilePic-container {
@@ -57,9 +57,18 @@
 	width: 100%;
 }
 
-.user-profilePic-upload {
-	width: 90px;
-	font-size: 12px;
+.custom-profile-pic-upload {
+	font-size: 16px;
+	padding: 4px 15px;
+	color: #FE9873;
+	background: #FAFAFA;
+	border: 1px solid #FE9873;
+	cursor: pointer;
+}
+
+.custom-profile-pic-upload:hover {
+	color: #FAFAFA;
+	background: #FE9873;
 }
 
 .userInfo-container {
@@ -77,7 +86,7 @@
 }
 
 .userInfo-username {
-	font-size: 24px;
+	font-size: 30px;
 	font-weight: 400;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -93,10 +102,21 @@
 
 .userInfo-settingsLink {
 	margin-left: 20px;
+	outline: none;
 }
 
 .userInfo-settingsBtn {
 	cursor: pointer;
+	height: 30px;
+	color: #FE9873;
+	background: #FAFAFA;
+	border: 1px solid #FE9873;
+	outline: none;
+}
+
+.userInfo-settingsBtn:hover {
+	color: #FAFAFA;
+	background: #FE9873;
 }
 
 .userInfo-fullname {
@@ -116,11 +136,21 @@
 
 .stats-number {
 	font-weight: 600;
-	color: coral;
+	color: #FE9873;
 }
 
 .user-upload-photoBtn {
-	margin: 0 auto;
+	font-size: 16px;
+	padding: 8px 15px;
+	color: #FE9873;
+	background: #FAFAFA;
+	border: 1px solid #FE9873;
+	cursor: pointer;
+}
+
+.user-upload-photoBtn:hover {
+	color: #FAFAFA;
+	background: #FE9873;
 }
 
 

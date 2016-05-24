@@ -9,7 +9,8 @@
 
 				</div>
 
-				<input class='user-profilePic-upload' ng-if='uploadProfilePicBtn' type='file' value='Upload Profile Pic' images='images' accept='image/*' profile-pic-upload>
+				<label for="profile-pic-upload" class="custom-profile-pic-upload" ng-if='uploadProfilePicBtn'>Change</label>
+				<input id='profile-pic-upload' ng-if='uploadProfilePicBtn' type='file' value='Upload Profile Pic' images='images' accept='image/*' profile-pic-upload>
 			</div>
 			<div class='userInfo-container'>
 
@@ -37,7 +38,8 @@
 		</div>
 
 		<div class='user-controls-container' ng-if='userControls'>
-			<input class='user-upload-photoBtn' ng-if='uploadPhotoBtn' type='file' value='Upload A Photo' images='images' accept='image/*' post-photo>
+			<label for="photo-upload" class="user-upload-photoBtn" ng-if='uploadPhotoBtn'>Add New Photo</label>
+			<input id='photo-upload' ng-if='uploadPhotoBtn' type='file' value='Upload A Photo' images='images' accept='image/*' post-photo>
 		</div>
 
 		<div class='user-posts-container'>

@@ -24,7 +24,7 @@
 	font-weight: 700;
 	outline: none;
 	border: 2px solid #dbdbdb;
-	background-color: beige;
+	background-color: #FAFAFA;
 	color: coral;
 }
 
@@ -35,7 +35,7 @@
 	width: 300px;
 	position: absolute;
 	max-height: 362px;
-	margin-left: -118px;
+	margin-left: -150px;
 }
 
 .search-arrow-icon-container {
@@ -71,7 +71,7 @@
 }
 
 .search-thumbnail-container {
-	border-right: 1px solid #FFC04C;
+	border-right: 1px solid #/#FE9873;
 }
 
 .search-thumbnail {

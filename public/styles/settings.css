@@ -13,7 +13,7 @@
 	height: 80%;
 	display: flex;
 	flex-direction: row;
-	border: 2px solid #FFC04C;
+	border: 2px solid #FE9873;
 }
 
 .settings-options-container {
@@ -21,7 +21,7 @@
 	flex-direction: column;
 	flex-basis: 236px;
 	padding: 15px 15px 15px 30px;
-	border-right: 2px solid #FFC04C;
+	border-right: 2px solid #FE9873;
 }
 
 .settings-form-container {
