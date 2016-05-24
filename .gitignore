@@ -4,3 +4,4 @@ toDo.js
 
 /server/config/secrets.config.js
 /server/config/s3.config.js
+/server/config/server.config.js

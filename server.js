@@ -1,5 +1,8 @@
 var passport = require('passport')
+	, serverConfig = require('./server/config/server.config')
 	, app = require('./server/config/express.config')();
+
+
 
 //Mongoose Config//
 require('./server/config/mongoose.config')();
@@ -28,7 +31,7 @@ app.all('*', function (req, res, next) {
 });
 
 //PORT//
-var port = process.env.PORT || 3000;
+var port = serverConfig.serverPort;
 
 app.listen(port, function () {
 	console.log('Listening on port ' + port);
