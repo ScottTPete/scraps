@@ -3,6 +3,7 @@ angular.module('scrapsApp')
 
 		$scope.currentUser = currentUser;
 		$scope.photos = photosForCollage;
+		console.log(photosForCollage)
 
 
 		$scope.loginBtn = true;
