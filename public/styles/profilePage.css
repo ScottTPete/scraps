@@ -95,10 +95,28 @@
 
 .follow-user-btn {
 	margin-left: 20px;
+	height: 30px;
+	border: 1px solid #ccc;
+	background: #FAFAFA;
+	color: #ccc;
+}
+
+.follow-user-btn:hover {
+	color: #fe9873;
+	border: 1px solid #fe9873;
 }
 
 .unfollow-user-btn {
 	margin-left: 20px;
+	height: 30px;
+	border: 1px solid #FE9873;
+	background: #FAFAFA;
+	color: #FE9873;
+}
+
+.unfollow-user-btn:hover {
+	border: 1px solid #ccc;
+	color: #ccc;
 }
 
 .userInfo-settingsLink {

@@ -4,7 +4,7 @@ angular.module('scrapsApp')
 			restrict: 'A'
 			, link: function (scope, elem, attrs) {
 
-				if (scope.post.photo.likes.indexOf(scope.currentUser._id) != -1) {
+				if (scope.post.likes.indexOf(scope.currentUser._id) != -1) {
 					scope.liked = true;
 					scope.like = false;
 				}

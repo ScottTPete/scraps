@@ -5,7 +5,7 @@
 
 	<div class='following-content-container'>
 
-		<div ng-repeat='post in posts | orderBy: "photo.createdAt":true ' class='post-container' check-following-likes>
+		<div ng-repeat='post in posts track by $index' class='post-container' check-following-likes>
 
 			<div class='post-header-container'>
 
@@ -20,7 +20,9 @@
 			</div>
 			<div class='following-photo-wrapper'>
 				<div class='following-photo-container'>
-					<img ng-src='{{post.photo.image}}' class='following-photo'>
+					<a ng-click="openLightboxModal($index)">
+						<img ng-src='{{post.image}}' class='following-photo'>
+					</a>
 				</div>
 			</div>
 			<div class='following-photo-footer-container'>
@@ -32,11 +34,11 @@
 						<i class="fa fa-heart liked" aria-hidden="true" unlike-following-photo></i>
 					</div>
 					<div class='post-like-count-container'>
-						<h3 ng-if='post.photo.likes.length > 0' class='like-count'>{{post.photo.likes.length}}</h3>
+						<h3 ng-if='post.likes.length > 0' class='like-count'>{{post.likes.length}}</h3>
 					</div>
 
 					<div class=' following-photo-description-container '>
-						<h3 class='following-photo-description'>{{post.photo.description}}</h3>
+						<h3 class='following-photo-description'>{{post.description}}</h3>
 					</div>
 
 				</div>

@@ -42,6 +42,7 @@
 			<input id='photo-upload' ng-if='uploadPhotoBtn' type='file' value='Upload A Photo' images='images' accept='image/*' post-photo>
 		</div>
 
+
 		<div class='user-posts-container'>
 
 			<div class='user-photo-wrapper' ng-repeat='photo in photos track by $index' ng-class='selected-photo' check-likes>
@@ -49,7 +50,9 @@
 					<h3 class='photo-details'>{{photo.location}}</h3>
 				</div>
 				<div class='user-photo-container'>
-					<img ng-src='{{photo.image}}' class='user-photo'>
+					<a ng-click="openLightboxModal($index)">
+						<img ng-src='{{photo.image}}' class='user-photo'>
+					</a>
 				</div>
 				<div class='photo-footer-container'>
 

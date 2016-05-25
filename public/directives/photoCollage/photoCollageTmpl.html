@@ -2,9 +2,9 @@
 
 	<div class='collage-wrapper'>
 		<div class='photo-collage-image-container' ng-repeat='photo in photos | orderBy: "photo.createdAt":reverse track by $index'>
-
-			<img ng-src='{{photo.image}}' class='collage-image'>
-
+			<a ui-sref='profile({username: photo.postedBy.username})'>
+				<img ng-src='{{photo.image}}' class='collage-image'>
+			</a>
 
 
 

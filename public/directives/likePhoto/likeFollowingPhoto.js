@@ -6,7 +6,7 @@ angular.module('scrapsApp')
 
 				elem.on('click', function () {
 
-					postSvc.likePhoto(scope.post.photo._id)
+					postSvc.likePhoto(scope.post.photoId)
 
 					scope.like = false;
 					scope.liked = true;

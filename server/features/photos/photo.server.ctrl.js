@@ -24,7 +24,10 @@ module.exports = {
 		})
 	}
 	, getPhotos: function (req, res, next) {
-		Photo.find(req.query, function (err, photos) {
+		Photo.find(req.query).populate({
+			path: 'postedBy'
+			, select: 'username _id'
+		}).exec(function (err, photos) {
 			if (err) {
 				res.status(500).send(err);
 			} else {
