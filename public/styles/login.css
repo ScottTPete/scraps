@@ -79,6 +79,11 @@
 	
 	.login-input {
 		padding: 4px;
+		border: 1px solid #ccc;
+	}
+
+	.login-btn:active {
+		outline: none;
 	}
 
 	.login-cancel-btn {
@@ -87,6 +92,11 @@
 		color: #FE9873;
 		border: 1px solid #FE9873;
 		background: #FAFAFA;
+		outline: none;
+	}
+
+	.login-cancel-btn:focus {
+		outline: none;
 	}
 
 	.login-cancel-btn:hover {

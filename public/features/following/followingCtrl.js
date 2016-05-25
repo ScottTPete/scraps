@@ -1,8 +1,12 @@
 angular.module('scrapsApp')
-	.controller('followingCtrl', function ($scope, getFollowingPosts, currentUser, postSvc) {
+	.controller('followingCtrl', function ($scope, getFollowingPosts, currentUser, Lightbox) {
 
 		$scope.currentUser = currentUser;
-		$scope.posts = getFollowingPosts;
+		$scope.posts = getFollowingPosts.sort(function (a, b) {
+			var c = new Date(a.createdAt);
+			var d = new Date(b.createdAt);
+			return d - c;
+		})
 
 		console.log($scope.posts);
 
@@ -15,7 +19,9 @@ angular.module('scrapsApp')
 
 
 
-
+		$scope.openLightboxModal = function (index) {
+			Lightbox.openModal($scope.posts, index);
+		};
 
 
 

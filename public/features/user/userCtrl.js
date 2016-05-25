@@ -1,5 +1,5 @@
 angular.module('scrapsApp')
-	.controller('userCtrl', function ($scope, currentUser, $stateParams, userInfo, postSvc, userSvc, $state) {
+	.controller('userCtrl', function ($scope, currentUser, $stateParams, userInfo, postSvc, userSvc, $state, Lightbox) {
 
 		$scope.currentUser = currentUser; //Current user.
 		$scope.userInfo = userInfo; //Info of user whose page someone is on.
@@ -124,5 +124,9 @@ angular.module('scrapsApp')
 					reload: true
 				});
 			})
+		};
+
+		$scope.openLightboxModal = function (index) {
+			Lightbox.openModal($scope.photos, index);
 		};
 	})

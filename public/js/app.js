@@ -1,6 +1,6 @@
-angular.module('scrapsApp', ['ui.router'/*, 'ngMaterial'*/])
+angular.module('scrapsApp', ['ui.router', 'bootstrapLightbox', 'ngAnimate' /*'ngMaterial'*/ ])
 
-.constant("$MD_THEME_CSS", "")
+//.constant("$MD_THEME_CSS", "")
 
 .run(function ($rootScope, $state, $stateParams) {
 		$rootScope.$state = $state;

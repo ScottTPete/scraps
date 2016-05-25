@@ -16,7 +16,11 @@ angular.module('scrapsApp')
 								post = {
 									username: followingArr[i].username
 									, profilePic: followingArr[i].profilePic
-									, photo: photo
+									, image: photo.image
+									, createdAt: photo.createdAt
+									, description: photo.description
+									, likes: photo.likes
+									, photoId: photo._id
 								, }
 								postsArr.push(post)
 							}
